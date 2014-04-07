@@ -8,16 +8,25 @@ namespace PicSim.Components
 {
     public class Watchdog
     {
-		private bool enable = false;
-		private uint postScaler = 1;
-		private bool timeOut = false;
+        private readonly IResetListener m_resetListener;
 
+        private bool enable = false;
+        private uint postScaler = 1;
+        private bool timeOut = false;
+
+
+        public Watchdog(IResetListener resetListener)
+        {
+            Ensure.ArgumentNotNull(resetListener, "resetListener");
+            m_resetListener = resetListener;
+        }
 
         /// <summary>
         /// Clear the watchdog timer, to prevent it from triggering.
         /// </summary>
         public void Clear()
         {
+            // TODO
         }
 
         public bool IsTriggered { get; set; }
@@ -33,31 +42,33 @@ namespace PicSim.Components
         {
             if (IsTriggered) {
                 // Generate a reset condition
+                m_resetListener.WatchdogReset();
 
                 // Skip the rest of the instruction cycle
+                // (See Processor.Step() for more information)
                 return true;
             } else {
                 return false;
             }
         }
 
-		public bool Enable
-		{
-			get { return enable; }
-			set { enable = value; }
-		}
+        public bool Enable
+        {
+            get { return enable; }
+            set { enable = value; }
+        }
 
-		public bool TimeOut
-		{
-			get { return timeOut; }
-			set { timeOut = value; }
-		}
+        public bool TimeOut
+        {
+            get { return timeOut; }
+            set { timeOut = value; }
+        }
 
-		public uint PostScaler
-		{
-			get { return postScaler; }
-			set { postScaler = value;}
-			// TODO: Gültigkeitsüberprüfung
-		}
+        public uint PostScaler
+        {
+            get { return postScaler; }
+            set { postScaler = value;}
+            // TODO: Gültigkeitsüberprüfung
+        }
     }
 }
