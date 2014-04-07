@@ -20,5 +20,8 @@ namespace PicSim.Components.Registers
             get { return m_constantValue; }
             set { /* Do nothing */ }
         }
+
+        // NOTE: No notifications will be sent.
+        public event EventHandler<Notifications.RegisterChangedEventArgs> RegisterChanged;
     }
 }

@@ -15,7 +15,7 @@ namespace PicSim.Components.Storage
     /// A memory view that maps multiple registers and device outputs
     /// to absolute memory addresses.
     /// </summary>
-    public class VirtualMemoryView : IMemoryView, IEnumerable<byte>, INotifyCollectionChanged
+    public class VirtualMemoryView : IMemoryView, IEnumerable<byte>, INotifyCollectionChanged, INotifyMemoryChanged
     {
         private readonly IRegister[] m_registers;
 
@@ -23,6 +23,8 @@ namespace PicSim.Components.Storage
         {
             Ensure.ArgumentNotNull(registers, "registers");
             m_registers = registers;
+
+            RegisterChangeNotifications();
         }
 
         public byte this[byte address]
@@ -108,8 +110,9 @@ namespace PicSim.Components.Storage
 
                 // TODO Use weak event listeners
                 if (inrc != null) {
+                    ushort memAddr = (ushort)i;
                     inrc.RegisterChanged += (sender, e) => {
-                        OnMemoryChanged(new MemoryChangedEventArgs((ushort)i, e.NewValue));
+                        OnMemoryChanged(new MemoryChangedEventArgs(memAddr, e.NewValue));
                     };
                 }
             }

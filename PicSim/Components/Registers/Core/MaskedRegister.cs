@@ -27,19 +27,41 @@ namespace PicSim.Components.Registers
         public byte Value
         {
             get { return m_value; }
-            set { m_value = (byte)((m_value & m_mask.Complement()) | (value & m_mask)); }
+            set { PrivateValue = (byte)((m_value & m_mask.Complement()) | (value & m_mask)); }
         }
 
         public byte RawValue
         {
             get { return m_value; }
-            set { m_value = value; }
+            set { PrivateValue = value; }
         }
 
         public BitVector32 BitVector
         {
             get { return new BitVector32(m_value); }
-            set { m_value = (byte)value.Data; }
+            set { PrivateValue = (byte)value.Data; }
         }
+
+        private byte PrivateValue
+        {
+            get { return m_value; }
+            set
+            {
+                if (value != m_value) {
+                    m_value = value;
+                    OnRegisterChanged(value);
+                }
+            }
+        }
+
+        private void OnRegisterChanged(byte newValue)
+        {
+            var handler = RegisterChanged;
+            if (handler != null) {
+                handler(this, new Notifications.RegisterChangedEventArgs(newValue));
+            }
+        }
+
+        public event System.EventHandler<Notifications.RegisterChangedEventArgs> RegisterChanged;
     }
 }

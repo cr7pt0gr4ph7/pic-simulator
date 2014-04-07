@@ -46,6 +46,7 @@ namespace PicSim.Components
                 // Simulate the behavior of the PIC when the PC is changed manually
                 m_changedInCurrentStep = true;
                 m_programCounter = value;
+                m_pclRegister.OnRegisterChanged();
             }
         }
 
@@ -90,7 +91,7 @@ namespace PicSim.Components
         {
             // Increment the PC if it has not already been changed
             if (!ChangedInCurrentStep) {
-                m_programCounter++;
+                Value = NextValue;
             }
         }
 
@@ -165,6 +166,16 @@ namespace PicSim.Components
                 get { return (byte)(m_outer.Value & 0xFF); }
                 set { m_outer.LoadFrom8Bits(value); }
             }
+
+            internal void OnRegisterChanged()
+            {
+                var handler = RegisterChanged;
+                if (handler != null) {
+                    handler(this, new Notifications.RegisterChangedEventArgs(Value));
+                }
+            }
+
+            public event System.EventHandler<Notifications.RegisterChangedEventArgs> RegisterChanged;
         }
 
         private class PclathRegister : IRegister
@@ -184,8 +195,25 @@ namespace PicSim.Components
             public byte Value
             {
                 get { return m_outer.m_pclathValue; }
-                set { m_outer.m_pclathValue = (byte)((m_outer.m_pclathValue & ALL_BITS_MASK.Complement()) | (value & ALL_BITS_MASK)); }
+                set
+                {
+                    var newValue = (byte)((m_outer.m_pclathValue & ALL_BITS_MASK.Complement()) | (value & ALL_BITS_MASK));
+                    if (newValue != m_outer.m_pclathValue) {
+                        m_outer.m_pclathValue = newValue;
+                        OnRegisterChanged(newValue);
+                    }
+                }
             }
+
+            private void OnRegisterChanged(byte newValue)
+            {
+                var handler = RegisterChanged;
+                if (handler != null) {
+                    handler(this, new Notifications.RegisterChangedEventArgs(newValue));
+                }
+            }
+
+            public event System.EventHandler<Notifications.RegisterChangedEventArgs> RegisterChanged;
         }
 
         #endregion

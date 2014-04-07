@@ -16,7 +16,23 @@ namespace PicSim.Components.Registers
         public byte Value
         {
             get { return m_value; }
-            set { m_value = value; }
+            set
+            {
+                if (value != m_value) {
+                    m_value = value;
+                    OnRegisterChanged(value);
+                }
+            }
         }
+
+        private void OnRegisterChanged(byte newValue)
+        {
+            var handler = RegisterChanged;
+            if (handler != null) {
+                handler(this, new Notifications.RegisterChangedEventArgs(newValue));
+            }
+        }
+
+        public event EventHandler<Notifications.RegisterChangedEventArgs> RegisterChanged;
     }
 }

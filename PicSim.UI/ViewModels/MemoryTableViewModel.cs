@@ -36,6 +36,9 @@ namespace PicSim.UI.ViewModels
             for (int i = 0; i < rowCount; i++) {
                 m_rows[i] = new Row(memoryView, (byte)(i * columns), columns);
             }
+
+            var inmc = (INotifyMemoryChanged)memoryView;
+            inmc.MemoryChanged += memoryView_MemoryChanged;
         }
 
         private int GetRowForAddress(int address)

@@ -26,9 +26,12 @@ namespace PicSim.UI.ViewModels
             m_memoryTable = new MemoryTableViewModel(m_simulatorModel.Processor.DebugMemoryView, 8);
 
             LoadFileCommand = new LoadFileCommandImpl(fileDialogService, simulatorModel);
+            StartStopCommand = new StartStopCommandImpl(m_simulatorModel);
         }
 
         public ICommand LoadFileCommand { get; private set; }
+
+        public ICommand StartStopCommand { get; private set; }
 
         public SimulatorModel Simulator
         {
@@ -74,7 +77,29 @@ namespace PicSim.UI.ViewModels
             {
                 return true;
             }
+        }
 
+        private class StartStopCommandImpl : ICommand
+        {
+            private readonly SimulatorModel m_simulator;
+
+            public StartStopCommandImpl(SimulatorModel simulator)
+            {
+                Ensure.ArgumentNotNull(simulator, "simulator");
+                m_simulator = simulator;
+            }
+
+            public void Execute(object parameter)
+            {
+                m_simulator.ToggleRunning();
+            }
+
+            public bool CanExecute(object parameter)
+            {
+                return true;
+            }
+
+            public event EventHandler CanExecuteChanged;
         }
     }
 }

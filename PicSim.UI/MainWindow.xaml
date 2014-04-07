@@ -18,6 +18,7 @@
         </Grid.ColumnDefinitions>
         <Menu Grid.Row="0" Grid.ColumnSpan="2">
             <MenuItem Header="Load file..." Command="{Binding LoadFileCommand}"/>
+            <MenuItem Header="Start/Stop" Command="{Binding StartStopCommand}"/>
         </Menu>
         <views:MemoryTableView Grid.Row="1" Grid.Column="0"
                                DataContext="{Binding MemoryTable}"/>

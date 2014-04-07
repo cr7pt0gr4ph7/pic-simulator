@@ -17,7 +17,22 @@ namespace PicSim.UI.Models
     public class SimulatorModel : Model, IFileLoaderService
     {
         private readonly Processor m_processor = new Processor();
+        private readonly DispatcherTimer m_timer;
         private FileModel m_fileModel;
+
+        public SimulatorModel()
+        {
+            m_timer = new DispatcherTimer() {
+                Interval = TimeSpan.FromSeconds(0.01d)
+            };
+
+            m_timer.Tick += Timer_Tick;
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            m_processor.Step();
+        }
 
         /// <summary>
         /// Load the specified listing file into the program, replacing the one that is currently executing, if any.
@@ -38,6 +53,24 @@ namespace PicSim.UI.Models
         {
             get { return m_fileModel; }
             set { SetProperty(ref m_fileModel, value); }
+        }
+
+        public void Start()
+        {
+            m_timer.Start();
+        }
+
+        public void Stop()
+        {
+            m_timer.Stop();
+        }
+
+        public void ToggleRunning()
+        {
+            if (m_timer.IsEnabled)
+                Stop();
+            else
+                Start();
         }
     }
 }
