@@ -66,6 +66,7 @@
     <Compile Include="Models\TristatePortRegisterModel.cs" />
     <Compile Include="Services\IFileLoaderService.cs" />
     <Compile Include="ViewModels\MemoryTableViewModel.cs" />
+    <Compile Include="Views\AvalonEditHelpers.cs" />
     <Compile Include="Views\MemoryTableView.xaml.cs">
       <DependentUpon>MemoryTableView.xaml</DependentUpon>
     </Compile>

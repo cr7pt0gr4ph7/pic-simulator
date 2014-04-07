@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
         xmlns:local="clr-namespace:PicSim.UI.ViewModels"
         xmlns:views="clr-namespace:PicSim.UI.Views"
+        xmlns:avalon="http://icsharpcode.net/sharpdevelop/avalonedit"
         d:DataContext="{x:Type local:MainWindowViewModel}"
         Title="MainWindow" Height="350" Width="525">
     <Grid Margin="-1,0,1,0">
@@ -22,7 +23,8 @@
         </Menu>
         <views:MemoryTableView Grid.Row="1" Grid.Column="0"
                                DataContext="{Binding MemoryTable}"/>
-        <ListBox Grid.Row="2" Grid.Column="1"
-                 ItemsSource="{Binding Simulator.File.Lines}" SelectedIndex="{Binding CurrentLine,Mode=OneWay}"/>
+        <avalon:TextEditor Grid.Row="2" Grid.Column="1"
+                           Name="textEditor" views:AvalonEditHelpers.TextBinding="{Binding Simulator.File.Text}"
+                           FontFamily="Lucida Console"/>
     </Grid>
 </Window>

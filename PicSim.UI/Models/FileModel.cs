@@ -17,12 +17,15 @@ namespace PicSim.UI.Models
         private readonly string[] m_lines;
         private readonly ushort[] m_opcodes;
 
+        private readonly string m_text;
+
         private FileModel(int[] pc2codeLine, int[] codeLine2pc, string[] lines, ushort[] opcodes)
         {
             m_pc2codeLine = pc2codeLine;
             m_codeLine2pc = codeLine2pc;
             m_lines = lines;
             m_opcodes = opcodes;
+            m_text = string.Join("\n", lines);
         }
 
         #region Properties
@@ -35,6 +38,11 @@ namespace PicSim.UI.Models
         public ushort[] Opcodes
         {
             get { return m_opcodes; }
+        }
+
+        public string Text
+        {
+            get { return m_text; }
         }
 
         #endregion
