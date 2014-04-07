@@ -63,7 +63,6 @@
     <Compile Include="Converters\HexValueConverter.cs" />
     <Compile Include="Models\FileModel.cs" />
     <Compile Include="Models\SimulatorModel.cs" />
-    <Compile Include="Models\SimulatorRunner.cs" />
     <Compile Include="Models\TristatePortRegisterModel.cs" />
     <Compile Include="Services\IFileLoaderService.cs" />
     <Compile Include="ViewModels\MemoryTableViewModel.cs" />
