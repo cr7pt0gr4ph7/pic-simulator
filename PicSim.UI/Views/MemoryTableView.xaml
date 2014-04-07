@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="PicSim.UI.Views.MemoryTableView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:c="clr-namespace:PicSim.UI.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <c:HexValueConverter x:Key="hexValueConverter2" Digits="2"/>
+    </UserControl.Resources>
+    <DataGrid ItemsSource="{Binding Rows}" AutoGenerateColumns="False">
+        <DataGrid.Columns>
+            <DataGridTextColumn Header="" Binding="{Binding Header}" IsReadOnly="True"/>
+            <DataGridTextColumn Header="00" Binding="{Binding [0].Value,Converter={StaticResource hexValueConverter2}}"/>
+            <DataGridTextColumn Header="01" Binding="{Binding [1].Value,Converter={StaticResource hexValueConverter2}}"/>
+            <DataGridTextColumn Header="02" Binding="{Binding [2].Value,Converter={StaticResource hexValueConverter2}}"/>
+            <DataGridTextColumn Header="03" Binding="{Binding [3].Value,Converter={StaticResource hexValueConverter2}}"/>
+            <DataGridTextColumn Header="04" Binding="{Binding [4].Value,Converter={StaticResource hexValueConverter2}}"/>
+            <DataGridTextColumn Header="05" Binding="{Binding [5].Value,Converter={StaticResource hexValueConverter2}}"/>
+            <DataGridTextColumn Header="06" Binding="{Binding [6].Value,Converter={StaticResource hexValueConverter2}}"/>
+            <DataGridTextColumn Header="07" Binding="{Binding [7].Value,Converter={StaticResource hexValueConverter2}}"/>
+        </DataGrid.Columns>
+    </DataGrid>
+</UserControl>
