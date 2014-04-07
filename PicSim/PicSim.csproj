@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Components\InstructionDecoder.cs" />
     <Compile Include="Components\IResetListener.cs" />
+    <Compile Include="Components\ModelBase.cs" />
     <Compile Include="Components\Notifications\INotifyMemoryChanged.cs" />
     <Compile Include="Components\Notifications\INotifyRegisterChanged.cs" />
     <Compile Include="Components\Notifications\MemoryChangedEventArgs.cs" />
