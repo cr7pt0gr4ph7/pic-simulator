@@ -15,9 +15,9 @@ namespace PicSim.Instructions
 
         private static OperationResult add_impl(int x, int y)
         {
-            int result = x + y;
+            int result = (x & FULL_BYTE) + (y & FULL_BYTE);
             bool digitCarry = ((x & LOWER_NIBBLE) + (y & LOWER_NIBBLE)) > LOWER_NIBBLE;
-            bool carry = (result > FULL_BYTE);
+            bool carry = ((0x100 & result) == 0x100);
             return new OperationResult((byte)(result & FULL_BYTE), carry, digitCarry);
         }
 

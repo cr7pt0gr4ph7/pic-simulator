@@ -26,7 +26,7 @@ namespace PicSim.Components.Storage
 
         private byte GetMappedAddress(byte address)
         {
-            if (address == 0x00) return m_addressGetter();
+            if (address == 0x00 || address == 0x80) return m_addressGetter();
             return address;
         }
 

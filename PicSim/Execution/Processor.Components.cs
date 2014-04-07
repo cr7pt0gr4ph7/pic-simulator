@@ -79,11 +79,11 @@ namespace PicSim.Execution
 
             var virtualMemoryView = new VirtualMemoryView(memory);
 
-            this.Memory = new IndirectingMemoryView(
-                () => Registers.FSR.Value,
-                new PagedMemoryView(
-                   () => Registers.Status.RP0,
-                   virtualMemoryView
+            this.Memory = new PagedMemoryView(
+                () => Registers.Status.RP0,
+                new IndirectingMemoryView(
+                    () => Registers.FSR.Value,
+                    virtualMemoryView
                 )
             );
 

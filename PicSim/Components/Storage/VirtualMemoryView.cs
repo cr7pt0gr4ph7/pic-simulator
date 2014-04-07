@@ -30,7 +30,7 @@ namespace PicSim.Components.Storage
         public byte this[byte address]
         {
             get { return m_registers[address].Value; }
-            set { m_registers[address].Value = address; }
+            set { m_registers[address].Value = value; }
         }
 
         public int MemorySize
