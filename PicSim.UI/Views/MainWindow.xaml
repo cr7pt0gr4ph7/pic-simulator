@@ -114,7 +114,7 @@
             <StackPanel Orientation="Vertical" Grid.Row="0">
                 <self:IORegisterGrid x:Name="iogridA" Margin="0, 0, 0, 10" Caption="RA" />
                 <self:IORegisterGrid x:Name="iogridB" Margin="0, 0, 0, 10" Caption="RB"/>
-                <!--<self:CircularStackDisplay x:Name="stackList"/>-->
+                <self:CircularStackDisplay x:Name="stackList"/>
             </StackPanel>
 
             <DockPanel Grid.Row="2" Margin="0, 0, 0, 25">
@@ -134,7 +134,17 @@
                 </StackPanel>
             </DockPanel>
 
+            
         </Grid>
+
+        <ScrollViewer Grid.Row="2" Grid.Column="4" Grid.RowSpan="3" Margin="5">
+            <self:RegisterGrid x:Name="rgridMain"/>
+        </ScrollViewer>
+
+        <GridSplitter Grid.Row="3" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" ShowsPreview="False" Height="3" />
+
+        <Rectangle Grid.Row="4" Grid.Column="2" Fill="Salmon" Margin="5"></Rectangle>
+
 
     </Grid>
 

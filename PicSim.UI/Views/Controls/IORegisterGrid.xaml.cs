@@ -22,15 +22,15 @@ namespace PicSim.UI.Views
 
 		public IORegisterGrid()
 		{
-			//InitializeComponent();
+			InitializeComponent();
 
 			this.DataContext = this;
 
 			tris = new bool[8];
 			pins = new bool[8];
 
-			txtTRIS = new ChangeMarkTextBlock[] {}; // Tris0, Tris1, Tris2, Tris3, Tris4, Tris5, Tris6, Tris7 };
-			txtPINS = new ChangeMarkTextBlock[] {}; // Pin0, Pin1, Pin2, Pin3, Pin4, Pin5, Pin6, Pin7 };
+			txtTRIS = new ChangeMarkTextBlock[] { Tris0, Tris1, Tris2, Tris3, Tris4, Tris5, Tris6, Tris7 };
+			txtPINS = new ChangeMarkTextBlock[] { Pin0, Pin1, Pin2, Pin3, Pin4, Pin5, Pin6, Pin7 };
 
 			Caption = "XXX";
 		}

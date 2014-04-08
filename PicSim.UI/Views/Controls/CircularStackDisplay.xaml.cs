@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Controls;
 
-namespace PiCSim.UI.Views
+namespace PicSim.UI.Views
 {
 	/// <summary>
 	/// Interaction logic for CircularStackDisplay.xaml

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="PiCSim.UI.Views.CircularStackDisplay" 
+             xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="PicSim.UI.Views.CircularStackDisplay" 
              mc:Ignorable="d">
     <UserControl.Resources>
         <Color x:Key="ColorBack_R">White</Color>
