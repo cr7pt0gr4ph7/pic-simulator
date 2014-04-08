@@ -94,6 +94,10 @@ namespace PicSim.UI
 			this.Close();
 		}
 
+		private void Window_Closed(object sender, EventArgs e)
+		{
+			
+		}
 
 		#endregion
 
@@ -211,6 +215,7 @@ namespace PicSim.UI
 
 		}
 		#endregion
+
 
 		#endregion
 	}
