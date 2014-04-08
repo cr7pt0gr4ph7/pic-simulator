@@ -67,6 +67,7 @@
     <Compile Include="Services\IFileLoaderService.cs" />
     <Compile Include="ViewModels\MemoryTableViewModel.cs" />
     <Compile Include="Views\AvalonEditHelpers.cs" />
+    <Compile Include="Views\CustomCmds.cs" />
     <Compile Include="Views\MemoryTableView.xaml.cs">
       <DependentUpon>MemoryTableView.xaml</DependentUpon>
     </Compile>
@@ -85,6 +86,10 @@
     <Page Include="Views\MemoryTableView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Theme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

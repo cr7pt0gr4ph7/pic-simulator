@@ -1,4 +1,5 @@
 ﻿using PicSim.UI.ViewModels;
+using PicSim.UI.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
