@@ -89,20 +89,53 @@
                 <ComboBoxItem Content="Maximum" />
             </ComboBox>
 
-            <self:SimpleToolbarButton BText="Stop" BSource="../../icons/control-stop-square.png" BCommand="self:CustomCmds.Stop"/>
+            <self:SimpleToolbarButton BText="Stop" BSource="../icons/control-stop-square.png" BCommand="self:CustomCmds.Stop"/>
 
             <self:SimpleToolbarSeparator />
 
-            <self:SimpleToolbarButton BText="Pause" BSource="../../icons/control-pause.png" BCommand="self:CustomCmds.Pause"/>
-            <self:SimpleToolbarButton BText="Continue" BSource="../../icons/arrow-curve-000-double.png" BCommand="self:CustomCmds.Continue"/>
-            <self:SimpleToolbarButton BText="Step" BSource="../../icons/arrow-curve-000-left.png" BCommand="self:CustomCmds.Step"/>
+            <self:SimpleToolbarButton BText="Pause" BSource="../icons/control-pause.png" BCommand="self:CustomCmds.Pause"/>
+            <self:SimpleToolbarButton BText="Continue" BSource="../icons/arrow-curve-000-double.png" BCommand="self:CustomCmds.Continue"/>
+            <self:SimpleToolbarButton BText="Step" BSource="../icons/arrow-curve-000-left.png" BCommand="self:CustomCmds.Step"/>
         </StackPanel>
 
         <avEdit:TextEditor Grid.Row="2" Grid.Column="2" Margin="5" x:Name="txtCode" PreviewTextInput="txtCode_PreviewTextInput"/>
 
         <GridSplitter Grid.Row="2" Grid.Column="1" Grid.RowSpan="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" ShowsPreview="False" Width="3" />
         <GridSplitter Grid.Row="2" Grid.Column="3" Grid.RowSpan="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" ShowsPreview="False" Width="3" />
-        
+
+        <Grid Grid.Row="2" Grid.Column="0" Grid.RowSpan="3" Margin="5">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Vertical" Grid.Row="0">
+                <self:IORegisterGrid x:Name="iogridA" Margin="0, 0, 0, 10" Caption="RA" />
+                <self:IORegisterGrid x:Name="iogridB" Margin="0, 0, 0, 10" Caption="RB"/>
+                <!--<self:CircularStackDisplay x:Name="stackList"/>-->
+            </StackPanel>
+
+            <DockPanel Grid.Row="2" Margin="0, 0, 0, 25">
+                <StackPanel DockPanel.Dock="Left" Orientation="Vertical" Width="115">
+                    <TextBlock TextAlignment="Right" Text="W-Register"/>
+                    <TextBlock TextAlignment="Right" Text="PC"/>
+                    <TextBlock TextAlignment="Right" Text="Frequency Display"/>
+                    <TextBlock TextAlignment="Right" Text="Frequency Controller"/>
+                    <TextBlock TextAlignment="Right" Text="Run Time"/>
+                </StackPanel>
+                <StackPanel DockPanel.Dock="Right" Orientation="Vertical" Margin="8, 0, 0, 0">
+                    <TextBlock Name="lblRegW"  Text="0x00"/>
+                    <TextBlock Name="lblRegPC"  Text="0x0000"/>
+                    <TextBlock Name="lblFreqView"  Text="0"/>
+                    <TextBlock Name="lblFreqModel"  Text="0"/>
+                    <TextBlock Name="lblRunTime"  Text="0"/>
+                </StackPanel>
+            </DockPanel>
+
+        </Grid>
+
     </Grid>
 
 

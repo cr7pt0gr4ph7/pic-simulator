@@ -61,12 +61,19 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\HexValueConverter.cs" />
+    <Compile Include="Helper\BinaryHelper.cs" />
+    <Compile Include="Helper\FrequencyCounter.cs" />
     <Compile Include="Models\FileModel.cs" />
     <Compile Include="Models\SimulatorModel.cs" />
     <Compile Include="Models\TristatePortRegisterModel.cs" />
     <Compile Include="Services\IFileLoaderService.cs" />
     <Compile Include="ViewModels\MemoryTableViewModel.cs" />
     <Compile Include="Views\AvalonEditHelpers.cs" />
+    <Compile Include="Views\Controls\ChangeMarkTextBlock.xaml.cs" />
+    <Compile Include="Views\Controls\ChangeMarkTextBox.xaml.cs" />
+    <Compile Include="Views\Controls\CircularStackDisplay.xaml.cs" />
+    <Compile Include="Views\Controls\IORegisterGrid.xaml.cs" />
+    <Compile Include="Views\Controls\RegisterGrid.xaml.cs" />
     <Compile Include="Views\Controls\SimpleToolbarButton.xaml.cs" />
     <Compile Include="Views\Controls\SimpleToolbarSeparator.xaml.cs" />
     <Compile Include="Views\CustomCmds.cs" />
@@ -74,6 +81,26 @@
     <Compile Include="Views\MemoryTableView.xaml.cs">
       <DependentUpon>MemoryTableView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\Controls\ChangeMarkTextBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Controls\ChangeMarkTextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Controls\CircularStackDisplay.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Controls\IORegisterGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Controls\RegisterGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Controls\SimpleToolbarButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
