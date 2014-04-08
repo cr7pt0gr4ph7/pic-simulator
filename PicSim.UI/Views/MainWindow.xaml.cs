@@ -205,6 +205,13 @@ namespace PicSim.UI
 		}
 		#endregion
 
+		#region TextInput
+		private void txtCode_PreviewTextInput(object sender, TextCompositionEventArgs e)
+		{
+
+		}
+		#endregion
+
 		#endregion
 	}
 }

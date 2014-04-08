@@ -19,7 +19,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -138,7 +138,21 @@
       <Name>PicSim</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="icons\arrow-curve-000-double.png" />
+    <Resource Include="icons\arrow-curve-000-left.png" />
+    <Resource Include="icons\arrow-left.png" />
+    <Resource Include="icons\box.png" />
+    <Resource Include="icons\control-pause.png" />
+    <Resource Include="icons\control-stop-square.png" />
+    <Resource Include="icons\control.png" />
+    <Resource Include="icons\disk-rename.png" />
+    <Resource Include="icons\disk-return.png" />
+    <Resource Include="icons\document.png" />
+    <Resource Include="icons\folder-open.png" />
+    <Resource Include="icons\sealing-arrow.png" />
+    <Resource Include="icons\sealing-wax.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
