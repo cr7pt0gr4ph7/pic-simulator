@@ -18,7 +18,7 @@ namespace PicSim.Execution
                 ops = new InstructionOps() { Processor = this }
             };
 
-            this.Watchdog = new Watchdog();
+			this.Watchdog = null; //new Watchdog();
             this.Clock = new Clock_();
             this.ProgramCounter = new ProgramCounter();
 
