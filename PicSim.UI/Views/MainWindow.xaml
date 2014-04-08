@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:self="clr-namespace:PicSim.UI.Views"
         xmlns:avEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
-        Title="MainWindow" Height="550" Width="900"> <!--Closed="Window_Closed"-->
+        Title="MainWindow" Height="550" Width="900">
+    <!--Closed="Window_Closed"-->
 
     <Window.Resources>
         <ResourceDictionary>
@@ -33,6 +34,71 @@
         <KeyBinding Command="Open" Key="O" Modifiers="Control" />
         <KeyBinding Command="New" Key="N" Modifiers="Control" />
     </Window.InputBindings>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+
+        <Menu Grid.Row="0" Grid.ColumnSpan="5">
+            <MenuItem Header="File">
+                <MenuItem Header="New" Command="New"/>
+                <MenuItem Header="Open" Command="Open"/>
+                <MenuItem Header="Exit" Command="Close"/>
+            </MenuItem>
+            <MenuItem Header="Edit">
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="Show PDF" Click="OnShowPdf" IsEnabled="False"/>
+            </MenuItem>
+        </Menu>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="5">
+            <self:SimpleToolbarButton BText="New" BSource="../icons/document.png" BCommand="New"/>
+            <self:SimpleToolbarButton BText="Open" BSource="../icons/folder-open.png" BCommand="Open"/>
+            <self:SimpleToolbarButton BText="Save" BSource="../icons/disk-return.png" BCommand="Save"/>
+            <self:SimpleToolbarButton BText="Save As" BSource="../icons/disk-rename.png" BCommand="SaveAs"/>
+
+            <self:SimpleToolbarSeparator />
+
+            <self:SimpleToolbarButton BText="Compile" BSource="../icons/box.png" BCommand="self:CustomCmds.Compile"/>
+
+            <self:SimpleToolbarSeparator />
+
+            <self:SimpleToolbarButton BText="Run" BSource="../icons/control.png" BCommand="self:CustomCmds.Run"/>
+
+            <ComboBox Name="cbxSpeed" SelectedIndex="3" MinWidth="85" Margin="5, 0, 5, 0" SelectionChanged="cbxSpeed_SelectionChanged">
+                <ComboBoxItem Content="Snail" />
+                <ComboBoxItem Content="Very Slow" />
+                <ComboBoxItem Content="Slow" />
+                <ComboBoxItem Content="Normal" />
+                <ComboBoxItem Content="Fast" />
+                <ComboBoxItem Content="Very Fast" />
+                <ComboBoxItem Content="Maximum" />
+            </ComboBox>
+
+            <self:SimpleToolbarButton BText="Stop" BSource="../icons/control-stop-square.png" BCommand="self:CustomCmds.Stop"/>
+
+            <self:SimpleToolbarSeparator />
+
+            <self:SimpleToolbarButton BText="Pause" BSource="../icons/control-pause.png" BCommand="self:CustomCmds.Pause"/>
+            <self:SimpleToolbarButton BText="Continue" BSource="../icons/arrow-curve-000-double.png" BCommand="self:CustomCmds.Continue"/>
+            <self:SimpleToolbarButton BText="Step" BSource="../icons/arrow-curve-000-left.png" BCommand="self:CustomCmds.Step"/>
+        </StackPanel>
+
+    </Grid>
 
 
 </Window>

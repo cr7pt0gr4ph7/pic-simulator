@@ -67,10 +67,21 @@
     <Compile Include="Services\IFileLoaderService.cs" />
     <Compile Include="ViewModels\MemoryTableViewModel.cs" />
     <Compile Include="Views\AvalonEditHelpers.cs" />
+    <Compile Include="Views\Controls\SimpleToolbarButton.xaml.cs" />
+    <Compile Include="Views\Controls\SimpleToolbarSeparator.xaml.cs" />
     <Compile Include="Views\CustomCmds.cs" />
+    <Compile Include="Views\IconBarMargin.cs" />
     <Compile Include="Views\MemoryTableView.xaml.cs">
       <DependentUpon>MemoryTableView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\Controls\SimpleToolbarButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Controls\SimpleToolbarSeparator.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
