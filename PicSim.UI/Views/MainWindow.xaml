@@ -41,6 +41,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="100"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -142,10 +143,11 @@
 
         <GridSplitter Grid.Row="3" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" ShowsPreview="False" Height="3" />
 
-        <ScrollViewer Grid.Row="4" Grid.Column="2">
-           <self:ModelTab/>
-        </ScrollViewer>
+        <ScrollViewer Grid.Row="4" Grid.Column="2"/>
 
+        <StatusBar Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="5">
+            <Label Content="StaturBarInfo" />
+        </StatusBar>
 
     </Grid>
 
