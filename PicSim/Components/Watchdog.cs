@@ -14,7 +14,6 @@ namespace PicSim.Components
         private uint postScaler = 1;
         private bool timeOut = false;
 
-
         public Watchdog(IResetListener resetListener)
         {
             Ensure.ArgumentNotNull(resetListener, "resetListener");

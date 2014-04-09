@@ -63,7 +63,6 @@
     <Compile Include="Components\Storage\PagedMemoryView.cs" />
     <Compile Include="Components\Storage\VirtualMemoryView.cs" />
     <Compile Include="Components\VirtualClock.cs" />
-    <Compile Include="Components\VirtualTimer.cs" />
     <Compile Include="Components\Watchdog.cs" />
     <Compile Include="Ensure.cs" />
     <Compile Include="Execution\Processor.Components.cs" />

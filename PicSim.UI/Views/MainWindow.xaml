@@ -143,7 +143,7 @@
 
         <GridSplitter Grid.Row="3" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" ShowsPreview="False" Height="3" />
 
-        <ModulTab Grid.Row="4" Grid.Column="2" />
+        <self:ModulTab Grid.Row="4" Grid.Column="2" />
 
         <StatusBar Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="5">
             <TextBlock  Name="StatusBarInfo"   Text="Do you need help? More information are in the help-pdf-file."/>

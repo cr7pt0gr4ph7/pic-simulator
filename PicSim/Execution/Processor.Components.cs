@@ -10,7 +10,7 @@ using PicSim.Instructions;
 
 namespace PicSim.Execution
 {
-    public partial class Processor
+    public partial class Processor : IResetListener
     {
         public Processor()
         {
@@ -18,7 +18,7 @@ namespace PicSim.Execution
                 ops = new InstructionOps() { Processor = this }
             };
 
-			this.Watchdog = null; //new Watchdog();
+            this.Watchdog = new Watchdog(this);
             this.Clock = new Clock_();
             this.ProgramCounter = new ProgramCounter();
 
@@ -140,6 +140,11 @@ namespace PicSim.Execution
             {
 
             }
+        }
+
+        public void WatchdogReset()
+        {
+            throw new NotImplementedException();
         }
     }
 }

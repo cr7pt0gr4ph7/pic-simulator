@@ -69,20 +69,43 @@
     <Compile Include="Services\IFileLoaderService.cs" />
     <Compile Include="ViewModels\MemoryTableViewModel.cs" />
     <Compile Include="Views\AvalonEditHelpers.cs" />
-    <Compile Include="Views\Controls\ChangeMarkTextBlock.xaml.cs" />
-    <Compile Include="Views\Controls\ChangeMarkTextBox.xaml.cs" />
-    <Compile Include="Views\Controls\CircularStackDisplay.xaml.cs" />
-    <Compile Include="Views\Controls\IORegisterGrid.xaml.cs" />
+    <Compile Include="Views\Controls\ChangeMarkTextBlock.xaml.cs">
+      <DependentUpon>ChangeMarkTextBlock.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Controls\ChangeMarkTextBox.xaml.cs">
+      <DependentUpon>ChangeMarkTextBox.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Controls\CircularStackDisplay.xaml.cs">
+      <DependentUpon>CircularStackDisplay.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Controls\IORegisterGrid.xaml.cs">
+      <DependentUpon>IORegisterGrid.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Views\Controls\ModulTab.xaml.cs">
       <DependentUpon>ModulTab.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Views\Controls\RegisterGrid.xaml.cs" />
-    <Compile Include="Views\Controls\SimpleToolbarButton.xaml.cs" />
-    <Compile Include="Views\Controls\SimpleToolbarSeparator.xaml.cs" />
+    <Compile Include="Views\Controls\RegisterGrid.xaml.cs">
+      <DependentUpon>RegisterGrid.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Controls\SimpleToolbarButton.xaml.cs">
+      <DependentUpon>SimpleToolbarButton.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Controls\SimpleToolbarSeparator.xaml.cs">
+      <DependentUpon>SimpleToolbarSeparator.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Views\CustomCmds.cs" />
     <Compile Include="Views\IconBarMargin.cs" />
     <Compile Include="Views\MemoryTableView.xaml.cs">
       <DependentUpon>MemoryTableView.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\Controls\ChangeMarkTextBlock.xaml">
       <Generator>MSBuild:Compile</Generator>
