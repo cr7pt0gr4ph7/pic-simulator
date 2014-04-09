@@ -34,7 +34,7 @@ namespace PicSim.Execution
 
         private void DoStep()
         {
-              //if (Watchdog.Step()) return;
+              if (Watchdog.Step()) return;
             // TODO Implement interrupts
 
             // Read in the opcode at the location the PC is pointing at, and decode it.
