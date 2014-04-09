@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using PicSim.Instructions;
 using PicSim.Utils;
 using Opcode = System.UInt16;
+using Instruction = System.Object;
 
 namespace PicSim.Components
 {

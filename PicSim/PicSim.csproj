@@ -69,12 +69,6 @@
     <Compile Include="Execution\Processor.cs" />
     <Compile Include="Execution\Processor.Helpers.cs" />
     <Compile Include="Instructions\ByteValue.cs" />
-    <Compile Include="Instructions\Core\BinaryByteOrientedInstruction.cs" />
-    <Compile Include="Instructions\Core\ByteOrientedInstruction.cs" />
-    <Compile Include="Instructions\Core\Instruction.cs" />
-    <Compile Include="Instructions\Core\BitOrientedInstruction.cs" />
-    <Compile Include="Instructions\Core\CallOrGotoInstruction.cs" />
-    <Compile Include="Instructions\Core\LiteralOrControlInstruction.cs" />
     <Compile Include="Instructions\InstructionOps.cs" />
     <Compile Include="Instructions\OperationResult.cs" />
     <Compile Include="Instructions\Operations.cs" />
