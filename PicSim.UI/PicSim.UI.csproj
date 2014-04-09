@@ -73,8 +73,8 @@
     <Compile Include="Views\Controls\ChangeMarkTextBox.xaml.cs" />
     <Compile Include="Views\Controls\CircularStackDisplay.xaml.cs" />
     <Compile Include="Views\Controls\IORegisterGrid.xaml.cs" />
-    <Compile Include="Views\Controls\ModelTab.xaml.cs">
-      <DependentUpon>ModelTab.xaml</DependentUpon>
+    <Compile Include="Views\Controls\ModulTab.xaml.cs">
+      <DependentUpon>ModulTab.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Controls\RegisterGrid.xaml.cs" />
     <Compile Include="Views\Controls\SimpleToolbarButton.xaml.cs" />
@@ -100,7 +100,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Controls\ModelTab.xaml">
+    <Page Include="Views\Controls\ModulTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
