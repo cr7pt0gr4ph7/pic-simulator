@@ -6,6 +6,19 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-            
+        <TabControl>
+            <TabItem Header="Log">
+                <ScrollViewer>
+                    <TextBox Name="Log"
+                               TextWrapping="Wrap"
+			                   Text="No Log."
+			                   VerticalAlignment="Top"
+                               AcceptsReturn="True"
+                               />
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="Empty">
+            </TabItem>
+        </TabControl>
     </Grid>
 </UserControl>
