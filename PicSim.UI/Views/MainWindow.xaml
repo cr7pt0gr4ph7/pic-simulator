@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:self="clr-namespace:PicSim.UI.Views"
         xmlns:vm="clr-namespace:PicSim.UI.ViewModels"
+        xmlns:conv="clr-namespace:PicSim.UI.Converters"
         xmlns:avEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -131,12 +132,17 @@
                     <TextBlock TextAlignment="Right" Text="Frequency Controller"/>
                     <TextBlock TextAlignment="Right" Text="Run Time"/>
                 </StackPanel>
-                <StackPanel DockPanel.Dock="Right" Orientation="Vertical" Margin="8, 0, 0, 0">
-                    <TextBlock FontFamily="Courier New" FontSize="14" Name="lblRegW"      Text="0x00"/>
-                    <TextBlock FontFamily="Courier New" FontSize="14" Name="lblRegPC"     Text="0x0000"/>
-                    <TextBlock FontFamily="Courier New" FontSize="14" Name="lblFreqView"  Text="0 Hz"/>
-                    <TextBlock FontFamily="Courier New" FontSize="14" Name="lblFreqModel" Text="0 Hz"/>
-                    <TextBlock FontFamily="Courier New" FontSize="14" Name="lblRunTime"   Text="0 s"/>
+                <StackPanel DockPanel.Dock="Right" Orientation="Vertical" Margin="8, 0, 0, 0"
+                            TextBlock.FontFamily="Courier New" TextBlock.FontSize="14">
+                    <StackPanel.Resources>
+                        <conv:HexValueConverter x:Key="hex8Converter" Digits="2" UseHexPrefix="True"/>
+                        <conv:HexValueConverter x:Key="hex16Converter" Digits="4" UseHexPrefix="True"/>
+                    </StackPanel.Resources>
+                    <TextBlock Name="lblRegW"      Text="{Binding W.Value,Converter={StaticResource hex8Converter}}"/>
+                    <TextBlock Name="lblRegPC"     Text="{Binding PC.Value,Converter={StaticResource hex16Converter}}"/>
+                    <TextBlock Name="lblFreqView"  Text="0 Hz"/>
+                    <TextBlock Name="lblFreqModel" Text="0 Hz"/>
+                    <TextBlock Name="lblRunTime"   Text="0 s"/>
                 </StackPanel>
             </DockPanel>
         </Grid>

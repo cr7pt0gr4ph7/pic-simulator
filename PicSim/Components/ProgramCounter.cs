@@ -1,5 +1,7 @@
-﻿using PicSim.Components.Registers;
+﻿using PicSim.Components.Notifications;
+using PicSim.Components.Registers;
 using PicSim.Utils;
+using System;
 
 namespace PicSim.Components
 {
@@ -34,6 +36,8 @@ namespace PicSim.Components
             get { return m_changedInCurrentStep; }
         }
 
+        public event EventHandler<ValueChangedEventArgs<ushort>> ValueChanged;
+
         /// <summary>
         /// The address of the opcode that is currently being executed.
         /// The  Program  Counter  (PC)  is  13-bits  wide.
@@ -41,12 +45,15 @@ namespace PicSim.Components
         public ushort Value
         {
             get { return m_programCounter; }
-            private set
+            /*private*/ set
             {
                 // Simulate the behavior of the PIC when the PC is changed manually
+                // TODO This also takes effect if the PC is changed via the debugger (but maybe it should not)!
                 m_changedInCurrentStep = true;
                 m_programCounter = value;
+
                 m_pclRegister.OnRegisterChanged();
+                ValueChanged.RaiseIfNotNull(this, new ValueChangedEventArgs<ushort>(m_programCounter));
             }
         }
 

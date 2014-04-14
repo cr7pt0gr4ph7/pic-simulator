@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="300">
     <UserControl.Resources>
-        <conv:HexValueConverter x:Key="hexValueConverter"/>
+        <conv:HexValueConverter x:Key="hexValueConverter" Digits="2"/>
     </UserControl.Resources>
     <Grid x:Name="gridMain">
 

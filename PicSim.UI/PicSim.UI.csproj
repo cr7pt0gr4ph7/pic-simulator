@@ -68,6 +68,8 @@
     <Compile Include="Models\TristatePortRegisterModel.cs" />
     <Compile Include="Services\IFileLoaderService.cs" />
     <Compile Include="ViewModels\MemoryTableViewModel.cs" />
+    <Compile Include="ViewModels\ProgramCounterViewModel.cs" />
+    <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="Views\AvalonEditHelpers.cs" />
     <Compile Include="Views\Controls\ChangeMarkTextBlock.xaml.cs">
       <DependentUpon>ChangeMarkTextBlock.xaml</DependentUpon>

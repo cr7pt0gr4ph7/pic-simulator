@@ -15,6 +15,8 @@ namespace PicSim.UI.ViewModels
     {
         private readonly SimulatorModel m_simulatorModel;
         private readonly MemoryTableViewModel m_memoryTable;
+        private readonly ProgramCounterViewModel m_programCounter;
+        private readonly RegisterViewModel m_workingRegister;
 
         public MainWindowViewModel(IView view, IFileDialogService fileDialogService, SimulatorModel simulatorModel)
             : base(view)
@@ -24,6 +26,8 @@ namespace PicSim.UI.ViewModels
 
             m_simulatorModel = simulatorModel;
             m_memoryTable = new MemoryTableViewModel(m_simulatorModel.Processor.DebugMemoryView, 8);
+            m_programCounter = new ProgramCounterViewModel(m_simulatorModel.Processor.ProgramCounter);
+            m_workingRegister = new RegisterViewModel(m_simulatorModel.Processor.WorkingRegister);
 
             LoadFileCommand = new DelegateCommand(() => {
                 var lstFileType = new FileType("Listing files", ".LST");
@@ -66,6 +70,16 @@ namespace PicSim.UI.ViewModels
         public MemoryTableViewModel MemoryTable
         {
             get { return m_memoryTable; }
+        }
+
+        public ProgramCounterViewModel PC
+        {
+            get { return m_programCounter; }
+        }
+
+        public RegisterViewModel W
+        {
+            get { return m_workingRegister; }
         }
 
         private void DoRequeryCommands()

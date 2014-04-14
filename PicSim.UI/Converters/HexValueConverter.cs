@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -30,8 +31,11 @@ namespace PicSim.UI.Converters
 
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
+            var digits = Digits;
+            Debug.Assert(digits != 0);
+
             // TODO Don't create a format string on every single conversion
-            return ((IFormattable)value).ToString("X" + Digits.ToString(), null);
+            return (UseHexPrefix ? "0x" : "") + ((IFormattable)value).ToString("X" + digits.ToString(), null);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
@@ -46,5 +50,7 @@ namespace PicSim.UI.Converters
         }
 
         public int Digits { get; set; }
+
+        public bool UseHexPrefix { get; set; }
     }
 }

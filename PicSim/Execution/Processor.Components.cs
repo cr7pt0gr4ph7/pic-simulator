@@ -25,6 +25,9 @@ namespace PicSim.Execution
             // Initialize the program stack
             this.Stack = new Stack();
 
+            // Initialize the working register
+            this.WorkingRegister = new MemoryCell();
+
             // Initialize the registers
             //     See "Section 4.2 Data Memory Organization", p.12..18
 
@@ -127,12 +130,33 @@ namespace PicSim.Execution
 
         public Clock_ Clock { get; private set; }
 
+        #region Registers, Memory & Working register (W)
+
+        /// <summary>
+        /// Provides named access to all special function registers.
+        /// </summary>
         public RegistersView Registers { get; private set; }
 
+        /// <summary>
+        /// Provides indexed access to all registers.
+        /// </summary>
         public IMemoryView Memory { get; private set; }
 
+        /// <summary>
+        /// The working register model.
+        /// </summary>
+        public MemoryCell WorkingRegister { get; private set; }
 
-        public byte W { get; set; }
+        /// <summary>
+        /// Gets or sets the current value of the working register.
+        /// </summary>
+        public byte W
+        {
+            get { return WorkingRegister.Value; }
+            set { WorkingRegister.Value = value; }
+        }
+
+        #endregion
 
         public class Clock_
         {
