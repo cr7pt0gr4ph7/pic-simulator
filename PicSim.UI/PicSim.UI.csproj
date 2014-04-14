@@ -85,6 +85,9 @@
       <DependentUpon>IORegisterGrid.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Views\Controls\LEDandSwitches.xaml.cs">
+      <DependentUpon>LEDandSwitches.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Controls\ModulTab.xaml.cs">
       <DependentUpon>ModulTab.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -122,6 +125,10 @@
     <Page Include="Views\Controls\IORegisterGrid.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Controls\LEDandSwitches.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Controls\ModulTab.xaml">
       <SubType>Designer</SubType>
