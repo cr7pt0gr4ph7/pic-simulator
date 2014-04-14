@@ -41,6 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\Communication\Communication.cs" />
+    <Compile Include="Components\Communication\CommunicationData.cs" />
+    <Compile Include="Components\Communication\ICommunication.cs" />
+    <Compile Include="Components\Communication\RS232\RS232.cs" />
     <Compile Include="Components\InstructionDecoder.cs" />
     <Compile Include="Components\IResetListener.cs" />
     <Compile Include="Components\ModelBase.cs" />
@@ -83,6 +87,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
