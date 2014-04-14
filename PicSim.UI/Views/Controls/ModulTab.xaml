@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:self="clr-namespace:PicSim.UI.Views"
-             mc:Ignorable="d" 
+             xmlns:vm="clr-namespace:PicSim.UI.ViewModels"
+             mc:Ignorable="d" d:DataContext="{x:Type vm:MainWindowViewModel}"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <Grid.RowDefinitions>
@@ -27,12 +28,12 @@
                         
                         <TextBox Name="Log"
                                  TextWrapping="Wrap"
-			                     Text="No Log."
 			                     VerticalAlignment="Stretch"
                                  HorizontalAlignment="Stretch"
                                  AcceptsReturn="True"
                                  Grid.Column="0"
-                                 Grid.Row="0"/>
+                                 Grid.Row="0"
+                                 Text="{Binding Log.Text}"/>
 
                     </Grid>
                 </ScrollViewer>

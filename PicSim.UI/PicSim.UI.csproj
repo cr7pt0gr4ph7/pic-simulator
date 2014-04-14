@@ -67,6 +67,7 @@
     <Compile Include="Models\SimulatorModel.cs" />
     <Compile Include="Models\TristatePortRegisterModel.cs" />
     <Compile Include="Services\IFileLoaderService.cs" />
+    <Compile Include="ViewModels\LogViewModel.cs" />
     <Compile Include="ViewModels\MemoryTableViewModel.cs" />
     <Compile Include="ViewModels\ProgramCounterViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />

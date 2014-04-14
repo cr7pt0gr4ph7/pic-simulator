@@ -18,11 +18,15 @@ namespace PicSim.UI.ViewModels
         private readonly ProgramCounterViewModel m_programCounter;
         private readonly RegisterViewModel m_workingRegister;
 
+		private readonly LogViewModel m_log;
+
         public MainWindowViewModel(IView view, IFileDialogService fileDialogService, SimulatorModel simulatorModel)
             : base(view)
         {
             Ensure.ArgumentNotNull(fileDialogService, "fileDialogService");
             Ensure.ArgumentNotNull(simulatorModel, "simulatorModel");
+
+			m_log = new LogViewModel();
 
             m_simulatorModel = simulatorModel;
             m_memoryTable = new MemoryTableViewModel(m_simulatorModel.Processor.DebugMemoryView, 8);
@@ -81,6 +85,11 @@ namespace PicSim.UI.ViewModels
         {
             get { return m_workingRegister; }
         }
+
+		public LogViewModel Log
+		{
+			get { return m_log; }
+		}
 
         private void DoRequeryCommands()
         {
