@@ -66,6 +66,7 @@
             </MenuItem>
             <MenuItem Header="Help">
                 <MenuItem Header="Show PDF" Click="OnShowPdf" IsEnabled="False"/>
+                <MenuItem Header="Update UI" Command="{Binding RequeryCommands}"/>
             </MenuItem>
         </Menu>
 

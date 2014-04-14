@@ -25,18 +25,38 @@ namespace PicSim.UI.ViewModels
             m_simulatorModel = simulatorModel;
             m_memoryTable = new MemoryTableViewModel(m_simulatorModel.Processor.DebugMemoryView, 8);
 
-            LoadFileCommand = new LoadFileCommandImpl(fileDialogService, simulatorModel);
+            LoadFileCommand = new DelegateCommand(() => {
+                var lstFileType = new FileType("Listing files", ".LST");
+                var openResult = fileDialogService.ShowOpenFileDialog(lstFileType);
+
+                if (!openResult.IsValid) {
+                    // The user cancelled the dialog, so no action is taken.
+                    return;
+                }
+
+                // Try to load the specified file
+                simulatorModel.LoadFile(openResult.FileName);
+
+                // TOOD Remove this
+                DoRequeryCommands();
+            });
 
             StartCommand = new DelegateCommand(() => m_simulatorModel.Start(), () => m_simulatorModel.File != null);
             StopCommand = new DelegateCommand(() => m_simulatorModel.Stop(), () => m_simulatorModel.File != null);
             StartStopCommand = new DelegateCommand(() => m_simulatorModel.ToggleRunning(), () => m_simulatorModel.File != null);
+
+            RequeryCommands = new DelegateCommand(() => {
+                DoRequeryCommands();
+                CommandManager.InvalidateRequerySuggested();
+            });
         }
 
-        public ICommand LoadFileCommand { get; private set; }
+        public DelegateCommand LoadFileCommand { get; private set; }
 
-        public ICommand StartCommand { get; private set; }
-        public ICommand StopCommand { get; private set; }
-        public ICommand StartStopCommand { get; private set; }
+        public DelegateCommand StartCommand { get; private set; }
+        public DelegateCommand StopCommand { get; private set; }
+        public DelegateCommand StartStopCommand { get; private set; }
+        public DelegateCommand RequeryCommands { get; private set; }
 
         public SimulatorModel Simulator
         {
@@ -48,43 +68,11 @@ namespace PicSim.UI.ViewModels
             get { return m_memoryTable; }
         }
 
-        private class LoadFileCommandImpl : ICommand
+        private void DoRequeryCommands()
         {
-            private readonly IFileDialogService m_fileDialogService;
-            private readonly IFileLoaderService m_fileLoaderService;
-
-            public LoadFileCommandImpl(IFileDialogService fileDialogService, IFileLoaderService fileLoaderService)
-            {
-                Ensure.ArgumentNotNull(fileDialogService, "fileDialogService");
-                Ensure.ArgumentNotNull(fileLoaderService, "fileLoaderService");
-
-                this.m_fileDialogService = fileDialogService;
-                this.m_fileLoaderService = fileLoaderService;
-            }
-
-            public void Execute(object parameter)
-            {
-                var lstFileType = new FileType("Listing files", ".LST");
-                var openResult = m_fileDialogService.ShowOpenFileDialog(lstFileType);
-
-                if (!openResult.IsValid) {
-                    // The user cancelled the dialog, so no action is taken.
-                    return;
-                }
-
-                // Try to load the specified file
-                m_fileLoaderService.LoadFile(openResult.FileName);
-
-                // TODO Remove this
-                CommandManager.InvalidateRequerySuggested();
-            }
-
-            public event EventHandler CanExecuteChanged;
-
-            public bool CanExecute(object parameter)
-            {
-                return true;
-            }
+            StartCommand.RaiseCanExecuteChanged();
+            StopCommand.RaiseCanExecuteChanged();
+            StartStopCommand.RaiseCanExecuteChanged();
         }
     }
 }
