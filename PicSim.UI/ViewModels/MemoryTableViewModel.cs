@@ -119,7 +119,7 @@ namespace PicSim.UI.ViewModels
             public byte Value
             {
                 get { return m_memoryView[m_address]; }
-                // set { m_memoryView[m_address] = value; }
+                set { m_memoryView[m_address] = value; }
             }
         }
     }
