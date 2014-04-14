@@ -101,20 +101,6 @@ namespace PicSim.UI
 
 		#endregion
 
-		#region Run
-
-		private void RunEnabled(object sender, CanExecuteRoutedEventArgs e)
-		{
-			
-		}
-
-		private void RunExecuted(object sender, ExecutedRoutedEventArgs e)
-		{
-			
-		}
-
-		#endregion
-
 		#region Pause
 
 		private void PauseEnabled(object sender, CanExecuteRoutedEventArgs e)
@@ -123,20 +109,6 @@ namespace PicSim.UI
 		}
 
 		private void PauseExecuted(object sender, ExecutedRoutedEventArgs e)
-		{
-			
-		}
-
-		#endregion
-
-		#region Stop
-
-		private void StopEnabled(object sender, CanExecuteRoutedEventArgs e)
-		{
-			
-		}
-
-		private void StopExecuted(object sender, ExecutedRoutedEventArgs e)
 		{
 			
 		}

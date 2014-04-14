@@ -26,11 +26,16 @@ namespace PicSim.UI.ViewModels
             m_memoryTable = new MemoryTableViewModel(m_simulatorModel.Processor.DebugMemoryView, 8);
 
             LoadFileCommand = new LoadFileCommandImpl(fileDialogService, simulatorModel);
-            StartStopCommand = new StartStopCommandImpl(m_simulatorModel);
+
+            StartCommand = new DelegateCommand(() => m_simulatorModel.Start(), () => m_simulatorModel.File != null);
+            StopCommand = new DelegateCommand(() => m_simulatorModel.Stop(), () => m_simulatorModel.File != null);
+            StartStopCommand = new DelegateCommand(() => m_simulatorModel.ToggleRunning(), () => m_simulatorModel.File != null);
         }
 
         public ICommand LoadFileCommand { get; private set; }
 
+        public ICommand StartCommand { get; private set; }
+        public ICommand StopCommand { get; private set; }
         public ICommand StartStopCommand { get; private set; }
 
         public SimulatorModel Simulator
@@ -40,7 +45,7 @@ namespace PicSim.UI.ViewModels
 
         public MemoryTableViewModel MemoryTable
         {
-            get { return m_memoryTable; } 
+            get { return m_memoryTable; }
         }
 
         private class LoadFileCommandImpl : ICommand
@@ -69,6 +74,9 @@ namespace PicSim.UI.ViewModels
 
                 // Try to load the specified file
                 m_fileLoaderService.LoadFile(openResult.FileName);
+
+                // TODO Remove this
+                CommandManager.InvalidateRequerySuggested();
             }
 
             public event EventHandler CanExecuteChanged;
@@ -77,29 +85,6 @@ namespace PicSim.UI.ViewModels
             {
                 return true;
             }
-        }
-
-        private class StartStopCommandImpl : ICommand
-        {
-            private readonly SimulatorModel m_simulator;
-
-            public StartStopCommandImpl(SimulatorModel simulator)
-            {
-                Ensure.ArgumentNotNull(simulator, "simulator");
-                m_simulator = simulator;
-            }
-
-            public void Execute(object parameter)
-            {
-                m_simulator.ToggleRunning();
-            }
-
-            public bool CanExecute(object parameter)
-            {
-                return true;
-            }
-
-            public event EventHandler CanExecuteChanged;
         }
     }
 }

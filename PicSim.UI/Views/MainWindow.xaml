@@ -24,9 +24,9 @@
         <CommandBinding Command="New" Executed="NewExecuted" CanExecute="NewEnabled"/>
         <CommandBinding Command="Close" Executed="CloseExecuted" CanExecute="CloseEnabled"/>
         <CommandBinding Command="self:CustomCmds.Compile" CanExecute="CompileEnabled" Executed="CompileExecuted" />
-        <CommandBinding Command="self:CustomCmds.Run" CanExecute="RunEnabled" Executed="RunExecuted" />
+        <!--<CommandBinding Command="self:CustomCmds.Run" CanExecute="RunEnabled" Executed="RunExecuted" />-->
         <CommandBinding Command="self:CustomCmds.Pause" CanExecute="PauseEnabled" Executed="PauseExecuted" />
-        <CommandBinding Command="self:CustomCmds.Stop" CanExecute="StopEnabled" Executed="StopExecuted" />
+        <!--<CommandBinding Command="self:CustomCmds.Stop" CanExecute="StopEnabled" Executed="StopExecuted" />-->
         <CommandBinding Command="self:CustomCmds.Continue" CanExecute="ContinueEnabled" Executed="ContinueExecuted" />
         <CommandBinding Command="self:CustomCmds.Step" CanExecute="StepEnabled" Executed="StepExecuted" />
     </Window.CommandBindings>
@@ -81,7 +81,7 @@
 
             <self:SimpleToolbarSeparator />
 
-            <self:SimpleToolbarButton BText="Run" BSource="../icons/control.png" BCommand="self:CustomCmds.Run"/>
+            <self:SimpleToolbarButton BText="Run" BSource="../icons/control.png" BCommand="{Binding StartCommand}"/>
 
             <ComboBox Name="cbxSpeed" SelectedIndex="3" MinWidth="85" Margin="5, 0, 5, 0" SelectionChanged="cbxSpeed_SelectionChanged">
                 <ComboBoxItem Content="Snail" />
@@ -93,7 +93,7 @@
                 <ComboBoxItem Content="Maximum" />
             </ComboBox>
 
-            <self:SimpleToolbarButton BText="Stop" BSource="../icons/control-stop-square.png" BCommand="self:CustomCmds.Stop"/>
+            <self:SimpleToolbarButton BText="Stop" BSource="../icons/control-stop-square.png" BCommand="{Binding StopCommand}"/>
 
             <self:SimpleToolbarSeparator />
 
