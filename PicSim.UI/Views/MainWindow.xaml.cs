@@ -44,20 +44,6 @@ namespace PicSim.UI
 
 		#endregion
 
-		#region Open
-
-		private void OpenEnabled(object sender, CanExecuteRoutedEventArgs e)
-		{
-			
-		}
-
-		private void OpenExecuted(object sender, ExecutedRoutedEventArgs e)
-		{
-			
-		}
-
-		#endregion
-
 		#region Save
 
 		private void SaveEnabled(object sender, CanExecuteRoutedEventArgs e)

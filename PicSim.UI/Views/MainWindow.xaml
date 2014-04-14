@@ -16,7 +16,7 @@
     <Window.CommandBindings>
         <CommandBinding Command="Save" Executed="SaveExecuted" CanExecute="SaveEnabled"/>
         <CommandBinding Command="SaveAs" Executed="SaveAsExecuted" />
-        <CommandBinding Command="Open" Executed="OpenExecuted" CanExecute="OpenEnabled"/>
+        <!--<CommandBinding Command="Open" Executed="OpenExecuted" CanExecute="OpenEnabled"/>-->
         <CommandBinding Command="New" Executed="NewExecuted" CanExecute="NewEnabled"/>
         <CommandBinding Command="Close" Executed="CloseExecuted" CanExecute="CloseEnabled"/>
         <CommandBinding Command="self:CustomCmds.Compile" CanExecute="CompileEnabled" Executed="CompileExecuted" />
@@ -30,7 +30,7 @@
     <Window.InputBindings>
         <KeyBinding Command="Save" Key="S" Modifiers="Control" />
         <KeyBinding Command="SaveAs" Key="S" Modifiers="Control+Shift" />
-        <KeyBinding Command="Open" Key="O" Modifiers="Control" />
+        <KeyBinding Command="{Binding LoadFileCommand}" Key="O" Modifiers="Control" />
         <KeyBinding Command="New" Key="N" Modifiers="Control" />
     </Window.InputBindings>
 
@@ -55,7 +55,7 @@
         <Menu Grid.Row="0" Grid.ColumnSpan="5">
             <MenuItem Header="File">
                 <MenuItem Header="New" Command="New"/>
-                <MenuItem Header="Open" Command="Open"/>
+                <MenuItem Header="Open" Command="{Binding LoadFileCommand}"/>
                 <MenuItem Header="Exit" Command="Close"/>
             </MenuItem>
             <MenuItem Header="Edit">
@@ -67,7 +67,7 @@
 
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="5">
             <self:SimpleToolbarButton BText="New" BSource="../icons/document.png" BCommand="New"/>
-            <self:SimpleToolbarButton BText="Open" BSource="../icons/folder-open.png" BCommand="Open"/>
+            <self:SimpleToolbarButton BText="Open" BSource="../icons/folder-open.png" BCommand="{Binding LoadFileCommand}"/>
             <self:SimpleToolbarButton BText="Save" BSource="../icons/disk-return.png" BCommand="Save"/>
             <self:SimpleToolbarButton BText="Save As" BSource="../icons/disk-rename.png" BCommand="SaveAs"/>
 
