@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PicSim.UI.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,13 +8,19 @@ using System.Waf.Foundation;
 
 namespace PicSim.UI.ViewModels
 {
-	public class LogViewModel : Model
+	public class LogViewModel : Model, IDisposable
 	{
 		private string _text = "";
 
 		public LogViewModel()
 		{
 			Add("Start");
+			LogManager.Logged += LogManager_Logged;
+		}
+
+		public void Dispose()
+		{
+			LogManager.Logged -= LogManager_Logged;
 		}
 
 		public string Text
@@ -25,6 +32,11 @@ namespace PicSim.UI.ViewModels
 		public void Add(string line)
 		{
 			_text += DateTime.Now.ToString("HH:mm:ss.ffffff") + " - " + line + "\n";
+		}
+
+		void LogManager_Logged(object sender, LogManager.LogEventArgs e)
+		{
+			Add(e.Message);
 		}
 	}
 }

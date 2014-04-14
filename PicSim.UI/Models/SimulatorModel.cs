@@ -57,11 +57,13 @@ namespace PicSim.UI.Models
 
         public void Start()
         {
+			LogManager.Log("Simulation started");
             m_timer.Start();
         }
 
         public void Stop()
         {
+			LogManager.Log("Simulation stopped");
             m_timer.Stop();
         }
 
