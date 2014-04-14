@@ -44,7 +44,7 @@ namespace PicSim.Components
                     return GetBitOrientedInstruction(vector);
 
                 case 0x02: /* 10b */
-                    if (vector[ms_nextBit]) {
+                    if (!vector[ms_nextBit]) {
                         ops.CALL(); return null;
                     } else {
                         ops.GOTO(); return null;

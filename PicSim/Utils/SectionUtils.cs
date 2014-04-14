@@ -31,5 +31,11 @@ namespace PicSim.Utils
                 return ourSection;
             }
         }
+
+        public static int MaskForRange(short startBit, short endBit)
+        {
+            var mask = ForRange(startBit, endBit);
+            return (mask.Mask << mask.Offset);
+        }
     }
 }

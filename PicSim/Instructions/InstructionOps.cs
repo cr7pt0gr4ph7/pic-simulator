@@ -26,8 +26,8 @@ namespace PicSim.Instructions
         private static readonly BitVector32.Section ms_immediate_section = SectionUtils.ForRange(0, 7);
         private static readonly BitVector32.Section ms_address_section = SectionUtils.ForRange(0, 10);
         private static readonly BitVector32.Section ms_register_section = SectionUtils.ForRange(0, 6);
-        private static readonly BitVector32.Section ms_bit_section = SectionUtils.ForRange(6, 8);
-        private static readonly int ms_destination_mask = SectionUtils.ForRange(8, 8).Mask;
+        private static readonly BitVector32.Section ms_bit_section = SectionUtils.ForRange(7, 9);
+        private static readonly int ms_destination_mask = SectionUtils.MaskForRange(7, 7);
 
         private BitVector32 vector
         {
