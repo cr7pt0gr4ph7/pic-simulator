@@ -52,6 +52,9 @@
 
                 </Grid>
             </TabItem>
+            <TabItem Header="Special Register">
+                
+            </TabItem>
         </TabControl>
     </Grid>
 </UserControl>
