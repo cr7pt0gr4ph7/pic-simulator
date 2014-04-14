@@ -26,7 +26,7 @@ namespace PicSim.UI.Views
 		};
 
         private uint[] _values = new uint[CELL_COUNT_X * CELL_COUNT_Y];
-        private ChangeMarkTextBox[] textboxes = new ChangeMarkTextBox[CELL_COUNT_X * CELL_COUNT_Y];
+        private TextBox[] textboxes = new TextBox[CELL_COUNT_X * CELL_COUNT_Y];
 
         public RegisterGrid()
         {
@@ -142,7 +142,7 @@ namespace PicSim.UI.Views
                         BorderThickness = new Thickness(0, 0, 1, 1)
                     };
 
-                    ChangeMarkTextBox t = new ChangeMarkTextBox() {
+                    TextBox t = new TextBox() {
                         Text = "00",
                         FontFamily = new FontFamily("Courier New"),
                         FontSize = CELL_FONT_SIZE,
@@ -151,12 +151,14 @@ namespace PicSim.UI.Views
                     };
 
                     // Setup the binding
-                    t.SetBinding(TextBox.TextProperty, new Binding(string.Format("[{0}][{1}].Value", y, x)) {
+                    var binding = new Binding(string.Format("[{0}][{1}].Value", y, x)) {
                         Converter = (IValueConverter)FindResource("hexValueConverter"),
-                        UpdateSourceTrigger = UpdateSourceTrigger.LostFocus,
+                        UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged,
                         Mode = BindingMode.TwoWay
-                    });
+                    };
 
+                    t.SetBinding(TextBox.TextProperty, binding);
+                    
                     textboxes[(int)t.Tag] = t;
 
                     gridMain.Children.Add(b);
@@ -168,35 +170,6 @@ namespace PicSim.UI.Views
             }
 
             #endregion
-        }
-
-        private void cell_LostKeyboardFocus(object sender, System.Windows.Input.KeyboardFocusChangedEventArgs e)
-        {
-            TextBox t = sender as TextBox;
-            if (t == null)
-                return;
-            int pos = (int)t.Tag;
-
-            t.Text = String.Format("{0:X02}", _values[pos]);
-        }
-
-        private void cell_LostFocus(object sender, RoutedEventArgs e)
-        {
-            TextBox t = sender as TextBox;
-            if (t == null)
-                return;
-            int pos = (int)t.Tag;
-
-            t.Text = String.Format("{0:X02}", _values[pos]);
-        }
-
-        private void cell_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
-        {
-            TextBox t = sender as TextBox;
-            if (t == null)
-                return;
-
-            e.Handled = !Regex.Match(e.Text, @"^[0-9A-Fa-f]$").Success;
         }
     }
 }

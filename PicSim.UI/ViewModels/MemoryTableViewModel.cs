@@ -55,13 +55,13 @@ namespace PicSim.UI.ViewModels
 
         private void memoryView_MemoryChanged(object sender, MemoryChangedEventArgs e)
         {
-            var cell = Rows[GetRowForAddress(e.Address)][GetColumnForAddress(e.Address)];
+            var cell = this[GetRowForAddress(e.Address)][GetColumnForAddress(e.Address)];
             cell.RaiseChanged();
         }
 
-        public Row[] Rows
+        public Row this[int no]
         {
-            get { return m_rows; }
+            get { return m_rows[no]; }
         }
 
         public class Row

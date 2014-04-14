@@ -148,7 +148,7 @@
         </Grid>
 
         <ScrollViewer Grid.Row="2" Grid.Column="4" Grid.RowSpan="3" Margin="5">
-            <self:RegisterGrid x:Name="rgridMain" DataContext="{Binding MemoryTable.Rows}"/>
+            <self:RegisterGrid x:Name="rgridMain" DataContext="{Binding MemoryTable}"/>
         </ScrollViewer>
 
         <GridSplitter Grid.Row="3" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" ShowsPreview="False" Height="3" />
