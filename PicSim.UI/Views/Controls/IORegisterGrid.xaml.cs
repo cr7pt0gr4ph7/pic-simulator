@@ -16,7 +16,7 @@ namespace PicSim.UI.Views
 
 		public string Caption { get; set; }
 
-		private RegisterGrid ParentWindow;
+        //private RegisterGrid ParentWindow;
 		private uint Position_PINS;
 		private uint Position_TRIS;
 
@@ -37,14 +37,14 @@ namespace PicSim.UI.Views
 
 		public void Initialize(RegisterGrid parent, uint pins_pos, uint tris_pos)
 		{
-			ParentWindow = parent;
+            //ParentWindow = parent;
 			Position_PINS = pins_pos;
 			Position_TRIS = tris_pos;
 
-			ParentWindow.RegisterChanged += OnRegisterChanged;
+            //ParentWindow.RegisterChanged += OnRegisterChanged;
 
-			setTRIS(ParentWindow.get(Position_TRIS));
-			setPINS(ParentWindow.get(Position_PINS));
+            //setTRIS(ParentWindow.get(Position_TRIS));
+            //setPINS(ParentWindow.get(Position_PINS));
 		}
 
 		private void OnRegisterChanged(uint pos, uint val)
@@ -92,13 +92,13 @@ namespace PicSim.UI.Views
 		private void Pin_MouseDown(uint nmbr)
 		{
 			setPINS(nmbr, !pins[nmbr]);
-			ParentWindow.Set(Position_PINS, GetValue_PINS());
+            //ParentWindow.Set(Position_PINS, GetValue_PINS());
 		}
 
 		private void Tris_MouseDown(uint nmbr)
 		{
 			setTRIS(nmbr, !tris[nmbr]);
-			ParentWindow.Set(Position_TRIS, GetValue_TRIS());
+            //ParentWindow.Set(Position_TRIS, GetValue_TRIS());
 		}
 
 		public uint GetValue_PINS()

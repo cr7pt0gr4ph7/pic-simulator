@@ -28,11 +28,6 @@ namespace PicSim.UI.Views
         private uint[] _values = new uint[CELL_COUNT_X * CELL_COUNT_Y];
         private ChangeMarkTextBox[] textboxes = new ChangeMarkTextBox[CELL_COUNT_X * CELL_COUNT_Y];
 
-        public event RegisterChangedEvent RegisterChanged;
-        public delegate void RegisterChangedEvent(uint pos, uint val);
-
-        //public MainWindow ParentWindow;
-
         public RegisterGrid()
         {
             InitializeComponent();
@@ -155,13 +150,12 @@ namespace PicSim.UI.Views
                         MaxLength = 2
                     };
 
-                    t.PreviewTextInput += cell_PreviewTextInput;
-                    t.TextChanged += cell_TextChanged;
-                    t.LostFocus += cell_LostFocus;
-                    t.LostKeyboardFocus += cell_LostKeyboardFocus;
-
                     // Setup the binding
-                    t.SetBinding(TextBox.TextProperty, new Binding(string.Format("[{0}][{1}].Value", y, x)) { Converter = (IValueConverter)FindResource("hexValueConverter") });
+                    t.SetBinding(TextBox.TextProperty, new Binding(string.Format("[{0}][{1}].Value", y, x)) {
+                        Converter = (IValueConverter)FindResource("hexValueConverter"),
+                        UpdateSourceTrigger = UpdateSourceTrigger.LostFocus,
+                        Mode = BindingMode.TwoWay
+                    });
 
                     textboxes[(int)t.Tag] = t;
 
@@ -196,30 +190,6 @@ namespace PicSim.UI.Views
             t.Text = String.Format("{0:X02}", _values[pos]);
         }
 
-        private bool suppress_TC_Event = false;
-
-        private void cell_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (suppress_TC_Event)
-                return;
-
-            TextBox t = sender as TextBox;
-            if (t == null)
-                return;
-            int pos = (int)t.Tag;
-
-
-            if (t.Text.ToUpper() != t.Text) {
-                int ss = t.SelectionStart;
-                t.Text = t.Text.ToUpper();
-                t.SelectionStart = ss;
-            }
-
-            if (!string.IsNullOrWhiteSpace(t.Text)) {
-                Set((uint)pos, Convert.ToUInt32(t.Text, 16), false, true);
-            }
-        }
-
         private void cell_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
             TextBox t = sender as TextBox;
@@ -227,35 +197,6 @@ namespace PicSim.UI.Views
                 return;
 
             e.Handled = !Regex.Match(e.Text, @"^[0-9A-Fa-f]$").Success;
-        }
-
-        public uint get(uint pos)
-        {
-            return _values[pos];
-        }
-
-        public void Set(uint pos, uint val, bool updateBoxes = true, bool raiseEvent = true)
-        {
-            if (_values[pos] != val) {
-                _values[pos] = val;
-
-                if (updateBoxes) {
-                    if (!raiseEvent) {
-                        suppress_TC_Event = true;
-                        textboxes[pos].Text = String.Format("{0:X02}", val);
-                        suppress_TC_Event = false;
-                    } else {
-                        textboxes[pos].Text = String.Format("{0:X02}", val);
-                    }
-                }
-
-                if (RegisterChanged != null)
-                    RegisterChanged(pos, val);
-
-                /*if (raiseEvent)
-                    ParentWindow.SendEventToController(new ManuallyRegisterChangedEvent() { Position = pos, Value = val });*/
-
-            }
         }
     }
 }
