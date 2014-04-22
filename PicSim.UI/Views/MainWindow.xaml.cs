@@ -26,7 +26,14 @@ namespace PicSim.UI
         public MainWindow()
         {
             InitializeComponent();
+
+			Init();
         }
+
+		private void Init()
+		{
+			txtCode.ShowLineNumbers = true;
+		}
 
 		#region Event Handler
 
