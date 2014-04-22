@@ -16,7 +16,7 @@ namespace PicSim.UI.Services
 
 		private static void OnLogged(LogEventArgs e)
 		{
-			Logged.RaiseIfNotNull(this, e);
+			Logged.RaiseIfNotNull(null, e);
 		}
 
 		/// <summary>
