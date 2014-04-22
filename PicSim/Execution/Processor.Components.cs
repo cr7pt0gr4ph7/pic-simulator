@@ -52,7 +52,7 @@ namespace PicSim.Execution
             memory[0x85] = Registers.TRISA;
 
             memory[0x06] = Registers.PORTB;
-            memory[0x86] = Registers.TRISA;
+            memory[0x86] = Registers.TRISB;
 
             memory[0x07] = memory[0x87] = constZero;
 

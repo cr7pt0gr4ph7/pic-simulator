@@ -15,7 +15,7 @@ namespace PicSim.Utils
         /// <returns>The bitwise complement of <paramref name="b"/>.</returns>
         public static byte Complement(this byte b)
         {
-            return (byte)(b ^ 0x11);
+            return (byte)(b ^ 0xFF);
         }
 
         private static byte GetMaskForBit(byte bitNo)
