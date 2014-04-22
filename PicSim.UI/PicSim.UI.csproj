@@ -73,6 +73,9 @@
     <Compile Include="ViewModels\ProgramCounterViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="Views\AvalonEditHelpers.cs" />
+    <Compile Include="Views\Controls\ChangeMarkTextBox.xaml.cs">
+      <DependentUpon>ChangeMarkTextBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Controls\ChangeMarkTextBlock.xaml.cs">
       <DependentUpon>ChangeMarkTextBlock.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -113,6 +116,10 @@
       <DependentUpon>MemoryTableView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\Controls\ChangeMarkTextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Controls\ChangeMarkTextBlock.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

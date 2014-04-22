@@ -89,5 +89,6 @@ namespace PicSim.UI.Views
 		}
 
 		#endregion
+
 	}
 }

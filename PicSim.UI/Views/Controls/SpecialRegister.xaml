@@ -93,7 +93,7 @@
             <TextBlock Text="Value" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Courier New"  Margin="2"/>
         </Border>
         <Border Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="8" Background="White" BorderThickness="0, 0, 1, 1">
-            <self:ChangeMarkTextBlock x:Name="Value" Text="0x00" />
+            <self:ChangeMarkTextBox x:Name="Value" Text="0x00" />
         </Border>
         
     </Grid>
