@@ -54,7 +54,23 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Special Register">
-                
+                <ScrollViewer>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <self:SpecialRegister Grid.Column="0" Grid.Row="0" Margin="0, 0, 0, 10" x:Name="RegisterStatus" Caption="Status" />
+                        <self:SpecialRegister Grid.Column="0" Grid.Row="1" Margin="0, 0, 0, 10" x:Name="RegisterOption" Caption="Option" />
+                        <self:SpecialRegister Grid.Column="0" Grid.Row="2" x:Name="RegisterIntcon" Caption="Intcon" />
+                        
+                    </Grid>
+                </ScrollViewer>
             </TabItem>
         </TabControl>
     </Grid>
