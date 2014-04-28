@@ -47,9 +47,11 @@
     <Compile Include="Components\Communication\CommunicationManager.cs" />
     <Compile Include="Components\Communication\CommPortInfo.cs" />
     <Compile Include="Components\Communication\ICommunication.cs" />
-    <Compile Include="Components\Communication\RS232\RS232.cs" />
+    <Compile Include="Components\Communication\Interfaces\NullCommunication.cs" />
+    <Compile Include="Components\Communication\Interfaces\RS232.cs" />
     <Compile Include="Components\InstructionDecoder.cs" />
-    <Compile Include="Components\InterruptManager.cs" />
+    <Compile Include="Components\Interrupts\InterruptManager.cs" />
+    <Compile Include="Components\Interrupts\IInterruptContributor.cs" />
     <Compile Include="Components\IResetListener.cs" />
     <Compile Include="Components\ModelBase.cs" />
     <Compile Include="Components\Notifications\INotifyMemoryChanged.cs" />
@@ -92,7 +94,9 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Components\Interrupts\Contributors\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

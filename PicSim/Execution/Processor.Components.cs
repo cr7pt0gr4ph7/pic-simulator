@@ -8,6 +8,7 @@ using PicSim.Components.Registers;
 using PicSim.Components.Storage;
 using PicSim.Instructions;
 using PicSim.Components.Communication;
+using PicSim.Components.Interrupts;
 
 namespace PicSim.Execution
 {

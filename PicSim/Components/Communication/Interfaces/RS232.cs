@@ -22,7 +22,6 @@ namespace PicSim.Components.Communication
             serialPort.DtrEnable = true;*/
         }
 
-
         /// <summary>
         /// </summary>
         /// <returns><c>true</c> on success; <c>false</c> on failure.</returns>        
