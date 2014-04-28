@@ -45,7 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\Communication\Communication.cs" />
-    <Compile Include="Components\Communication\CommunicationData.cs" />
+    <Compile Include="Components\Communication\CommPortInfo.cs" />
     <Compile Include="Components\Communication\ICommunication.cs" />
     <Compile Include="Components\Communication\RS232\RS232.cs" />
     <Compile Include="Components\InstructionDecoder.cs" />
