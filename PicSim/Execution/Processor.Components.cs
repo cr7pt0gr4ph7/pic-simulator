@@ -95,6 +95,40 @@ namespace PicSim.Execution
 
 			// Export the virtual memory view for debugging purposes
 			this.DebugMemoryView = virtualMemoryView;
+
+		}
+
+		/// <summary>
+		/// This Method will reset the Processor
+		/// </summary>
+		private void Reset()
+		{
+			Registers.PCL.Value = 0;
+			Registers.PCLATH.Value = 0;
+
+			Registers.Option.Value = 0xFF;
+			Registers.TRISA.Value = 0x1F;
+			Registers.TRISB.Value = 0xFF;
+
+		}
+
+		public void HardReset()
+		{
+			Registers.Status.Value = 0x18;
+			Registers.PORTA.Value = 0x00;
+			Registers.PORTB.Value = 0x00;
+			Registers.EEDATA.Value = 0x00;
+			Registers.EEADR.Value = 0x00;
+			Registers.INTCON.Value = 0x00;
+
+			Registers.EECON1.Value = 0x00;
+
+
+		}
+
+		public void SoftReset()
+		{
+
 		}
 
 		#region Debug interface
@@ -173,6 +207,5 @@ namespace PicSim.Execution
 		{
 			throw new NotImplementedException();
 		}
-
 	}
 }

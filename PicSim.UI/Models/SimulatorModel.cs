@@ -68,11 +68,18 @@ namespace PicSim.UI.Models
 			m_timer.Stop();
 		}
 
-		public void Reset()
+		public void HardReset()
 		{
-			LogManager.Log("Simulation reset");
+			LogManager.Log("Simulation HardReset");
 			m_timer.Stop();
-			m_processor.Reset();
+			m_processor.HardReset();
+		}
+
+		public void SoftReset()
+		{
+			LogManager.Log("Simulation SoftReset");
+			m_timer.Stop();
+			m_processor.SoftReset();
 		}
 
 		public void ToggleRunning()
