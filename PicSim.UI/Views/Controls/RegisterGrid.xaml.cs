@@ -18,12 +18,12 @@ namespace PicSim.UI.Views
         private const int CELL_FONT_SIZE = 14;
 
         private static string[] CELL_HEADER_Y =
-		{ 
-			"00", "08", "10", "18", "20", "28", "30", "38", 
-			"40", "48", "50", "58", "60", "68", "70", "78", 
-			"80", "88", "90", "98", "A0", "A8", "B0", "B8", 
-			"C0", "C8", "D0", "D8", "E0", "E8", "F0", "F8", "XX", "XX", "XX"
-		};
+        { 
+            "00", "08", "10", "18", "20", "28", "30", "38", 
+            "40", "48", "50", "58", "60", "68", "70", "78", 
+            "80", "88", "90", "98", "A0", "A8", "B0", "B8", 
+            "C0", "C8", "D0", "D8", "E0", "E8", "F0", "F8", "XX", "XX", "XX"
+        };
 
         private uint[] _values = new uint[CELL_COUNT_X * CELL_COUNT_Y];
         private TextBox[] textboxes = new TextBox[CELL_COUNT_X * CELL_COUNT_Y];

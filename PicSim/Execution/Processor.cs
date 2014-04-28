@@ -6,71 +6,71 @@ using System.Threading.Tasks;
 
 namespace PicSim.Execution
 {
-	public partial class Processor
-	{
-		/// <summary>
-		/// Run a single execution step.
-		/// </summary>
-		public void Step()
-		{
-			// Prepare the simulation
-			PreStep();
+    public partial class Processor
+    {
+        /// <summary>
+        /// Run a single execution step.
+        /// </summary>
+        public void Step()
+        {
+            // Prepare the simulation
+            PreStep();
 
-			// Execute the simulation step
-			DoStep();
+            // Execute the simulation step
+            DoStep();
 
-			// Do any necessary cleanup work & status updates
-			PostStep();
-		}
+            // Do any necessary cleanup work & status updates
+            PostStep();
+        }
 
-		/// <summary>
-		/// Executed before a single step execution to prepare the simulation etc.
-		/// </summary>
-		private void PreStep()
-		{
-			// Reset the "changed in current step" flags etc.
-			ProgramCounter.PreStep();
-		}
+        /// <summary>
+        /// Executed before a single step execution to prepare the simulation etc.
+        /// </summary>
+        private void PreStep()
+        {
+            // Reset the "changed in current step" flags etc.
+            ProgramCounter.PreStep();
+        }
 
-		private void DoStep()
-		{
-			if (Watchdog.Step()) return;
-			// TODO Implement interrupts
+        private void DoStep()
+        {
+            if (Watchdog.Step()) return;
+            // TODO Implement interrupts
 
-			// Read in the opcode at the location the PC is pointing at, and decode it.
-			var currentOpcode = ProgramMemory[ProgramCounter.Value];
-			Decoder.GetInstructionFromOpcode(currentOpcode);
+            // Read in the opcode at the location the PC is pointing at, and decode it.
+            var currentOpcode = ProgramMemory[ProgramCounter.Value];
+            Decoder.GetInstructionFromOpcode(currentOpcode);
 
-			//// TODO Remove the debugging output
-			//Console.WriteLine("Instruction: {0} ({1})", instruction.GetType().Name, currentOpcode.ToString("X"));
+            //// TODO Remove the debugging output
+            //Console.WriteLine("Instruction: {0} ({1})", instruction.GetType().Name, currentOpcode.ToString("X"));
 
-			//// TODO Clean up the instruction initialization logic
-			//instruction.Processor = this;
-			//instruction.Execute(currentOpcode);
-		}
+            //// TODO Clean up the instruction initialization logic
+            //instruction.Processor = this;
+            //instruction.Execute(currentOpcode);
+        }
 
-		/// <summary>
-		/// Executed after a single step execution to update the simulation status etc.
-		/// </summary>
-		private void PostStep()
-		{
-			// Advance the virtual time by the appropriate amount:
-			//   - Operations that modify the program counter need 2Tcy, according to the PIC16C84 manual.
-			//   - All other operations only need one instruction cycle.
+        /// <summary>
+        /// Executed after a single step execution to update the simulation status etc.
+        /// </summary>
+        private void PostStep()
+        {
+            // Advance the virtual time by the appropriate amount:
+            //   - Operations that modify the program counter need 2Tcy, according to the PIC16C84 manual.
+            //   - All other operations only need one instruction cycle.
 
-			if (ProgramCounter.ChangedInCurrentStep)
-			{
-				Clock.Tick(2);
-			}
-			else
-			{
-				Clock.Tick(1);
-			}
+            if (ProgramCounter.ChangedInCurrentStep)
+            {
+                Clock.Tick(2);
+            }
+            else
+            {
+                Clock.Tick(1);
+            }
 
-			// Advance the program counter, if it has not already been loaded during the execution
-			// of the current step; in the latter case the PC is *not* incremented.
+            // Advance the program counter, if it has not already been loaded during the execution
+            // of the current step; in the latter case the PC is *not* incremented.
 
-			ProgramCounter.PostStep();
-		}
-	}
+            ProgramCounter.PostStep();
+        }
+    }
 }

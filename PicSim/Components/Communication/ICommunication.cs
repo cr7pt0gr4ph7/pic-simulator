@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace PicSim.Components.Communication
 {
-	public interface ICommunication
-	{
-		bool Open();
-		bool Close();
-		bool Reset();
+    public interface ICommunication
+    {
+        bool Open();
+        bool Close();
+        bool Reset();
 
-		uint Pull();
-		bool Push(uint _data);
+        uint Pull();
+        bool Push(uint _data);
 
-	}
+    }
 }

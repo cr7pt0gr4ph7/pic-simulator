@@ -27,161 +27,161 @@ namespace PicSim.UI
         {
             InitializeComponent();
 
-			Init();
+            Init();
         }
 
-		private void Init()
-		{
-			txtCode.ShowLineNumbers = true;
-		}
+        private void Init()
+        {
+            txtCode.ShowLineNumbers = true;
+        }
 
-		#region Event Handler
+        #region Event Handler
 
-		#region New
+        #region New
 
-		private void NewEnabled(object sender, CanExecuteRoutedEventArgs e)
-		{
-			
-		}
+        private void NewEnabled(object sender, CanExecuteRoutedEventArgs e)
+        {
+            
+        }
 
-		private void NewExecuted(object sender, ExecutedRoutedEventArgs e)
-		{
-			
-		}
+        private void NewExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            
+        }
 
-		#endregion
+        #endregion
 
-		#region Save
+        #region Save
 
-		private void SaveEnabled(object sender, CanExecuteRoutedEventArgs e)
-		{
-			
-		}
+        private void SaveEnabled(object sender, CanExecuteRoutedEventArgs e)
+        {
+            
+        }
 
-		private void SaveExecuted(object sender, ExecutedRoutedEventArgs e)
-		{
-			
-		}
+        private void SaveExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            
+        }
 
-		#endregion
+        #endregion
 
-		#region SaveAs
+        #region SaveAs
 
-		private void SaveAsExecuted(object sender, ExecutedRoutedEventArgs e)
-		{
-			
-		}
+        private void SaveAsExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            
+        }
 
-		#endregion
+        #endregion
 
-		#region Close
+        #region Close
 
-		private void CloseEnabled(object sender, CanExecuteRoutedEventArgs e)
-		{
-			
-		}
+        private void CloseEnabled(object sender, CanExecuteRoutedEventArgs e)
+        {
+            
+        }
 
-		private void CloseExecuted(object sender, ExecutedRoutedEventArgs e)
-		{
+        private void CloseExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
 
-			this.Close();
-		}
+            this.Close();
+        }
 
-		private void Window_Closed(object sender, EventArgs e)
-		{
-			
-		}
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            
+        }
 
-		#endregion
+        #endregion
 
-		#region Compile
+        #region Compile
 
-		private void CompileEnabled(object sender, CanExecuteRoutedEventArgs e)
-		{
-			
-		}
+        private void CompileEnabled(object sender, CanExecuteRoutedEventArgs e)
+        {
+            
+        }
 
-		private void CompileExecuted(object sender, ExecutedRoutedEventArgs e)
-		{
-			
-		}
+        private void CompileExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            
+        }
 
-		#endregion
+        #endregion
 
-		#region Pause
+        #region Pause
 
-		private void PauseEnabled(object sender, CanExecuteRoutedEventArgs e)
-		{
-			
-		}
+        private void PauseEnabled(object sender, CanExecuteRoutedEventArgs e)
+        {
+            
+        }
 
-		private void PauseExecuted(object sender, ExecutedRoutedEventArgs e)
-		{
-			
-		}
+        private void PauseExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            
+        }
 
-		#endregion
+        #endregion
 
-		#region Continue
+        #region Continue
 
-		private void ContinueEnabled(object sender, CanExecuteRoutedEventArgs e)
-		{
-			
-		}
+        private void ContinueEnabled(object sender, CanExecuteRoutedEventArgs e)
+        {
+            
+        }
 
-		private void ContinueExecuted(object sender, ExecutedRoutedEventArgs e)
-		{
-			
-		}
+        private void ContinueExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            
+        }
 
-		#endregion
+        #endregion
 
-		#region Step
+        #region Step
 
-		private void StepEnabled(object sender, CanExecuteRoutedEventArgs e)
-		{
+        private void StepEnabled(object sender, CanExecuteRoutedEventArgs e)
+        {
 
-		}
+        }
 
-		private void StepExecuted(object sender, ExecutedRoutedEventArgs e)
-		{
-			
-		}
+        private void StepExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            
+        }
 
-		#endregion
+        #endregion
 
-		#region Speed
+        #region Speed
 
-		private void cbxSpeed_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-		{
-			/*if (controller != null)
-			{
-				controller.SimulationSpeed = getSimuSpeedFromComboBox();
-			}*/
-		}
+        private void cbxSpeed_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            /*if (controller != null)
+            {
+                controller.SimulationSpeed = getSimuSpeedFromComboBox();
+            }*/
+        }
 
-		#endregion
+        #endregion
 
-		#region Help
+        #region Help
 
-		private void OnShowPdf(object sender, RoutedEventArgs e)
-		{
-			/*string path = Path.Combine(Directory.GetCurrentDirectory(), "HELP_PDF.pdf");
-		
-			String openPDFFile = Path.Combine(Directory.GetCurrentDirectory(), "HELP_PDF.pdf"); ;
+        private void OnShowPdf(object sender, RoutedEventArgs e)
+        {
+            /*string path = Path.Combine(Directory.GetCurrentDirectory(), "HELP_PDF.pdf");
+        
+            String openPDFFile = Path.Combine(Directory.GetCurrentDirectory(), "HELP_PDF.pdf"); ;
 
-			System.Diagnostics.Process.Start(openPDFFile);*/
-		}
-		#endregion
+            System.Diagnostics.Process.Start(openPDFFile);*/
+        }
+        #endregion
 
-		#region TextInput
-		private void txtCode_PreviewTextInput(object sender, TextCompositionEventArgs e)
-		{
+        #region TextInput
+        private void txtCode_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
 
-		}
-		#endregion
+        }
+        #endregion
 
 
-		#endregion
-	}
+        #endregion
+    }
 }

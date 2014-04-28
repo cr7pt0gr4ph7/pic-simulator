@@ -15,28 +15,28 @@ using System.Windows.Shapes;
 
 namespace PicSim.UI.Views
 {
-	/// <summary>
-	/// Interaction logic for LEDandSwitches.xaml
-	/// </summary>
-	public partial class LEDandSwitches : UserControl
-	{
-		#region Header Dependency Property	
+    /// <summary>
+    /// Interaction logic for LEDandSwitches.xaml
+    /// </summary>
+    public partial class LEDandSwitches : UserControl
+    {
+        #region Header Dependency Property    
 
-		public string Header
-		{
-			get { return (string)GetValue(HeaderProperty); }
-			set { SetValue(HeaderProperty, value); }
-		}
+        public string Header
+        {
+            get { return (string)GetValue(HeaderProperty); }
+            set { SetValue(HeaderProperty, value); }
+        }
 
-		// Using a DependencyProperty as the backing store for Header.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty HeaderProperty =
-			DependencyProperty.Register("Header", typeof(string), typeof(LEDandSwitches), new PropertyMetadata());
+        // Using a DependencyProperty as the backing store for Header.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HeaderProperty =
+            DependencyProperty.Register("Header", typeof(string), typeof(LEDandSwitches), new PropertyMetadata());
 
-		#endregion
+        #endregion
 
-		public LEDandSwitches()
-		{
-			InitializeComponent();
-		}
-	}
+        public LEDandSwitches()
+        {
+            InitializeComponent();
+        }
+    }
 }

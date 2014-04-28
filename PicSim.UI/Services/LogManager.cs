@@ -7,41 +7,41 @@ using PicSim.Utils;
 
 namespace PicSim.UI.Services
 {
-	public class LogManager
-	{
-		/// <summary>
-		/// This event is raised every time a message is logged.
-		/// </summary>
-		public static event EventHandler<LogEventArgs> Logged;
+    public class LogManager
+    {
+        /// <summary>
+        /// This event is raised every time a message is logged.
+        /// </summary>
+        public static event EventHandler<LogEventArgs> Logged;
 
-		private static void OnLogged(LogEventArgs e)
-		{
-			Logged.RaiseIfNotNull(null, e);
-		}
+        private static void OnLogged(LogEventArgs e)
+        {
+            Logged.RaiseIfNotNull(null, e);
+        }
 
-		/// <summary>
-		/// Log a message.s
-		/// </summary>
-		/// <param name="message"></param>
-		public static void Log(string message)
-		{
-			OnLogged(new LogEventArgs(message));
-		}
+        /// <summary>
+        /// Log a message.s
+        /// </summary>
+        /// <param name="message"></param>
+        public static void Log(string message)
+        {
+            OnLogged(new LogEventArgs(message));
+        }
 
-		public class LogEventArgs : EventArgs
-		{
-			private readonly string _message;
+        public class LogEventArgs : EventArgs
+        {
+            private readonly string _message;
 
-			public LogEventArgs(string message)
-			{
-				Ensure.ArgumentNotNull(message, "message");
-				_message = message;
-			}
+            public LogEventArgs(string message)
+            {
+                Ensure.ArgumentNotNull(message, "message");
+                _message = message;
+            }
 
-			public string Message
-			{
-				get { return _message; }
-			}
-		}
-	}
+            public string Message
+            {
+                get { return _message; }
+            }
+        }
+    }
 }

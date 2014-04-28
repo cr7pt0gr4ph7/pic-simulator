@@ -15,14 +15,14 @@ using System.Windows.Shapes;
 
 namespace PicSim.UI.Views
 {
-	/// <summary>
-	/// Interaction logic for ModulTab.xaml
-	/// </summary>
-	public partial class ModulTab : UserControl
-	{
-		public ModulTab()
-		{
-			InitializeComponent();
-		}
-	}
+    /// <summary>
+    /// Interaction logic for ModulTab.xaml
+    /// </summary>
+    public partial class ModulTab : UserControl
+    {
+        public ModulTab()
+        {
+            InitializeComponent();
+        }
+    }
 }

@@ -15,14 +15,14 @@ using System.Windows.Shapes;
 
 namespace PicSim.UI.Views
 {
-	/// <summary>
-	/// Interaction logic for SimpleToolbarSeparator.xaml
-	/// </summary>
-	public partial class SimpleToolbarSeparator : UserControl
-	{
-		public SimpleToolbarSeparator()
-		{
-			InitializeComponent();
-		}
-	}
+    /// <summary>
+    /// Interaction logic for SimpleToolbarSeparator.xaml
+    /// </summary>
+    public partial class SimpleToolbarSeparator : UserControl
+    {
+        public SimpleToolbarSeparator()
+        {
+            InitializeComponent();
+        }
+    }
 }

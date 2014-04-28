@@ -15,80 +15,80 @@ using System.Windows.Shapes;
 
 namespace PicSim.UI.Views
 {
-	/// <summary>
-	/// Interaction logic for SpecialRegister.xaml
-	/// </summary>
-	public partial class SpecialRegister : UserControl
-	{
-		private ChangeMarkTextBlock[] txtPINS;
+    /// <summary>
+    /// Interaction logic for SpecialRegister.xaml
+    /// </summary>
+    public partial class SpecialRegister : UserControl
+    {
+        private ChangeMarkTextBlock[] txtPINS;
 
-		public string Caption { get; set; }
-		public String[] pinsCaption { get; set; }
-		public bool[] pins { get; private set; }
+        public string Caption { get; set; }
+        public String[] pinsCaption { get; set; }
+        public bool[] pins { get; private set; }
 
-		public SpecialRegister()
-		{
-			InitializeComponent();
+        public SpecialRegister()
+        {
+            InitializeComponent();
 
-			this.DataContext = this;
+            this.DataContext = this;
 
-			pinsCaption = new String[] {"0", "1", "2", "3", "4", "5", "6", "7"};
-			pins = new bool[8];
-			txtPINS = new ChangeMarkTextBlock[] { Pin0, Pin1, Pin2, Pin3, Pin4, Pin5, Pin6, Pin7 };
+            pinsCaption = new String[] {"0", "1", "2", "3", "4", "5", "6", "7"};
+            pins = new bool[8];
+            txtPINS = new ChangeMarkTextBlock[] { Pin0, Pin1, Pin2, Pin3, Pin4, Pin5, Pin6, Pin7 };
 
-			Caption = "???";
-		}
-
-
-		private void Pin_MouseDown(uint nmbr)
-		{
-			
-		}
+            Caption = "???";
+        }
 
 
-		#region Obnoxious Mouse Events
+        private void Pin_MouseDown(uint nmbr)
+        {
+            
+        }
 
-		private void Pin7_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-		{
-			Pin_MouseDown(7);
-		}
 
-		private void Pin6_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-		{
-			Pin_MouseDown(6);
-		}
+        #region Obnoxious Mouse Events
 
-		private void Pin5_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-		{
-			Pin_MouseDown(5);
-		}
+        private void Pin7_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Pin_MouseDown(7);
+        }
 
-		private void Pin4_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-		{
-			Pin_MouseDown(4);
-		}
+        private void Pin6_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Pin_MouseDown(6);
+        }
 
-		private void Pin3_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-		{
-			Pin_MouseDown(3);
-		}
+        private void Pin5_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Pin_MouseDown(5);
+        }
 
-		private void Pin2_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-		{
-			Pin_MouseDown(2);
-		}
+        private void Pin4_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Pin_MouseDown(4);
+        }
 
-		private void Pin1_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-		{
-			Pin_MouseDown(1);
-		}
+        private void Pin3_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Pin_MouseDown(3);
+        }
 
-		private void Pin0_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-		{
-			Pin_MouseDown(0);
-		}
+        private void Pin2_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Pin_MouseDown(2);
+        }
 
-		#endregion
+        private void Pin1_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Pin_MouseDown(1);
+        }
 
-	}
+        private void Pin0_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Pin_MouseDown(0);
+        }
+
+        #endregion
+
+    }
 }

@@ -9,7 +9,7 @@ namespace PicSim
 {
     class Program
     {
-		//TODO remove
+        //TODO remove
         static void Main(string[] args)
         {
             Processor processor = new Processor();
