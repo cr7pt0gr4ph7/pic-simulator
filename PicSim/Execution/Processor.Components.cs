@@ -15,7 +15,9 @@ namespace PicSim.Execution
     {
         public Processor()
         {
-            this.Communication = new CommunicationManager();
+            var useExtSerial = false;
+            var commConnection = useExtSerial ? (ICommunication)new RS232() : new NullCommunication();
+            this.Communication = new CommunicationManager(commConnection);
 
             this.Decoder = new InstructionDecoder() {
                 ops = new InstructionOps() { Processor = this }

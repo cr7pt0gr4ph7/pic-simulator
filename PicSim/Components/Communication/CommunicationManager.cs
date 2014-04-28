@@ -13,12 +13,13 @@ namespace PicSim.Components.Communication
         private static readonly Logger ms_logger = LogManager.GetCurrentClassLogger();
         private const uint CARRIAGE_RETURN = 0x0D;
 
-        private RS232 m_connection;
+        private ICommunication m_connection;
         private CommPortInfo[] m_ports;
 
-        public CommunicationManager()
+        public CommunicationManager(ICommunication commInterface)
         {
-            m_connection = new RS232();
+            Ensure.ArgumentNotNull(commInterface, "commInterface");
+            m_connection = commInterface;
 
             var portA = new CommPortInfo();
             var portB = new CommPortInfo();
@@ -47,18 +48,11 @@ namespace PicSim.Components.Communication
             m_connection.Close();
         }
 
-        public void Sync()
+        /// <summary>
+        /// Before executing the opcode: Pull the newest values from the serial interface.
+        /// </summary>
+        public void PreStep()
         {
-            foreach (CommPortInfo port in m_ports)
-            {
-                m_connection.WriteValue(port.TrisRegister.GetUpperNibble());
-                m_connection.WriteValue(port.TrisRegister.GetLowerNibble());
-
-                m_connection.WriteValue(port.ValueRegister.GetUpperNibble());
-                m_connection.WriteValue(port.ValueRegister.GetLowerNibble());
-                m_connection.WriteValue(CARRIAGE_RETURN);
-            }
-
             uint j = 0;
             byte data = 0;
             do
@@ -78,6 +72,23 @@ namespace PicSim.Components.Communication
                 j++;
             } while (data != CARRIAGE_RETURN);
 
+            if (j < m_ports.Length) ms_logger.Warn("Only ports upto port {0} could be read from the serial port.", j - 1);
+        }
+
+        /// <summary>
+        /// After executing the opcode: Write the newest values to the serial interface.
+        /// </summary>
+        public void PostStep()
+        {
+            foreach (CommPortInfo port in m_ports)
+            {
+                m_connection.WriteValue(port.TrisRegister.GetUpperNibble());
+                m_connection.WriteValue(port.TrisRegister.GetLowerNibble());
+
+                m_connection.WriteValue(port.ValueRegister.GetUpperNibble());
+                m_connection.WriteValue(port.ValueRegister.GetLowerNibble());
+                m_connection.WriteValue(CARRIAGE_RETURN);
+            }
         }
     }
 }

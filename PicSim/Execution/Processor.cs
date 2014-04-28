@@ -30,6 +30,9 @@ namespace PicSim.Execution
         {
             // Reset the "changed in current step" flags etc.
             ProgramCounter.PreStep();
+
+            // Read the current values from the serial port
+            Communication.PreStep();
         }
 
         private void DoStep()
@@ -68,6 +71,9 @@ namespace PicSim.Execution
             // of the current step; in the latter case the PC is *not* incremented.
 
             ProgramCounter.PostStep();
+
+            // Write the newest values to the serial port
+            Communication.PostStep();
         }
     }
 }
