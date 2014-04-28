@@ -23,14 +23,14 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="1*" MinWidth="10"/>
+            <ColumnDefinition Width="1*" MinWidth="10"/>
+            <ColumnDefinition Width="1*" MinWidth="10"/>
+            <ColumnDefinition Width="1*" MinWidth="10"/>
+            <ColumnDefinition Width="1*" MinWidth="10"/>
+            <ColumnDefinition Width="1*" MinWidth="10"/>
+            <ColumnDefinition Width="1*" MinWidth="10"/>
+            <ColumnDefinition Width="1*" MinWidth="10"/>
         </Grid.ColumnDefinitions>
 
         <Border Grid.Row="0" Grid.Column="0" Background="Gainsboro" BorderThickness="1, 1, 1, 1">
