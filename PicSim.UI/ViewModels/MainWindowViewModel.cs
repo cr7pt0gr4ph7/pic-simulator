@@ -34,6 +34,9 @@ namespace PicSim.UI.ViewModels
             m_workingRegister = new RegisterViewModel(m_simulatorModel.Processor.WorkingRegister);
 
             LoadFileCommand = new DelegateCommand(() => {
+				// Stop the simulator if it is running
+				m_simulatorModel.Stop();
+
                 var lstFileType = new FileType("Listing files", ".LST");
                 var openResult = fileDialogService.ShowOpenFileDialog(lstFileType);
 

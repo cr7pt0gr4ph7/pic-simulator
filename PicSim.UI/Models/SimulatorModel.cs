@@ -68,6 +68,13 @@ namespace PicSim.UI.Models
 			m_timer.Stop();
 		}
 
+		public void Reset()
+		{
+			LogManager.Log("Simulation reset");
+			m_timer.Stop();
+			m_processor.Reset();
+		}
+
 		public void ToggleRunning()
 		{
 			if (m_timer.IsEnabled)
