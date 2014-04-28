@@ -4,69 +4,78 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO.Ports;
+using NLog;
+using System.Diagnostics;
 
 namespace PicSim.Components.Communication
 {
-    public class RS232 :
-        ICommunication
+    public class RS232 : ICommunication
     {
-        private SerialPort serialPort;
+        private static readonly Logger ms_logger = LogManager.GetCurrentClassLogger();
+        private SerialPort m_serialPort;
 
         public RS232()
         {
-            serialPort.PortName = "COM1";
-            serialPort.BaudRate = 4800;
-            serialPort.Parity = Parity.None;
-            serialPort.DataBits = 8;
-            serialPort.StopBits = StopBits.One;
+            m_serialPort = new SerialPort("COM1", 4800, Parity.None, 8, StopBits.One);
             /*serialPort.Handshake = Handshake.None;
             serialPort.RtsEnable = true;
             serialPort.DtrEnable = true;*/
         }
 
 
+        /// <summary>
+        /// </summary>
+        /// <returns><c>true</c> on success; <c>false</c> on failure.</returns>        
         public bool Open()
         {
+            ms_logger.Info("Opening the serial port...");
             try
             {
-                serialPort.Open();
-                if (!serialPort.IsOpen)
-                    throw new ApplicationException("Cannot open searialPort");
+                m_serialPort.Open();
+                if (!m_serialPort.IsOpen)
+                    throw new ApplicationException("Cannot open the serial port");
+                ms_logger.Info("Connection established.");
                 return true;
             }
             catch (Exception e)
             {
-                System.Console.WriteLine("ERROR: RS232 " + e.Message);
+                ms_logger.ErrorException("Exception in Open(): " + e.Message, e);
                 return false;
             }
         }
 
+        /// <summary>
+        /// </summary>
+        /// <returns><c>true</c> on success; <c>false</c> on failure.</returns>
         public bool Close()
         {
-            serialPort.Close();
-            return !serialPort.IsOpen;
+            ms_logger.Info("Closing the serial port...");
+            m_serialPort.Close();
+            ms_logger.Info("Serial port has been closed.");
+
+            Debug.Assert(!m_serialPort.IsOpen);
+            return !m_serialPort.IsOpen;
         }
 
+        /// <summary>
+        /// Close and reopen the port if it is already open.
+        /// Do nothing if it is not open.
+        /// </summary>
+        /// <returns><c>true</c> on success; <c>false</c> on failure.</returns>
         public bool Reset()
         {
-            if (Close())
-            {
-                return Open();
-            }
-            else
-            {
-                return false;
-            }
+            if (Close()) return Open();
+            else return false;
         }
 
-        public uint Pull()
+        public uint ReadValue()
         {
-            return (uint) serialPort.ReadByte();
+            return (uint)m_serialPort.ReadByte();
         }
 
-        public bool Push(uint _data)
+        public bool WriteValue(uint _data)
         {
-            serialPort.Write("" + _data);
+            m_serialPort.Write(_data.ToString());
             return true;
         }
     }

@@ -12,8 +12,8 @@ namespace PicSim.Components.Communication
         bool Close();
         bool Reset();
 
-        uint Pull();
-        bool Push(uint _data);
+        uint ReadValue();
+        bool WriteValue(uint _data);
 
     }
 }

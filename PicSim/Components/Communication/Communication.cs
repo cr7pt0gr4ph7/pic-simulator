@@ -35,23 +35,23 @@ namespace PicSim.Components.Communication
         {
             for(uint i = 0; i < port.Length ; i++)
             {
-                myCon.Push(tris[i].getUpperNibble());
-                myCon.Push(tris[i].getLowerNibble());
+                myCon.WriteValue(tris[i].getUpperNibble());
+                myCon.WriteValue(tris[i].getLowerNibble());
 
-                myCon.Push(port[i].getUpperNibble());
-                myCon.Push(port[i].getLowerNibble());
-                myCon.Push(CR); // CR
+                myCon.WriteValue(port[i].getUpperNibble());
+                myCon.WriteValue(port[i].getLowerNibble());
+                myCon.WriteValue(CR); // CR
             }
 
             uint j = 0;
             byte data = 0;
             do
             {
-                data = (byte) myCon.Pull();
+                data = (byte) myCon.ReadValue();
                 if (data == CR)
                     break;
                 port[j].setUpperNibble(data);
-                data = (byte)myCon.Pull();
+                data = (byte)myCon.ReadValue();
                 port[j].setLowerNibble(data);
                 j++;
             } while (data != CR);
