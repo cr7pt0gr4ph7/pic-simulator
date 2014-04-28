@@ -60,6 +60,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\Bit2BoolConverter.cs" />
     <Compile Include="Converters\HexValueConverter.cs" />
     <Compile Include="Helper\BinaryHelper.cs" />
     <Compile Include="Helper\ColorizeAvalonEdit.cs" />
