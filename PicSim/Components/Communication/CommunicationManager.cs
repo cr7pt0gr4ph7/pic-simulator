@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PicSim.Components.Communication
 {
-    public class Communication
+    public class CommunicationManager
     {
         private static readonly Logger ms_logger = LogManager.GetCurrentClassLogger();
         private const uint CARRIAGE_RETURN = 0x0D;
@@ -16,7 +16,7 @@ namespace PicSim.Components.Communication
         private RS232 m_connection;
         private CommPortInfo[] m_ports;
 
-        public Communication()
+        public CommunicationManager()
         {
             m_connection = new RS232();
 

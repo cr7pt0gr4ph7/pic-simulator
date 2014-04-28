@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PicSim.Components.Registers;
+using PicSim.Components.Communication;
 
 namespace PicSim.Components
 {
@@ -14,7 +15,7 @@ namespace PicSim.Components
             return new MemoryCell();
         }
 
-        public RegistersView(ProgramCounter programCounter)
+        public RegistersView(ProgramCounter programCounter, CommunicationManager communication)
         {
             // TODO Implement the other registers
 
@@ -25,10 +26,10 @@ namespace PicSim.Components
             this.Status = new StatusRegister();
             this.FSR = new MemoryCell();
 
-            this.PORTA = CreateTemp();
-            this.TRISA = CreateTemp();
-            this.PORTB = CreateTemp();
-            this.TRISB = CreateTemp();
+            this.PORTA = communication.PORTA;
+            this.TRISA = communication.TRISA;
+            this.PORTB = communication.PORTB;
+            this.TRISB = communication.TRISB;
 
             this.EEDATA = CreateTemp();
             this.EECON1 = CreateTemp();

@@ -7,6 +7,7 @@ using PicSim.Components;
 using PicSim.Components.Registers;
 using PicSim.Components.Storage;
 using PicSim.Instructions;
+using PicSim.Components.Communication;
 
 namespace PicSim.Execution
 {
@@ -14,8 +15,9 @@ namespace PicSim.Execution
     {
         public Processor()
         {
-            this.Decoder = new InstructionDecoder()
-            {
+            this.Communication = new CommunicationManager();
+
+            this.Decoder = new InstructionDecoder() {
                 ops = new InstructionOps() { Processor = this }
             };
 
@@ -33,7 +35,7 @@ namespace PicSim.Execution
             // Initialize the registers
             //     See "Section 4.2 Data Memory Organization", p.12..18
 
-            this.Registers = new RegistersView(ProgramCounter);
+            this.Registers = new RegistersView(ProgramCounter, Communication);
 
             // Initialize the virtual memory layout
             //     See "Figure 4-2 Register File Map", p.12
@@ -161,6 +163,8 @@ namespace PicSim.Execution
         public ushort[] ProgramMemory { get; private set; }
 
         #endregion
+
+        public CommunicationManager Communication { get; private set; }
 
         public InstructionDecoder Decoder { get; private set; }
 
