@@ -71,9 +71,10 @@
     <Compile Include="Models\TristatePortRegisterModel.cs" />
     <Compile Include="Services\IFileLoaderService.cs" />
     <Compile Include="Services\LogManager.cs" />
-    <Compile Include="ViewModels\IOPinViewModel.cs" />
-    <Compile Include="ViewModels\IOPortDirection.cs" />
-    <Compile Include="ViewModels\IORegisterViewModel.cs" />
+    <Compile Include="ViewModels\IO\IOPortDirectionExtensions.cs" />
+    <Compile Include="ViewModels\IO\IOPinViewModel.cs" />
+    <Compile Include="ViewModels\IO\IOPortDirection.cs" />
+    <Compile Include="ViewModels\IO\IORegisterViewModel.cs" />
     <Compile Include="ViewModels\LogViewModel.cs" />
     <Compile Include="ViewModels\MemoryTableViewModel.cs" />
     <Compile Include="ViewModels\ProgramCounterViewModel.cs" />

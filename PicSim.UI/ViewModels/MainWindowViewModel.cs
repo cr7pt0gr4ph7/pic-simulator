@@ -56,7 +56,7 @@ namespace PicSim.UI.ViewModels
             StartCommand = new DelegateCommand(() => m_simulatorModel.Start(), () => m_simulatorModel.File != null);
             StopCommand = new DelegateCommand(() => m_simulatorModel.Stop(), () => m_simulatorModel.File != null);
             StartStopCommand = new DelegateCommand(() => m_simulatorModel.ToggleRunning(), () => m_simulatorModel.File != null);
-			ResetCommand = new DelegateCommand(() => m_simulatorModel.HardReset(), () => m_simulatorModel.File != null);
+            ResetCommand = new DelegateCommand(() => m_simulatorModel.HardReset(), () => m_simulatorModel.File != null);
 
             RequeryCommands = new DelegateCommand(() => {
                 DoRequeryCommands();
@@ -70,7 +70,7 @@ namespace PicSim.UI.ViewModels
         public DelegateCommand StopCommand { get; private set; }
         public DelegateCommand StartStopCommand { get; private set; }
         public DelegateCommand RequeryCommands { get; private set; }
-		public DelegateCommand ResetCommand { get; private set; }
+        public DelegateCommand ResetCommand { get; private set; }
 
         public SimulatorModel Simulator
         {
