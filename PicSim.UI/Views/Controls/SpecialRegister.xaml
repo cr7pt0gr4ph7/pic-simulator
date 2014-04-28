@@ -37,25 +37,25 @@
             <TextBlock Name="txtTopLeft" Text="{Binding Caption}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Courier New"  Margin="2" FontWeight="Bold"/>
         </Border>
         <Border Grid.Row="0" Grid.Column="1" Background="Gainsboro" BorderThickness="0, 1, 1, 1">
-            <TextBlock Text="{Binding DescPIN7}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Courier New"  Margin="2"/>
+            <TextBlock x:Name="DescPin7" Text="{Binding DescPIN7}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Courier New"  Margin="2"/>
         </Border>
         <Border Grid.Row="0" Grid.Column="2" Background="Gainsboro" BorderThickness="0, 1, 1, 1">
-            <TextBlock Text="{Binding DescPIN6}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Courier New"  Margin="2"/>
+            <TextBlock x:Name="DescPin6" Text="{Binding DescPIN6}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Courier New"  Margin="2"/>
         </Border>
         <Border Grid.Row="0" Grid.Column="3" Background="Gainsboro" BorderThickness="0, 1, 1, 1">
-            <TextBlock Text="{Binding DescPIN5}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Courier New"  Margin="2"/>
+            <TextBlock x:Name="DescPin5" Text="{Binding DescPIN5}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Courier New"  Margin="2"/>
         </Border>
         <Border Grid.Row="0" Grid.Column="4" Background="Gainsboro" BorderThickness="0, 1, 1, 1">
-            <TextBlock Text="{Binding DescPIN4}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Courier New"  Margin="2"/>
+            <TextBlock x:Name="DescPin4" Text="{Binding DescPIN4}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Courier New"  Margin="2"/>
         </Border>
         <Border Grid.Row="0" Grid.Column="5" Background="Gainsboro" BorderThickness="0, 1, 1, 1">
-            <TextBlock Text="{Binding DescPIN3}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Courier New"  Margin="2"/>
+            <TextBlock x:Name="DescPin3" Text="{Binding DescPIN3}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Courier New"  Margin="2"/>
         </Border>
         <Border Grid.Row="0" Grid.Column="6" Background="Gainsboro" BorderThickness="0, 1, 1, 1">
-            <TextBlock Text="{Binding DescPIN2}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Courier New"  Margin="2"/>
+            <TextBlock x:Name="DescPin2" Text="{Binding DescPIN2}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Courier New"  Margin="2"/>
         </Border>
         <Border Grid.Row="0" Grid.Column="7" Background="Gainsboro" BorderThickness="0, 1, 1, 1">
-            <TextBlock Text="{Binding DescPIN1}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Courier New"  Margin="2"/>
+            <TextBlock x:Name="DescPin1" Text="{Binding DescPIN1}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Courier New"  Margin="2"/>
         </Border>
         <Border Grid.Row="0" Grid.Column="8" Background="Gainsboro" BorderThickness="0, 1, 1, 1">
             <TextBlock Text="{Binding DescPIN0}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Courier New"  Margin="2"/>
