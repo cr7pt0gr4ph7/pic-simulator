@@ -18,6 +18,11 @@ namespace PicSim.Utils
             return (byte)(b ^ 0xFF);
         }
 
+        public static byte GetMaskedValue(this byte value, byte mask)
+        {
+            return (byte)(value & mask);
+        }
+
         #region Bit manipulation
 
         private static byte GetMaskForBit(byte bitNo)

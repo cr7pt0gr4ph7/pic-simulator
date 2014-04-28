@@ -50,6 +50,7 @@
     <Compile Include="Components\Communication\Interfaces\NullCommunication.cs" />
     <Compile Include="Components\Communication\Interfaces\RS232.cs" />
     <Compile Include="Components\InstructionDecoder.cs" />
+    <Compile Include="Components\Interrupts\Contributors\PortBInterruptContributor.cs" />
     <Compile Include="Components\Interrupts\InterruptManager.cs" />
     <Compile Include="Components\Interrupts\IInterruptContributor.cs" />
     <Compile Include="Components\IResetListener.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Components\Registers\Core\MaskedRegister.cs" />
     <Compile Include="Components\Registers\Core\MemoryCell.cs" />
     <Compile Include="Components\Notifications\RegisterChangedEventArgs.cs" />
+    <Compile Include="Components\Registers\IntconRegister.cs" />
     <Compile Include="Components\Registers\OptionRegister.cs" />
     <Compile Include="Components\Registers\Core\RegisterExtensions.cs" />
     <Compile Include="Components\Registers\StatusRegister.cs" />
@@ -94,9 +96,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Components\Interrupts\Contributors\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

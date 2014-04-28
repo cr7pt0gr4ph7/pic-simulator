@@ -1,4 +1,5 @@
-﻿using PicSim.Execution;
+﻿using PicSim.Components.Interrupts.Contributors;
+using PicSim.Execution;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace PicSim.Components.Interrupts
     {
         private readonly Processor m_processor;
         private readonly IEnumerable<IInterruptContributor> m_contributors;
+        private bool m_hasInterrupts;
 
         public InterruptManager(Processor processor)
         {
@@ -22,7 +24,7 @@ namespace PicSim.Components.Interrupts
 
         private IEnumerable<IInterruptContributor> CreateContributors()
         {
-            yield break;
+            yield return new PortBInterruptContributor(m_processor);
         }
 
         /// <summary>
@@ -31,16 +33,17 @@ namespace PicSim.Components.Interrupts
         /// </summary>
         private void PreStep()
         {
+            m_hasInterrupts = false;
             foreach (IInterruptContributor contributor in m_contributors)
             {
-                contributor.HandleEvents();
+                m_hasInterrupts |= contributor.HandleEvents();
             }
         }
 
         public bool Step()
         {
-
-            return false;
+            // TODO Handle interrupts
+            return m_hasInterrupts;
         }
     }
 }

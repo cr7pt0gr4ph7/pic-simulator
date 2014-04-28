@@ -37,7 +37,7 @@ namespace PicSim.Components
             this.EECON2 = CreateTemp();
 
             this.PCLATH = programCounter.PCLATH_Register;
-            this.INTCON = CreateTemp();
+            this.INTCON = new IntconRegister();
         }
 
         public IRegister TMR0 { get; private set; }
@@ -58,6 +58,6 @@ namespace PicSim.Components
         public IRegister EECON2 { get; private set; }
 
         public IRegister PCLATH { get; private set; }
-        public IRegister INTCON { get; private set; }
+        public IntconRegister INTCON { get; private set; }
     }
 }

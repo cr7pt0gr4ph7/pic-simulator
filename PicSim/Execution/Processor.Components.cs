@@ -25,7 +25,6 @@ namespace PicSim.Execution
             };
 
             this.Watchdog = new Watchdog(this);
-            this.InterruptManager = new InterruptManager(this);
             this.Clock = new Clock_();
             this.ProgramCounter = new ProgramCounter();
 
@@ -102,6 +101,7 @@ namespace PicSim.Execution
             // Export the virtual memory view for debugging purposes
             this.DebugMemoryView = virtualMemoryView;
 
+            this.InterruptManager = new InterruptManager(this);
         }
 
         /// <summary>

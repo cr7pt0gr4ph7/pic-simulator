@@ -12,6 +12,6 @@ namespace PicSim.Components.Interrupts
         /// Handle the external events that have occured since the last call by setting the appropriate
         /// interrupt flags.
         /// </summary>
-        void HandleEvents();
+        bool HandleEvents();
     }
 }
