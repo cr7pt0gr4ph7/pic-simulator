@@ -14,9 +14,6 @@ namespace PicSim.UI.ViewModels
         private readonly IRegister m_valueRegister;
         private readonly byte m_bitOffset;
 
-        private IOPortDirection m_direction;
-        private bool m_value;
-
         public IOPinViewModel(IRegister trisRegister, IRegister valueRegister, byte bitOffset)
         {
             Ensure.ArgumentNotNull(trisRegister, "trisRegister");
