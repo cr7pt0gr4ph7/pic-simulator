@@ -96,12 +96,17 @@
             </ComboBox>
 
             <self:SimpleToolbarButton BText="Stop" BSource="../icons/control-stop-square.png" BCommand="{Binding StopCommand}"/>
-
+            
             <self:SimpleToolbarSeparator />
 
             <self:SimpleToolbarButton BText="Pause" BSource="../icons/control-pause.png" BCommand="self:CustomCmds.Pause"/>
             <self:SimpleToolbarButton BText="Continue" BSource="../icons/arrow-curve-000-double.png" BCommand="self:CustomCmds.Continue"/>
             <self:SimpleToolbarButton BText="Step" BSource="../icons/arrow-curve-000-left.png" BCommand="self:CustomCmds.Step"/>
+
+            <self:SimpleToolbarSeparator />
+            
+            <self:SimpleToolbarButton BText="Reset" BSource="../icons/control-reset.png" BCommand="{Binding ResetCommand}"/>
+
         </StackPanel>
 
         <avEdit:TextEditor Grid.Row="2" Grid.Column="2" Margin="5" x:Name="txtCode" PreviewTextInput="txtCode_PreviewTextInput"
