@@ -35,7 +35,7 @@ namespace PicSim.Execution
         private void DoStep()
         {
             if (Watchdog.Step()) return;
-            // TODO Implement interrupts
+            if (InterruptManager.Step()) return;
 
             // Read in the opcode at the location the PC is pointing at, and decode it.
             var currentOpcode = ProgramMemory[ProgramCounter.Value];
@@ -58,12 +58,9 @@ namespace PicSim.Execution
             //   - Operations that modify the program counter need 2Tcy, according to the PIC16C84 manual.
             //   - All other operations only need one instruction cycle.
 
-            if (ProgramCounter.ChangedInCurrentStep)
-            {
+            if (ProgramCounter.ChangedInCurrentStep) {
                 Clock.Tick(2);
-            }
-            else
-            {
+            } else {
                 Clock.Tick(1);
             }
 

@@ -46,6 +46,7 @@
     <Compile Include="Components\Communication\ICommunication.cs" />
     <Compile Include="Components\Communication\RS232\RS232.cs" />
     <Compile Include="Components\InstructionDecoder.cs" />
+    <Compile Include="Components\InterruptManager.cs" />
     <Compile Include="Components\IResetListener.cs" />
     <Compile Include="Components\ModelBase.cs" />
     <Compile Include="Components\Notifications\INotifyMemoryChanged.cs" />

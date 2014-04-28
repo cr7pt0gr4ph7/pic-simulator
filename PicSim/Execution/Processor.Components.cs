@@ -20,6 +20,7 @@ namespace PicSim.Execution
             };
 
             this.Watchdog = new Watchdog(this);
+            this.InterruptManager = new InterruptManager(this);
             this.Clock = new Clock_();
             this.ProgramCounter = new ProgramCounter();
 
@@ -164,6 +165,8 @@ namespace PicSim.Execution
         public InstructionDecoder Decoder { get; private set; }
 
         public Watchdog Watchdog { get; private set; }
+
+        public InterruptManager InterruptManager { get; private set; }
 
         public Clock_ Clock { get; private set; }
 
