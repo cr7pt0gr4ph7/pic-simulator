@@ -21,6 +21,12 @@ namespace PicSim.Components.Registers
             return (register.Value & GetMaskForBit(bitNo)) != 0;
         }
 
+        public static void SetBit(this IRegister register, byte bitNo, bool value)
+        {
+            if (value) register.SetBit(bitNo);
+            else register.ClearBit(bitNo);
+        }
+
         public static void SetBit(this IRegister register, byte bitNo)
         {
             register.Value |= GetMaskForBit(bitNo);

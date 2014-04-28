@@ -62,6 +62,7 @@
     </ApplicationDefinition>
     <Compile Include="Converters\Bit2BoolConverter.cs" />
     <Compile Include="Converters\HexValueConverter.cs" />
+    <Compile Include="Converters\PortDirectionConverter.cs" />
     <Compile Include="Helper\BinaryHelper.cs" />
     <Compile Include="Helper\ColorizeAvalonEdit.cs" />
     <Compile Include="Helper\FrequencyCounter.cs" />
@@ -70,6 +71,9 @@
     <Compile Include="Models\TristatePortRegisterModel.cs" />
     <Compile Include="Services\IFileLoaderService.cs" />
     <Compile Include="Services\LogManager.cs" />
+    <Compile Include="ViewModels\IOPinViewModel.cs" />
+    <Compile Include="ViewModels\IOPortDirection.cs" />
+    <Compile Include="ViewModels\IORegisterViewModel.cs" />
     <Compile Include="ViewModels\LogViewModel.cs" />
     <Compile Include="ViewModels\MemoryTableViewModel.cs" />
     <Compile Include="ViewModels\ProgramCounterViewModel.cs" />
