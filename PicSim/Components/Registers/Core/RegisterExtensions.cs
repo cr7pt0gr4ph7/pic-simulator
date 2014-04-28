@@ -9,6 +9,8 @@ namespace PicSim.Components.Registers
 {
     public static class RegisterExtensions
     {
+        #region Bit manipulation
+
         private static byte GetMaskForBit(byte bitNo)
         {
             return (byte)(1 << bitNo);
@@ -28,5 +30,31 @@ namespace PicSim.Components.Registers
         {
             register.Value &= GetMaskForBit(bitNo).Complement();
         }
+
+        #endregion
+
+        #region Upper/lower nibble manipulation
+
+        public static byte GetLowerNibble(this IRegister register)
+        {
+            return register.Value.GetLowerNibble();
+        }
+
+        public static byte GetUpperNibble(this IRegister register)
+        {
+            return register.Value.GetUpperNibble();
+        }
+
+        public static void SetLowerNibble(this IRegister register, byte newLowerNibble)
+        {
+            register.Value = register.Value.SetUpperNibble(newLowerNibble);
+        }
+
+        public static void SetUpperNibble(this IRegister register, byte newUpperNibble)
+        {
+            register.Value = register.Value.SetUpperNibble(newUpperNibble);
+        }
+
+        #endregion
     }
 }

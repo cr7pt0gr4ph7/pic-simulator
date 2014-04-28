@@ -18,6 +18,8 @@ namespace PicSim.Utils
             return (byte)(b ^ 0xFF);
         }
 
+        #region Bit manipulation
+
         private static byte GetMaskForBit(byte bitNo)
         {
             return (byte)(1 << bitNo);
@@ -37,5 +39,31 @@ namespace PicSim.Utils
         {
             return (byte)(value & GetMaskForBit(bitNo).Complement());
         }
+
+        #endregion
+
+        #region Upper/lower nibble manipulation
+
+        public static byte GetLowerNibble(this byte value)
+        {
+            return (byte)((value & 0xF) | 0x30);
+        }
+
+        public static byte GetUpperNibble(this byte value)
+        {
+            return (byte)(((value & 0xF0) >> 4) | 0x30);
+        }
+
+        public static byte SetLowerNibble(this byte value, byte newLowerNibble)
+        {
+            return (byte)((newLowerNibble & 0x0F) | (value & 0xF0));
+        }
+
+        public static byte SetUpperNibble(this byte value, byte newUpperNibble)
+        {
+            return (byte)((value & 0x0F) << 4 | (newUpperNibble & 0x0F));
+        }
+
+        #endregion
     }
 }
