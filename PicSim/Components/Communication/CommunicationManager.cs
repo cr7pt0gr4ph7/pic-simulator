@@ -53,6 +53,31 @@ namespace PicSim.Components.Communication
         /// </summary>
         public void PreStep()
         {
+            SendReceive();
+        }
+
+        /// <summary>
+        /// After executing the opcode: Write the newest values to the serial interface.
+        /// </summary>
+        public void PostStep()
+        {
+            SendReceive();
+        }
+
+        private void SendReceive()
+        {
+            // Send
+            foreach (CommPortInfo port in m_ports)
+            {
+                m_connection.WriteValue(port.TrisRegister.GetUpperNibble());
+                m_connection.WriteValue(port.TrisRegister.GetLowerNibble());
+
+                m_connection.WriteValue(port.ValueRegister.GetUpperNibble());
+                m_connection.WriteValue(port.ValueRegister.GetLowerNibble());
+            }
+            m_connection.WriteValue(CARRIAGE_RETURN);
+
+            // Receive
             uint j = 0;
             byte data = 0;
             do
@@ -73,22 +98,7 @@ namespace PicSim.Components.Communication
             } while (data != CARRIAGE_RETURN);
 
             if (j < m_ports.Length) ms_logger.Warn("Only ports upto port {0} could be read from the serial port.", j - 1);
-        }
 
-        /// <summary>
-        /// After executing the opcode: Write the newest values to the serial interface.
-        /// </summary>
-        public void PostStep()
-        {
-            foreach (CommPortInfo port in m_ports)
-            {
-                m_connection.WriteValue(port.TrisRegister.GetUpperNibble());
-                m_connection.WriteValue(port.TrisRegister.GetLowerNibble());
-
-                m_connection.WriteValue(port.ValueRegister.GetUpperNibble());
-                m_connection.WriteValue(port.ValueRegister.GetLowerNibble());
-                m_connection.WriteValue(CARRIAGE_RETURN);
-            }
         }
     }
 }

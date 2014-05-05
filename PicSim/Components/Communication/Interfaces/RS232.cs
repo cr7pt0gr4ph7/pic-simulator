@@ -16,10 +16,10 @@ namespace PicSim.Components.Communication
 
         public RS232()
         {
-            m_serialPort = new SerialPort("COM1", 4800, Parity.None, 8, StopBits.One);
-            /*serialPort.Handshake = Handshake.None;
-            serialPort.RtsEnable = true;
-            serialPort.DtrEnable = true;*/
+            m_serialPort = new SerialPort("COM1", 4800, Parity.None, 8, StopBits.One) {
+                Handshake = Handshake.None
+            };
+            Open();
         }
 
         /// <summary>
@@ -69,12 +69,15 @@ namespace PicSim.Components.Communication
 
         public uint ReadValue()
         {
-            return (uint)m_serialPort.ReadByte();
+            var value = (uint)m_serialPort.ReadByte();
+            Console.WriteLine("Read: 0x{0:X} ({0})", value);
+            return value;
         }
 
         public bool WriteValue(uint _data)
         {
-            m_serialPort.Write(_data.ToString());
+            Console.WriteLine("Write: 0x{0:X} ({0})", _data);
+            m_serialPort.Write(new byte[] { (byte)_data }, 0, 1);
             return true;
         }
     }
