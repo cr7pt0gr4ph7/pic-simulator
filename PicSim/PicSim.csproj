@@ -50,6 +50,7 @@
     <Compile Include="Components\Communication\Interfaces\NullCommunication.cs" />
     <Compile Include="Components\Communication\Interfaces\RS232.cs" />
     <Compile Include="Components\InstructionDecoder.cs" />
+    <Compile Include="Components\Interrupts\Contributors\RB0INTInterruptContributor.cs" />
     <Compile Include="Components\Interrupts\Contributors\PortBInterruptContributor.cs" />
     <Compile Include="Components\Interrupts\InterruptManager.cs" />
     <Compile Include="Components\Interrupts\IInterruptContributor.cs" />

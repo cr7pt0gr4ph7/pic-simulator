@@ -25,6 +25,7 @@ namespace PicSim.Components.Interrupts
         private IEnumerable<IInterruptContributor> CreateContributors()
         {
             yield return new PortBInterruptContributor(m_processor);
+            yield return new RB0INTInterruptContributor(m_processor);
         }
 
         /// <summary>
