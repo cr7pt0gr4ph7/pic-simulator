@@ -1,10 +1,6 @@
 ﻿using NLog;
 using PicSim.Components.Registers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using PicSim.Utils;
 
 namespace PicSim.Components.Communication
 {
@@ -61,7 +57,8 @@ namespace PicSim.Components.Communication
         /// </summary>
         public void PostStep()
         {
-            SendReceive();
+            // Only sync with next instruction
+            // SendReceive();
         }
 
         private void SendReceive()
@@ -85,14 +82,15 @@ namespace PicSim.Components.Communication
                 // Read upper nibble
                 data = (byte)m_connection.ReadValue();
                 if (data == CARRIAGE_RETURN) break;
-
-                if (j < m_ports.Length) m_ports[j].ValueRegister.SetUpperNibble(data);
-                else ms_logger.Warn("Skipping out-of-range port {0}", j);
+                byte upperNibble = ((byte)0).SetUpperNibble(data.GetLowerNibble());
 
                 // Read lower nibble
                 data = (byte)m_connection.ReadValue();
-                if (j < m_ports.Length) m_ports[j].ValueRegister.SetLowerNibble(data);
-                else /* Warning was already written above */;
+                byte lowerNibble = data.GetLowerNibble();
+                byte fullData = (byte)(upperNibble | lowerNibble);
+
+                if (j >= m_ports.Length) ms_logger.Warn("Skipping out-of-range port {0}", j);
+                else m_ports[j].RealInput = fullData;
 
                 j++;
             } while (data != CARRIAGE_RETURN);
