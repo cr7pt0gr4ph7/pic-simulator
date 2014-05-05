@@ -40,7 +40,15 @@ namespace PicSim.Components.Communication
         private byte TrisValue
         {
             get { return m_trisValue; }
-            set { m_trisValue = value; Refresh(); }
+            set
+            {
+                if (value != m_trisValue)
+                {
+                    m_trisValue = value;
+                    Refresh();
+                    m_trisRegister.RaiseRegisterChanged();
+                }
+            }
         }
 
         public byte RealInput
@@ -101,6 +109,11 @@ namespace PicSim.Components.Communication
             {
                 get { return m_outer.TrisValue; }
                 set { m_outer.TrisValue = value; }
+            }
+
+            public void RaiseRegisterChanged()
+            {
+                RegisterChanged.RaiseIfNotNull(this, new RegisterChangedEventArgs(Value));
             }
 
             public event EventHandler<RegisterChangedEventArgs> RegisterChanged;
