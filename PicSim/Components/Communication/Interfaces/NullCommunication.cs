@@ -65,5 +65,10 @@ namespace PicSim.Components.Communication
             // Ignore the argument value
             return true;
         }
+
+        public bool IsConnected
+        {
+            get { return m_isOpen; }
+        }
     }
 }

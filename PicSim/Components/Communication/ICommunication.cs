@@ -8,5 +8,7 @@
 
         uint ReadValue();
         bool WriteValue(uint _data);
+
+        bool IsConnected { get; }
     }
 }

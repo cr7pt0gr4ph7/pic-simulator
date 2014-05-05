@@ -80,5 +80,10 @@ namespace PicSim.Components.Communication
             m_serialPort.Write(new byte[] { (byte)_data }, 0, 1);
             return true;
         }
+
+        public bool IsConnected
+        {
+            get { return m_serialPort.IsOpen && m_serialPort.CDHolding; }
+        }
     }
 }
