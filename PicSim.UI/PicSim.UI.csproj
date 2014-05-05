@@ -120,6 +120,9 @@
       <DependentUpon>SpecialRegister.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CustomCmds.cs" />
+    <Compile Include="Views\FrequencyControllerWindow.xaml.cs">
+      <DependentUpon>FrequencyControllerWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\IconBarMargin.cs" />
     <Compile Include="Views\MemoryTableView.xaml.cs">
       <DependentUpon>MemoryTableView.xaml</DependentUpon>
@@ -162,6 +165,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Controls\SpecialRegister.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FrequencyControllerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
