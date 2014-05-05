@@ -1,10 +1,4 @@
-﻿using PicSim.Components.Registers;
-using PicSim.Execution;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PicSim.Execution;
 using PicSim.Utils;
 
 namespace PicSim.Components.Interrupts.Contributors
@@ -25,12 +19,11 @@ namespace PicSim.Components.Interrupts.Contributors
         public bool HandleEvents()
         {
             var newValue = m_processor.Registers.PORTB.Value;
-            var hasInterrupt = (GetRelevantBitsOf(newValue) != GetRelevantBitsOf(m_lastValue));
+            var interruptFlag = (GetRelevantBitsOf(newValue) != GetRelevantBitsOf(m_lastValue));
             m_lastValue = newValue;
 
-            if (hasInterrupt) m_processor.Registers.INTCON.RBIF = true;
-
-            return hasInterrupt;
+            if (interruptFlag) m_processor.Registers.INTCON.RBIF = true;
+            return interruptFlag && m_processor.Registers.INTCON.RBIE;
         }
 
         private byte GetRelevantBitsOf(byte unmaskedValue)

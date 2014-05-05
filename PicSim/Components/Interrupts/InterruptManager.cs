@@ -42,6 +42,12 @@ namespace PicSim.Components.Interrupts
 
         public bool Step()
         {
+            if (m_hasInterrupts)
+            {
+                // Clear the GIE Bit
+                m_processor.Registers.INTCON.GIE = false;
+            }
+
             // TODO Handle interrupts
             return m_hasInterrupts;
         }
