@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Data;
 
 namespace PicSim.UI.Converters
@@ -12,7 +13,8 @@ namespace PicSim.UI.Converters
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            if ((bool)value) return "1";
+            if (!(value is bool)) return DependencyProperty.UnsetValue;
+            else if ((bool)value) return "1";
             else return "0";
         }
 
@@ -20,7 +22,7 @@ namespace PicSim.UI.Converters
         {
             if ((value as string) == "1") return true;
             else if ((value as string) == "0") return false;
-            else return Binding.DoNothing;
+            else return DependencyProperty.UnsetValue;
         }
     }
 }

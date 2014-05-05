@@ -16,7 +16,9 @@ namespace PicSim.UI.ViewModels
         private readonly SimulatorModel m_simulatorModel;
         private readonly MemoryTableViewModel m_memoryTable;
         private readonly ProgramCounterViewModel m_programCounter;
+
         private readonly RegisterViewModel m_workingRegister;
+        private readonly SpecialRegistersViewModel m_specialRegisters;
 
         private readonly LogViewModel m_log;
 
@@ -31,7 +33,9 @@ namespace PicSim.UI.ViewModels
             m_simulatorModel = simulatorModel;
             m_memoryTable = new MemoryTableViewModel(m_simulatorModel.Processor.DebugMemoryView, 8);
             m_programCounter = new ProgramCounterViewModel(m_simulatorModel.Processor.ProgramCounter);
+
             m_workingRegister = new RegisterViewModel(m_simulatorModel.Processor.WorkingRegister);
+            m_specialRegisters = new SpecialRegistersViewModel(m_simulatorModel.Processor);
 
             LoadFileCommand = new DelegateCommand(() => {
                 // Stop the simulator if it is running
@@ -90,6 +94,11 @@ namespace PicSim.UI.ViewModels
         public RegisterViewModel W
         {
             get { return m_workingRegister; }
+        }
+
+        public SpecialRegistersViewModel SpecialRegisters
+        {
+            get { return m_specialRegisters; }
         }
 
         public LogViewModel Log

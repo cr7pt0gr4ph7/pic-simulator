@@ -11,6 +11,7 @@ namespace PicSim.UI.ViewModels
     public class IORegisterViewModel : Model
     {
         private readonly IOPinViewModel[] m_pins;
+        private string m_caption;
 
         public IORegisterViewModel(IRegister trisRegister, IRegister valueRegister)
         {
@@ -23,7 +24,13 @@ namespace PicSim.UI.ViewModels
                 m_pins[i] = new IOPinViewModel(trisRegister, valueRegister, (byte)i);
         }
 
-        public IEnumerable<IOPinViewModel> Pins
+        public string Caption
+        {
+            get { return m_caption; }
+            set { SetProperty(ref m_caption, value); }
+        }
+
+        public IReadOnlyList<IOPinViewModel> Pins
         {
             get { return m_pins; }
         }

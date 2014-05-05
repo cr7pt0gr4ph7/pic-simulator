@@ -39,5 +39,10 @@ namespace PicSim.UI.ViewModels
             get { return m_valueRegister.GetBit(m_bitOffset); }
             set { m_valueRegister.SetBit(m_bitOffset, value); }
         }
+
+        public int BitOffset
+        {
+            get { return m_bitOffset; }
+        }
     }
 }

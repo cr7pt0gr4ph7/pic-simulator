@@ -124,8 +124,8 @@
             </Grid.RowDefinitions>
 
             <StackPanel Orientation="Vertical" Grid.Row="0">
-                <self:IORegisterGrid x:Name="iogridA" Margin="0, 0, 0, 10" Caption="RA" />
-                <self:IORegisterGrid x:Name="iogridB" Margin="0, 0, 0, 10" Caption="RB"/>
+                <self:IORegisterGrid x:Name="iogridA" Margin="0, 0, 0, 10" DataContext="{Binding SpecialRegisters.PortA}"/>
+                <self:IORegisterGrid x:Name="iogridB" Margin="0, 0, 0, 10" DataContext="{Binding SpecialRegisters.PortB}"/>
                 <self:CircularStackDisplay x:Name="stackList"/>
             </StackPanel>
 
