@@ -66,7 +66,7 @@
             <MenuItem Header="Edit">
             </MenuItem>
             <MenuItem Header="Help">
-                <MenuItem Header="Show PDF" Click="OnShowPdf" IsEnabled="False"/>
+                <MenuItem Header="Show PDF" Command="{Binding Help.ShowHelpPdf}"/>
                 <MenuItem Header="Update UI" Command="{Binding RequeryCommands}"/>
             </MenuItem>
         </Menu>

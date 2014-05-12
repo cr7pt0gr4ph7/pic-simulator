@@ -76,6 +76,7 @@
     <Compile Include="Services\IFileLoaderService.cs" />
     <Compile Include="Services\LogManager.cs" />
     <Compile Include="ViewModels\FrequencyViewModel.cs" />
+    <Compile Include="ViewModels\HelpViewModel.cs" />
     <Compile Include="ViewModels\IO\IOPortDirectionExtensions.cs" />
     <Compile Include="ViewModels\IO\IOPinViewModel.cs" />
     <Compile Include="ViewModels\IO\IOPortDirection.cs" />

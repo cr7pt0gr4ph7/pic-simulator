@@ -162,18 +162,6 @@ namespace PicSim.UI
 
         #endregion
 
-        #region Help
-
-        private void OnShowPdf(object sender, RoutedEventArgs e)
-        {
-            /*string path = Path.Combine(Directory.GetCurrentDirectory(), "HELP_PDF.pdf");
-        
-            String openPDFFile = Path.Combine(Directory.GetCurrentDirectory(), "HELP_PDF.pdf"); ;
-
-            System.Diagnostics.Process.Start(openPDFFile);*/
-        }
-        #endregion
-
         #region TextInput
         private void txtCode_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
