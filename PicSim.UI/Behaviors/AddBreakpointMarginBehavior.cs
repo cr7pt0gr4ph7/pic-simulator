@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Interactivity;
 using System.Windows.Media;
 
@@ -15,11 +16,42 @@ namespace PicSim.UI.Behaviors
 {
     public class AddBreakpointMarginBehavior : Behavior<TextEditor>
     {
+        #region Breakpoints dependency property
+
+        public ICollection<int> Breakpoints
+        {
+            get { return (ICollection<int>)GetValue(BreakpointsProperty); }
+            set { SetValue(BreakpointsProperty, value); }
+        }
+
+        public static readonly DependencyProperty BreakpointsProperty =
+            DependencyProperty.Register("Breakpoints", typeof(ICollection<int>), typeof(AddBreakpointMarginBehavior), new PropertyMetadata(new PropertyChangedCallback(Breakpoints_Changed)));
+
+        private static void Breakpoints_Changed(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var self = (AddBreakpointMarginBehavior)d;
+
+            var oldValue = e.OldValue as INotifyCollectionChanged;
+            var newValue = e.NewValue as INotifyCollectionChanged;
+
+            if (oldValue != null) newValue.CollectionChanged -= self.Breakpoints_CollectionChanged;
+            if (newValue != null) newValue.CollectionChanged += self.Breakpoints_CollectionChanged;
+
+            self.m_breakpointMargin.InvalidateVisual();
+        }
+
+        private void Breakpoints_CollectionChanged(object target, NotifyCollectionChangedEventArgs e)
+        {
+            m_breakpointMargin.InvalidateVisual();
+        }
+
+        #endregion
+
         private BreakpointMargin m_breakpointMargin;
 
         protected override void OnAttached()
         {
-            m_breakpointMargin = new BreakpointMargin();
+            m_breakpointMargin = new BreakpointMargin(() => Breakpoints);
             AssociatedObject.TextArea.LeftMargins.Insert(0, m_breakpointMargin);
 
             // HACK Fix interaction with ShowLineNumbers
@@ -57,10 +89,20 @@ namespace PicSim.UI.Behaviors
         private class BreakpointMargin : AbstractMargin
         {
             private const int MARGIN_WIDTH = 15;
-            private const int DIAMETER = 8;
+
+            private readonly Func<ICollection<int>> m_breakpoints;
+            private readonly Brush m_brush;
+
+            public BreakpointMargin(Func<ICollection<int>> breakpoints)
+            {
+                Ensure.ArgumentNotNull(breakpoints, "breakpoints");
+                m_breakpoints = breakpoints;
+                m_brush = Brushes.Red;
+            }
 
             protected override HitTestResult HitTestCore(PointHitTestParameters hitTestParameters)
             {
+                // accept clicks even when clicking on the background
                 return new PointHitTestResult(this, hitTestParameters.HitPoint);
             }
 
@@ -77,31 +119,61 @@ namespace PicSim.UI.Behaviors
 
             protected override void OnTextViewChanged(ICSharpCode.AvalonEdit.Rendering.TextView oldTextView, ICSharpCode.AvalonEdit.Rendering.TextView newTextView)
             {
+                if (oldTextView != null) oldTextView.VisualLinesChanged -= TextView_VisualLinesChanged;
                 base.OnTextViewChanged(oldTextView, newTextView);
-                this.InvalidateVisual();
+                if (newTextView != null) newTextView.VisualLinesChanged += TextView_VisualLinesChanged;
+                InvalidateVisual();
+            }
+
+            private void TextView_VisualLinesChanged(object sender, EventArgs e)
+            {
+                InvalidateVisual();
             }
 
             protected override void OnRender(DrawingContext drawingContext)
             {
                 var textView = this.TextView;
                 var renderSize = this.RenderSize;
+                var breakpoints = this.m_breakpoints();
 
-                if (textView != null && textView.VisualLinesValid)
+                if (breakpoints != null && textView != null && textView.VisualLinesValid)
                 {
                     foreach (var line in textView.VisualLines)
                     {
                         var lineNo = line.FirstDocumentLine.LineNumber;
 
-                        if (lineNo % 3 == 0)
+                        if (breakpoints.Contains(lineNo))
                         {
-                            var xCoord = renderSize.Width / 2;
-                            var yCoord = line.GetTextLineVisualYPosition(line.TextLines[0], VisualYPosition.TextMiddle);
+                            var diameter = textView.DefaultLineHeight - 2;
+                            var xCoord = diameter / 2;
+                            var yCoord = line.GetTextLineVisualYPosition(line.TextLines[0], VisualYPosition.TextMiddle) - textView.VerticalOffset;
                             var position = new Point(xCoord, yCoord);
-                            var diameter = textView.DefaultLineHeight;
 
-                            drawingContext.DrawEllipse(SystemColors.ControlBrush, null, position, diameter / 2, diameter / 2);
+                            drawingContext.DrawEllipse(m_brush, null, position, diameter / 2, diameter / 2);
                         }
                     }
+                }
+            }
+
+            protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+            {
+                base.OnMouseLeftButtonDown(e);
+                var textView = this.TextView;
+
+                if (!e.Handled && textView != null)
+                {
+                    e.Handled = true;
+                    var clickedLine = textView.GetVisualLineFromVisualTop(e.GetPosition(textView).Y + textView.VerticalOffset);
+                    if (clickedLine == null) return;
+                    var lineNo = clickedLine.FirstDocumentLine.LineNumber;
+
+                    var breakpoints = m_breakpoints();
+                    if (breakpoints == null) return;
+
+                    if (breakpoints.Contains(lineNo))
+                        breakpoints.Remove(lineNo);
+                    else
+                        breakpoints.Add(lineNo);
                 }
             }
         }

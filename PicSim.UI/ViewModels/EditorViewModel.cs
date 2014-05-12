@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PicSim.UI.Helper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,11 +10,18 @@ namespace PicSim.UI.ViewModels
 {
     public class EditorViewModel : Model
     {
+        private readonly ObservableSet<int> m_breakpoints;
         private bool m_showLineNumbers;
 
         public EditorViewModel()
         {
+            m_breakpoints = new ObservableSet<int>();
             m_showLineNumbers = true;
+        }
+
+        public ICollection<int> Breakpoints
+        {
+            get { return m_breakpoints; }
         }
 
         public bool ShowLineNumbers

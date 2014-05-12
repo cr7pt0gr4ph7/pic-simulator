@@ -7,6 +7,7 @@
         xmlns:avEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:behaviors="clr-namespace:PicSim.UI.Behaviors"
+        xmlns:helper="clr-namespace:PicSim.UI.Helper"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         mc:Ignorable="d" d:DataContext="{x:Type vm:MainWindowViewModel}"
@@ -124,7 +125,7 @@
                            ShowLineNumbers="{Binding Editor.ShowLineNumbers, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                            self:AvalonEditHelpers.TextBinding="{Binding Simulator.File.Text}">
             <i:Interaction.Behaviors>
-                <behaviors:AddBreakpointMarginBehavior/>
+                <behaviors:AddBreakpointMarginBehavior Breakpoints="{Binding Editor.Breakpoints}"/>
             </i:Interaction.Behaviors>
         </avEdit:TextEditor>
 

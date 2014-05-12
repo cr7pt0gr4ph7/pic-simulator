@@ -71,6 +71,7 @@
     <Compile Include="Helper\BinaryHelper.cs" />
     <Compile Include="Helper\ColorizeAvalonEdit.cs" />
     <Compile Include="Helper\FrequencyCounter.cs" />
+    <Compile Include="Helper\ObservableSet.cs" />
     <Compile Include="Models\FileModel.cs" />
     <Compile Include="Models\SimulatorModel.cs" />
     <Compile Include="Models\TristatePortRegisterModel.cs" />
