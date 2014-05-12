@@ -169,7 +169,7 @@
         <self:ModulTab Grid.Row="4" Grid.Column="2" />
 
         <StatusBar Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="5">
-            <TextBlock  Name="StatusBarInfo"   Text="Do you need help? More information are in the help-pdf-file."/>
+            <TextBlock Name="StatusBarInfo" Text="Do you need help? More information can be found in the help pdf file."/>
         </StatusBar>
     </Grid>
 </Window>
