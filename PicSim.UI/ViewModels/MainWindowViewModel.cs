@@ -20,6 +20,7 @@ namespace PicSim.UI.ViewModels
         private readonly RegisterViewModel m_workingRegister;
         private readonly SpecialRegistersViewModel m_specialRegisters;
 
+        private readonly EditorViewModel m_editor;
         private readonly HelpViewModel m_help;
         private readonly LogViewModel m_log;
 
@@ -34,6 +35,7 @@ namespace PicSim.UI.ViewModels
 
             m_log = new LogViewModel();
             m_help = new HelpViewModel();
+            m_editor = new EditorViewModel();
 
             m_simulatorModel = simulatorModel;
             m_memoryTable = new MemoryTableViewModel(m_simulatorModel.Processor.DebugMemoryView, 8);
@@ -107,6 +109,11 @@ namespace PicSim.UI.ViewModels
         public SpecialRegistersViewModel SpecialRegisters
         {
             get { return m_specialRegisters; }
+        }
+
+        public EditorViewModel Editor
+        {
+            get { return m_editor; }
         }
 
         public HelpViewModel Help

@@ -68,6 +68,10 @@
             <MenuItem Header="Settings">
                 <MenuItem Header="Frequency" Command="{Binding FrequencyController.OpenSettingCommand}"/>
                 <MenuItem Header="RS232" Command="{Binding RS232Controller.OpenSettingCommand}"/>
+                <Separator/>
+                <MenuItem Header="Editor">
+                    <MenuItem Header="Show line numbers" IsCheckable="true" IsChecked="{Binding Editor.ShowLineNumbers}"/>
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="Help">
                 <MenuItem Header="Show PDF" Command="{Binding Help.ShowHelpPdf}"/>
@@ -100,7 +104,7 @@
             </ComboBox>
 
             <self:SimpleToolbarButton BText="Stop" BSource="../icons/control-stop-square.png" BCommand="{Binding StopCommand}"/>
-            
+
             <self:SimpleToolbarSeparator />
 
             <self:SimpleToolbarButton BText="Pause" BSource="../icons/control-pause.png" BCommand="self:CustomCmds.Pause"/>
@@ -108,13 +112,14 @@
             <self:SimpleToolbarButton BText="Step" BSource="../icons/arrow-curve-000-left.png" BCommand="self:CustomCmds.Step"/>
 
             <self:SimpleToolbarSeparator />
-            
+
             <self:SimpleToolbarButton BText="Reset" BSource="../icons/control-reset.png" BCommand="{Binding ResetCommand}"/>
 
         </StackPanel>
 
         <avEdit:TextEditor Grid.Row="2" Grid.Column="2" Margin="5" x:Name="txtCode" PreviewTextInput="txtCode_PreviewTextInput"
                            FontFamily="Consolas"
+                           ShowLineNumbers="{Binding Editor.ShowLineNumbers, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                            self:AvalonEditHelpers.TextBinding="{Binding Simulator.File.Text}"/>
 
         <GridSplitter Grid.Row="2" Grid.Column="1" Grid.RowSpan="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" ShowsPreview="False" Width="3" />

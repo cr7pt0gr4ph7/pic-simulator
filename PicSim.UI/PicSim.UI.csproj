@@ -75,6 +75,7 @@
     <Compile Include="Models\TristatePortRegisterModel.cs" />
     <Compile Include="Services\IFileLoaderService.cs" />
     <Compile Include="Services\LogManager.cs" />
+    <Compile Include="ViewModels\EditorViewModel.cs" />
     <Compile Include="ViewModels\RS232ViewModel.cs" />
     <Compile Include="ViewModels\FrequencyViewModel.cs" />
     <Compile Include="ViewModels\HelpViewModel.cs" />
