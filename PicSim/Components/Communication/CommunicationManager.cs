@@ -8,6 +8,7 @@ namespace PicSim.Components.Communication
     {
         private static readonly Logger ms_logger = LogManager.GetCurrentClassLogger();
         private const uint CARRIAGE_RETURN = 0x0D;
+		private bool externData = false; /// This Variable is used to set getting external Data
 
         private ICommunication m_connection;
         private CommPortInfo[] m_ports;
@@ -49,7 +50,8 @@ namespace PicSim.Components.Communication
         /// </summary>
         public void PreStep()
         {
-            SendReceive();
+			if (externData)
+			SendReceive();
         }
 
         /// <summary>
@@ -100,5 +102,25 @@ namespace PicSim.Components.Communication
                 if (j < m_ports.Length) ms_logger.Warn("Only ports upto port {0} could be read from the serial port.", j - 1);
             }
         }
-    }
+    
+		/// <summary>
+		/// For external Communication
+		/// </summary>
+		public bool ExternData
+		{
+			get{return externData;}
+			set{externData = value;}
+		}
+
+		/// <summary>
+		/// For external Communication
+		/// </summary>
+		public ICommunication Connection
+		{
+			get { return m_connection; }
+			private set { m_connection = value; }
+		}
+	
+	}
+
 }
