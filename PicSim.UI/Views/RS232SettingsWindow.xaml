@@ -1,0 +1,32 @@
+﻿<Window x:Class="PicSim.UI.Views.RS232SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:PicSim.UI.ViewModels"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:behaviors="clr-namespace:PicSim.UI.Behaviors"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        mc:Ignorable="d" d:DataContext="{x:Type vm:RS232ViewModel}"
+        Title="RS232 Settings" SizeToContent="Height" Height="80" Width="300">
+
+    <i:Interaction.Behaviors>
+        <behaviors:HideWindowOnCloseBehavior/>
+        <behaviors:CloseOnEscapeBehavior/>
+    </i:Interaction.Behaviors>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Schnittstelle" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" />
+        <ComboBox Grid.Column="1" Grid.Row="0" Width="Auto" />
+        <Button Grid.Column="1" Grid.Row="1" Content="Set" Command="{Binding ClickSet}"/>
+        
+    </Grid>
+</Window>

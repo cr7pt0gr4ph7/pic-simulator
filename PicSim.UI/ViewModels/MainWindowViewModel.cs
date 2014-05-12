@@ -23,6 +23,7 @@ namespace PicSim.UI.ViewModels
         private readonly LogViewModel m_log;
 
 		private readonly FrequencyViewModel m_frequencyController;
+		private readonly RS232ViewModel m_RS232Controller;
 
         public MainWindowViewModel(IView view, IFileDialogService fileDialogService, SimulatorModel simulatorModel)
             : base(view)
@@ -40,6 +41,7 @@ namespace PicSim.UI.ViewModels
             m_specialRegisters = new SpecialRegistersViewModel(m_simulatorModel.Processor);
 
 			m_frequencyController = new FrequencyViewModel(m_simulatorModel.Processor);
+			m_RS232Controller = new RS232ViewModel(m_simulatorModel.Processor, new Components.Communication.RS232());
 
             LoadFileCommand = new DelegateCommand(() => {
                 // Stop the simulator if it is running
@@ -113,6 +115,11 @@ namespace PicSim.UI.ViewModels
 		public FrequencyViewModel FrequencyController
 		{
 			get { return m_frequencyController; }
+		}
+
+		public RS232ViewModel RS232Controller
+		{
+			get { return m_RS232Controller; }
 		}
 
         private void DoRequeryCommands()
