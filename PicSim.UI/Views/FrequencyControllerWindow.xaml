@@ -9,10 +9,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         mc:Ignorable="d" d:DataContext="{x:Type vm:MainWindowViewModel}"
-        Title="Frequency Controller" Height="80" Width="300"> <!-- Closing="{Binding FrequencyController.WindowClosing}">-->
+        Title="Frequency Controller" Height="80" Width="300">
 
     <i:Interaction.Behaviors>
         <behaviors:HideWindowOnCloseBehavior/>
+        <behaviors:CloseOnEscapeBehavior/>
     </i:Interaction.Behaviors>
     
     <Grid>
