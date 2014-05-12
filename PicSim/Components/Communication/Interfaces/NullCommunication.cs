@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace PicSim.Components.Communication.Interfaces
+namespace PicSim.Components.Communication
 {
     /// <summary>
     /// An implementation of <see cref="ICommunication"/> that is never connected.

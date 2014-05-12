@@ -18,7 +18,7 @@ namespace PicSim.Execution
         {
             this.Communication = new CommunicationManager();
             this.Communication.SetUnderlying(() => {
-                return new MockCommunication();
+                return new NullCommunication();
             });
 
             this.Decoder = new InstructionDecoder() {

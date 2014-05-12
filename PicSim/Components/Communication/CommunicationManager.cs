@@ -1,5 +1,4 @@
 ﻿using NLog;
-using PicSim.Components.Communication.Interfaces;
 using PicSim.Components.Registers;
 using PicSim.Utils;
 using System;

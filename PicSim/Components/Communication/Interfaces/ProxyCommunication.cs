@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PicSim.Components.Communication.Interfaces
+namespace PicSim.Components.Communication
 {
     public class ProxyCommunication : ICommunication
     {
@@ -12,10 +12,7 @@ namespace PicSim.Components.Communication.Interfaces
 
         private ICommunication UnderlyingNotNull
         {
-            get
-            {
-                return m_underlying ?? NullCommunication.Instance;
-            }
+            get { return m_underlying ?? NullCommunication.Instance; }
         }
 
         public void SetUnderlying(Func<ICommunication> newUnderlying)

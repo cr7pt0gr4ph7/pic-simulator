@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Waf.Applications;
-
 using PicSim.Execution;
 using PicSim.UI.Views;
 using System.Windows.Input;
@@ -14,7 +13,6 @@ using System.Windows.Data;
 using System.Collections.ObjectModel;
 using System.IO.Ports;
 using System.Windows;
-using PicSim.Components.Communication.Interfaces;
 
 namespace PicSim.UI.ViewModels
 {
@@ -25,7 +23,7 @@ namespace PicSim.UI.ViewModels
         private readonly CommunicationManager m_commManager;
         private readonly RS232SettingsWindow m_RS232SettingsWindow;
 
-        private readonly ObservableCollection<string> m_availablePorts  = new ObservableCollection<string>();
+        private readonly ObservableCollection<string> m_availablePorts = new ObservableCollection<string>();
         private string m_selectedPort;
 
         public RS232ViewModel(Processor processor, CommunicationManager commManager)

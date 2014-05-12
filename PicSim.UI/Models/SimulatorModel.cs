@@ -1,4 +1,5 @@
-﻿using PicSim.Components.Communication;
+﻿using NLog;
+using PicSim.Components.Communication;
 using PicSim.Execution;
 using PicSim.UI.Services;
 using System;
@@ -17,6 +18,8 @@ namespace PicSim.UI.Models
     /// </summary>
     public class SimulatorModel : Model, IFileLoaderService
     {
+        private static readonly Logger ms_logger = LogManager.GetCurrentClassLogger();
+
         private readonly Processor m_processor = new Processor();
         private readonly DispatcherTimer m_timer;
         private FileModel m_fileModel;
@@ -59,26 +62,26 @@ namespace PicSim.UI.Models
 
         public void Start()
         {
-            LogManager.Log("Simulation started");
+            ms_logger.Info("Simulation started");
             m_timer.Start();
         }
 
         public void Stop()
         {
-            LogManager.Log("Simulation stopped");
+            ms_logger.Info("Simulation stopped");
             m_timer.Stop();
         }
 
         public void HardReset()
         {
-            LogManager.Log("Simulation HardReset");
+            ms_logger.Info("Simulation HardReset");
             m_timer.Stop();
             m_processor.HardReset();
         }
 
         public void SoftReset()
         {
-            LogManager.Log("Simulation SoftReset");
+            ms_logger.Info("Simulation SoftReset");
             m_timer.Stop();
             m_processor.SoftReset();
         }

@@ -1,4 +1,7 @@
-﻿using PicSim.UI.Services;
+﻿using NLog;
+using NLog.Config;
+using NLog.Targets;
+using PicSim.UI.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,35 +11,49 @@ using System.Waf.Foundation;
 
 namespace PicSim.UI.ViewModels
 {
-    public class LogViewModel : Model, IDisposable
+    public class LogViewModel : Model
     {
-        private string _text = "";
+        private static readonly Logger logger = LogManager.GetCurrentClassLogger();
+
+        private readonly MemoryEventTarget m_logTarget;
+        private string m_text = "";
 
         public LogViewModel()
         {
-            Add("Start");
-            LogManager.Logged += LogManager_Logged;
-        }
+            m_logTarget = new MemoryEventTarget();
+            m_logTarget.EventReceived += logTarget_EventReceived;
+            SimpleConfigurator.ConfigureForTargetLogging(m_logTarget);
 
-        public void Dispose()
-        {
-            LogManager.Logged -= LogManager_Logged;
+            logger.Info("Started");
         }
 
         public string Text
         {
-            get { return _text; }
-            private set { SetProperty(ref _text, value); }
+            get { return m_text; }
+            private set { SetProperty(ref m_text, value); }
         }
 
-        public void Add(string line)
+        void logTarget_EventReceived(string message)
         {
-            _text += DateTime.Now.ToString("HH:mm:ss.ffffff") + " - " + line + "\n";
+            Text += message + "\n";
         }
 
-        void LogManager_Logged(object sender, LogManager.LogEventArgs e)
+        private class MemoryEventTarget : TargetWithLayout
         {
-            Add(e.Message);
+            public event Action<string> EventReceived;
+
+            /// <summary>
+            /// Notifies listeners about new event
+            /// </summary>
+            /// <param name="logEvent">The logging event.</param>
+            protected override void Write(LogEventInfo logEvent)
+            {
+                var handler = EventReceived;
+                if (handler != null)
+                {
+                    handler(Layout.Render(logEvent));
+                }
+            }
         }
     }
 }
