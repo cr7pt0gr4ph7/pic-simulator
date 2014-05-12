@@ -31,9 +31,14 @@ namespace PicSim.UI.ViewModels
 
         void programCounter_ValueChanged(object sender, ValueChangedEventArgs<ushort> e)
         {
+            // Handle current line marker
             var file = m_simulatorModel.File;
             if (file == null) return;
             CurrentLine = m_simulatorModel.File.GetLineForPCAddress((int)e.Value) + 1 ?? -1;
+
+            // Handle breakpoints
+            if (Breakpoints.Contains(CurrentLine))
+                m_simulatorModel.Stop();
         }
 
         public ICollection<int> Breakpoints
