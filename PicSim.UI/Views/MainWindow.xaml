@@ -114,6 +114,7 @@
         </StackPanel>
 
         <avEdit:TextEditor Grid.Row="2" Grid.Column="2" Margin="5" x:Name="txtCode" PreviewTextInput="txtCode_PreviewTextInput"
+                           FontFamily="Consolas"
                            self:AvalonEditHelpers.TextBinding="{Binding Simulator.File.Text}"/>
 
         <GridSplitter Grid.Row="2" Grid.Column="1" Grid.RowSpan="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" ShowsPreview="False" Width="3" />
