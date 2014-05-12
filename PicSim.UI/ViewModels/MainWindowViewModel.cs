@@ -16,6 +16,7 @@ namespace PicSim.UI.ViewModels
         private readonly SimulatorModel m_simulatorModel;
         private readonly MemoryTableViewModel m_memoryTable;
         private readonly ProgramCounterViewModel m_programCounter;
+        private readonly DebugViewModel m_debug;
 
         private readonly RegisterViewModel m_workingRegister;
         private readonly SpecialRegistersViewModel m_specialRegisters;
@@ -40,6 +41,7 @@ namespace PicSim.UI.ViewModels
             m_simulatorModel = simulatorModel;
             m_memoryTable = new MemoryTableViewModel(m_simulatorModel.Processor.DebugMemoryView, 8);
             m_programCounter = new ProgramCounterViewModel(m_simulatorModel.Processor.ProgramCounter);
+            m_debug = new DebugViewModel(m_simulatorModel);
 
             m_workingRegister = new RegisterViewModel(m_simulatorModel.Processor.WorkingRegister);
             m_specialRegisters = new SpecialRegistersViewModel(m_simulatorModel.Processor);
@@ -94,6 +96,11 @@ namespace PicSim.UI.ViewModels
         public MemoryTableViewModel MemoryTable
         {
             get { return m_memoryTable; }
+        }
+
+        public DebugViewModel Debug
+        {
+            get { return m_debug; }
         }
 
         public ProgramCounterViewModel PC

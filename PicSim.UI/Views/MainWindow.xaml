@@ -125,8 +125,8 @@
                            ShowLineNumbers="{Binding Editor.ShowLineNumbers, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                            self:AvalonEditHelpers.TextBinding="{Binding Simulator.File.Text}">
             <i:Interaction.Behaviors>
-                <behaviors:AddBreakpointMarginBehavior Breakpoints="{Binding Editor.Breakpoints}"/>
-                <behaviors:AddCurrentLineRendererBehavior HighlightedLine="2"/>
+                <behaviors:AddBreakpointMarginBehavior Breakpoints="{Binding Debug.Breakpoints}"/>
+                <behaviors:AddCurrentLineRendererBehavior HighlightedLine="{Binding Debug.CurrentLine}"/>
             </i:Interaction.Behaviors>
         </avEdit:TextEditor>
 

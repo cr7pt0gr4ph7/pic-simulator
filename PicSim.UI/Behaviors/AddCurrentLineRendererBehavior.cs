@@ -71,7 +71,7 @@ namespace PicSim.UI.Behaviors
                 textView.EnsureVisualLines();
 
                 var lineNo = HighlightedLine;
-                if (lineNo < 0 || lineNo >= m_editor.Document.LineCount) return;
+                if (lineNo <= 0 || lineNo >= m_editor.Document.LineCount) return;
                 
                 var line = m_editor.Document.GetLineByNumber(lineNo);
                 if (line != null)
@@ -93,7 +93,7 @@ namespace PicSim.UI.Behaviors
                     if (m_highlightedLine != value)
                     {
                         m_highlightedLine = value;
-                        // TODO Refresh
+                        m_editor.TextArea.TextView.InvalidateLayer(KnownLayer.Background);
                     }
                 }
             }
