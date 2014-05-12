@@ -126,6 +126,7 @@
                            self:AvalonEditHelpers.TextBinding="{Binding Simulator.File.Text}">
             <i:Interaction.Behaviors>
                 <behaviors:AddBreakpointMarginBehavior Breakpoints="{Binding Editor.Breakpoints}"/>
+                <behaviors:AddCurrentLineRendererBehavior HighlightedLine="2"/>
             </i:Interaction.Behaviors>
         </avEdit:TextEditor>
 
