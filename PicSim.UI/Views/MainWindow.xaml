@@ -5,6 +5,8 @@
         xmlns:vm="clr-namespace:PicSim.UI.ViewModels"
         xmlns:conv="clr-namespace:PicSim.UI.Converters"
         xmlns:avEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:behaviors="clr-namespace:PicSim.UI.Behaviors"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         mc:Ignorable="d" d:DataContext="{x:Type vm:MainWindowViewModel}"
@@ -120,7 +122,11 @@
         <avEdit:TextEditor Grid.Row="2" Grid.Column="2" Margin="5" x:Name="txtCode" PreviewTextInput="txtCode_PreviewTextInput"
                            FontFamily="Consolas"
                            ShowLineNumbers="{Binding Editor.ShowLineNumbers, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                           self:AvalonEditHelpers.TextBinding="{Binding Simulator.File.Text}"/>
+                           self:AvalonEditHelpers.TextBinding="{Binding Simulator.File.Text}">
+            <i:Interaction.Behaviors>
+                <behaviors:AddBreakpointMarginBehavior/>
+            </i:Interaction.Behaviors>
+        </avEdit:TextEditor>
 
         <GridSplitter Grid.Row="2" Grid.Column="1" Grid.RowSpan="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" ShowsPreview="False" Width="3" />
         <GridSplitter Grid.Row="2" Grid.Column="3" Grid.RowSpan="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" ShowsPreview="False" Width="3" />
