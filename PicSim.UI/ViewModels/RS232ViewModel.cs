@@ -11,78 +11,78 @@ using System.Windows.Input;
 using System.Waf.Foundation;
 using PicSim.Components.Communication;
 using System.Windows.Data;
+using System.Collections.ObjectModel;
+using System.IO.Ports;
+using System.Windows;
+using PicSim.Components.Communication.Interfaces;
 
 namespace PicSim.UI.ViewModels
 {
     public class RS232ViewModel : Model
     {
+        private const string NONE = "<none>";
         private readonly Processor m_processor;
-		private readonly RS232 m_RS232;
+        private readonly CommunicationManager m_commManager;
         private readonly RS232SettingsWindow m_RS232SettingsWindow;
 
-		private bool m_activ;
+        private readonly ObservableCollection<string> m_availablePorts  = new ObservableCollection<string>();
+        private string m_selectedPort;
 
-		private readonly CollectionView m_ports;
-		private string m_portEntry;
-
-        public RS232ViewModel(Processor processor, RS232 rs232)
+        public RS232ViewModel(Processor processor, CommunicationManager commManager)
         {
             Ensure.ArgumentNotNull(processor, "processor");
-			Ensure.ArgumentNotNull(rs232, "rs232");
+            Ensure.ArgumentNotNull(commManager, "commManager");
+
             m_processor = processor;
-			m_RS232 = rs232;
+            m_commManager = commManager;
+            m_selectedPort = NONE;
 
-			OpenSettingCommand = new DelegateCommand(() => {
-				m_RS232SettingsWindow.Show();
-			});
+            OpenSettingsCommand = new DelegateCommand(() => {
+                m_availablePorts.Clear();
 
-           ClickSet = new DelegateCommand(() => {
-			   m_RS232SettingsWindow.Close();
+                m_availablePorts.Add(NONE);
+
+                foreach (var port in SerialPort.GetPortNames())
+                    m_availablePorts.Add(port);
+
+                m_RS232SettingsWindow.Show();
             });
 
-			//Test
-		   IList<PhoneBookEntry> list = new List<PhoneBookEntry>();
-		   list.Add(new PhoneBookEntry("test"));
-		   list.Add(new PhoneBookEntry("test2"));
-		   m_ports = new CollectionView(list);
+            ClickSet = new DelegateCommand(() => {
+                m_commManager.SetUnderlying(() => {
+                    try
+                    {
+                        if (SelectedPort == NONE)
+                            return NullCommunication.Instance;
+                        else
+                            return new RS232(SelectedPort);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Exception while trying to open port:\n\n" + ex.ToString(), "PicSim - COM-Port", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return null;
+                    }
+                });
+                m_RS232SettingsWindow.Close();
+            });
 
-		   m_RS232SettingsWindow = new RS232SettingsWindow();
-		   m_RS232SettingsWindow.DataContext = this;
+            m_RS232SettingsWindow = new RS232SettingsWindow();
+            m_RS232SettingsWindow.DataContext = this;
         }
 
-        public ICommand OpenSettingCommand { get; private set; }
+        public ICommand OpenSettingsCommand { get; private set; }
         public ICommand ClickSet { get; private set; }
 
-		public bool Activ{
-			get{return m_activ;}
-			set { SetProperty(ref m_activ, value); }
-		}
+        public IEnumerable<string> AvailablePorts
+        {
+            get { return m_availablePorts; }
+        }
 
-		public CollectionView Ports
-		{
-			get { return m_ports; }
-		}
+        public string SelectedPort
+        {
+            get { return m_selectedPort; }
+            set { SetProperty(ref m_selectedPort, value); }
+        }
+    }
 
-		public string Port
-		{
-			get { return m_portEntry; }
-			set
-			{
-				if (m_portEntry == value) return;
-				m_portEntry = value;
-			}
-		}
-
-		// TEmp
-		private class PhoneBookEntry
-		{
-			public string Name { get; set; }
-			public PhoneBookEntry(string name)
-			{
-				Name = name;
-			}
-		}
-
-	}
-    
 }

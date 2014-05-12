@@ -14,57 +14,38 @@ namespace PicSim.Components.Communication
         private static readonly Logger ms_logger = LogManager.GetCurrentClassLogger();
         private SerialPort m_serialPort;
 
-        public RS232()
+        public RS232(string portName)
         {
-            m_serialPort = new SerialPort("COM3", 4800, Parity.None, 8, StopBits.One) {
+            m_serialPort = new SerialPort(portName, 4800, Parity.None, 8, StopBits.One) {
                 Handshake = Handshake.None
             };
             Open();
         }
 
-        /// <summary>
-        /// </summary>
-        /// <returns><c>true</c> on success; <c>false</c> on failure.</returns>        
-        public bool Open()
+        public void Dispose() { Close(); }
+
+        private void Open()
         {
+            // Open the serial port
             ms_logger.Info("Opening the serial port...");
             try
             {
                 m_serialPort.Open();
-                if (!m_serialPort.IsOpen)
-                    throw new ApplicationException("Cannot open the serial port");
+                if (!m_serialPort.IsOpen) throw new ApplicationException("Cannot open the serial port");
                 ms_logger.Info("Connection established.");
-                return true;
             }
             catch (Exception e)
             {
                 ms_logger.ErrorException("Exception in Open(): " + e.Message, e);
-                return false;
             }
         }
 
-        /// <summary>
-        /// </summary>
-        /// <returns><c>true</c> on success; <c>false</c> on failure.</returns>
-        public bool Close()
+        private void Close()
         {
             ms_logger.Info("Closing the serial port...");
             m_serialPort.Close();
             ms_logger.Info("Serial port has been closed.");
-
             Debug.Assert(!m_serialPort.IsOpen);
-            return !m_serialPort.IsOpen;
-        }
-
-        /// <summary>
-        /// Close and reopen the port if it is already open.
-        /// Do nothing if it is not open.
-        /// </summary>
-        /// <returns><c>true</c> on success; <c>false</c> on failure.</returns>
-        public bool Reset()
-        {
-            if (Close()) return Open();
-            else return false;
         }
 
         public uint ReadValue()

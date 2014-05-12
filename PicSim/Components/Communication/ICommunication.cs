@@ -1,11 +1,8 @@
-﻿namespace PicSim.Components.Communication
+﻿using System;
+namespace PicSim.Components.Communication
 {
-    public interface ICommunication
+    public interface ICommunication : IDisposable
     {
-        bool Open();
-        bool Close();
-        bool Reset();
-
         uint ReadValue();
         bool WriteValue(uint _data);
 

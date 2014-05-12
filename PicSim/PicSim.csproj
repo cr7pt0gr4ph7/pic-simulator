@@ -47,7 +47,9 @@
     <Compile Include="Components\Communication\CommunicationManager.cs" />
     <Compile Include="Components\Communication\CommPortInfo.cs" />
     <Compile Include="Components\Communication\ICommunication.cs" />
+    <Compile Include="Components\Communication\Interfaces\MockCommunication.cs" />
     <Compile Include="Components\Communication\Interfaces\NullCommunication.cs" />
+    <Compile Include="Components\Communication\Interfaces\ProxyCommunication.cs" />
     <Compile Include="Components\Communication\Interfaces\RS232.cs" />
     <Compile Include="Components\InstructionDecoder.cs" />
     <Compile Include="Components\Interrupts\Contributors\RB0INTInterruptContributor.cs" />

@@ -70,7 +70,7 @@
             </MenuItem>
             <MenuItem Header="Settings">
                 <MenuItem Header="Frequency" Command="{Binding FrequencyController.OpenSettingCommand}"/>
-                <MenuItem Header="RS232" Command="{Binding RS232Controller.OpenSettingCommand}"/>
+                <MenuItem Header="RS232" Command="{Binding RS232Controller.OpenSettingsCommand}"/>
                 <Separator/>
                 <MenuItem Header="Editor">
                     <MenuItem Header="Show line numbers" IsCheckable="true" IsChecked="{Binding Editor.ShowLineNumbers}"/>

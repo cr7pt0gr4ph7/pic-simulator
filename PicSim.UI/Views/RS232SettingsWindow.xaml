@@ -7,7 +7,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         mc:Ignorable="d" d:DataContext="{x:Type vm:RS232ViewModel}"
-        Title="RS232 Settings" SizeToContent="Height" Height="100" Width="200">
+        Title="RS232 Settings" SizeToContent="Height" Height="Auto" Width="200">
 
     <i:Interaction.Behaviors>
         <behaviors:HideWindowOnCloseBehavior/>
@@ -18,24 +18,19 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Content="Interface" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" />
-        <ComboBox Grid.Column="1"
-                  Grid.Row="0"
-                  Width="Auto"
-                  ItemsSource="{Binding RS232Controller.Ports}"
-                  DisplayMemberPath="Name"
-                  SelectedValuePath="Name"
-                  SelectedValue="{Binding RS232Controller.Port}" />
-        <Label Content="Activ" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" />
-        <CheckBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="{Binding RS232Controller.Activ}" Content="external IOs"/>
-        <Button Grid.Column="1" Grid.Row="3" Content="Set" Command="{Binding ClickSet}"/>
+        <Label Content="Interface" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center"
+               Margin="2"/>
         
+        <ComboBox Grid.Column="1" Grid.Row="0" Margin="2"
+                  ItemsSource="{Binding AvailablePorts}"
+                  SelectedValue="{Binding SelectedPort}"/>
+
+        <Button Grid.Column="1" Grid.Row="2" Content="Set" Command="{Binding ClickSet}" Margin="2"/>
     </Grid>
 </Window>

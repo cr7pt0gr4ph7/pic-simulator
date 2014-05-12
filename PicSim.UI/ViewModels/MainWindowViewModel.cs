@@ -47,7 +47,7 @@ namespace PicSim.UI.ViewModels
             m_specialRegisters = new SpecialRegistersViewModel(m_simulatorModel.Processor);
 
 			m_frequencyController = new FrequencyViewModel(m_simulatorModel.Processor);
-			m_RS232Controller = new RS232ViewModel(m_simulatorModel.Processor, (Components.Communication.RS232) m_simulatorModel.Processor.Communication.Connection);
+			m_RS232Controller = new RS232ViewModel(m_simulatorModel.Processor, m_simulatorModel.Processor.Communication);
 
             LoadFileCommand = new DelegateCommand(() => {
                 // Stop the simulator if it is running
