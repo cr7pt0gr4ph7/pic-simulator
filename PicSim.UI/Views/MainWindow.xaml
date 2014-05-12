@@ -65,6 +65,10 @@
             </MenuItem>
             <MenuItem Header="Edit">
             </MenuItem>
+            <MenuItem Header="Settings">
+                <MenuItem Header="Frequency" Command="{Binding FrequencyController.OpenSettingCommand}"/>
+                <MenuItem Header="RS232" Command="{Binding RS232Controller.OpenSettingCommand}"/>
+            </MenuItem>
             <MenuItem Header="Help">
                 <MenuItem Header="Show PDF" Command="{Binding Help.ShowHelpPdf}"/>
                 <MenuItem Header="Update UI" Command="{Binding RequeryCommands}"/>

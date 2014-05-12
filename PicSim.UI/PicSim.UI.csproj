@@ -75,6 +75,7 @@
     <Compile Include="Models\TristatePortRegisterModel.cs" />
     <Compile Include="Services\IFileLoaderService.cs" />
     <Compile Include="Services\LogManager.cs" />
+    <Compile Include="ViewModels\RS232ViewModel.cs" />
     <Compile Include="ViewModels\FrequencyViewModel.cs" />
     <Compile Include="ViewModels\HelpViewModel.cs" />
     <Compile Include="ViewModels\IO\IOPortDirectionExtensions.cs" />
@@ -133,6 +134,9 @@
       <DependentUpon>MemoryTableView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Views\RS232SettingsWindow.xaml.cs">
+      <DependentUpon>RS232SettingsWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="Views\Controls\ChangeMarkTextBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -190,6 +194,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\MemoryTableView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RS232SettingsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

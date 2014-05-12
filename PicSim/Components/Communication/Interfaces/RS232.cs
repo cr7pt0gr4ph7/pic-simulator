@@ -16,7 +16,7 @@ namespace PicSim.Components.Communication
 
         public RS232()
         {
-            m_serialPort = new SerialPort("COM1", 4800, Parity.None, 8, StopBits.One) {
+            m_serialPort = new SerialPort("COM3", 4800, Parity.None, 8, StopBits.One) {
                 Handshake = Handshake.None
             };
             Open();
