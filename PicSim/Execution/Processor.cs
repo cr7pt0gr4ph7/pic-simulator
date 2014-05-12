@@ -8,8 +8,6 @@ namespace PicSim.Execution
 {
     public partial class Processor
     {
-		public int Frequency { set; get; }
-
         /// <summary>
         /// Run a single execution step.
         /// </summary>
@@ -64,9 +62,9 @@ namespace PicSim.Execution
             //   - All other operations only need one instruction cycle.
 
             if (ProgramCounter.ChangedInCurrentStep) {
-                Clock.Tick(2);
+                Clock.AdvanceBy(2);
             } else {
-                Clock.Tick(1);
+                Clock.AdvanceBy(1);
             }
 
             // Advance the program counter, if it has not already been loaded during the execution

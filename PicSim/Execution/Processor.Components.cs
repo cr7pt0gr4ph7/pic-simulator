@@ -25,7 +25,7 @@ namespace PicSim.Execution
             };
 
             this.Watchdog = new Watchdog(this);
-            this.Clock = new Clock_();
+            this.Clock = new VirtualClock();
             this.ProgramCounter = new ProgramCounter();
 
             // Initialize the program stack
@@ -175,7 +175,7 @@ namespace PicSim.Execution
 
         public InterruptManager InterruptManager { get; private set; }
 
-        public Clock_ Clock { get; private set; }
+        public VirtualClock Clock { get; private set; }
 
         #region Registers, Memory & Working register (W)
 
@@ -204,14 +204,6 @@ namespace PicSim.Execution
         }
 
         #endregion
-
-        public class Clock_
-        {
-            public void Tick(int instructionCyles)
-            {
-
-            }
-        }
 
         public void WatchdogReset()
         {

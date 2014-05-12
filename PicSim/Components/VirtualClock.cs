@@ -1,7 +1,10 @@
-﻿namespace PicSim.Components
+﻿using System;
+namespace PicSim.Components
 {
     public class VirtualClock : ModelBase
     {
+        private TimeSpan m_simulatedTime;
+        private int m_frequency;
         private long m_totalCycles;
 
         /// <summary>
@@ -9,8 +12,8 @@
         /// </summary>
         public void Reset()
         {
-            m_totalCycles = 0;
-            RaisePropertyChanged("TotalCycles");
+            TotalCycles = 0;
+            SimulatedTime = TimeSpan.Zero;
         }
 
         /// <summary>
@@ -19,8 +22,8 @@
         /// <param name="machineCycles"></param>
         public void AdvanceBy(int machineCycles)
         {
-            m_totalCycles += machineCycles;
-            RaisePropertyChanged("TotalCycles");
+            TotalCycles += machineCycles;
+            SimulatedTime += TimeSpan.FromSeconds(machineCycles * 1d / m_frequency);
         }
 
         /// <summary>
@@ -29,6 +32,25 @@
         public long TotalCycles
         {
             get { return m_totalCycles; }
+            private set { SetProperty(ref m_totalCycles, value); }
+        }
+
+        /// <summary>
+        /// The clock frequency of the simulated processor.
+        /// </summary>
+        public int Frequency
+        {
+            get { return m_frequency; }
+            set { Ensure.ArgumentNotNegative(value, "value"); SetProperty(ref m_frequency, value); }
+        }
+
+        /// <summary>
+        /// The amount of simulated time that has elapsed since the start of the simulation.
+        /// </summary>
+        public TimeSpan SimulatedTime
+        {
+            get { return m_simulatedTime; }
+            private set { SetProperty(ref m_simulatedTime, value); }
         }
     }
 }

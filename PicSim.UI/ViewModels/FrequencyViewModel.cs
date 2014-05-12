@@ -25,15 +25,15 @@ namespace PicSim.UI.ViewModels
             Ensure.ArgumentNotNull(processor, "processor");
             m_processor = processor;
 
-            CurrentFrequency = m_processor.Frequency;
+            CurrentFrequency = m_processor.Clock.Frequency;
 
             OpenSettingCommand = new DelegateCommand(() => {
-                NewFrequency = m_processor.Frequency;
+                NewFrequency = m_processor.Clock.Frequency;
                 m_frequencyControllerWindow.Show();
             });
 
             ClickSet = new DelegateCommand(() => {
-                m_processor.Frequency = CurrentFrequency = NewFrequency;
+                m_processor.Clock.Frequency = CurrentFrequency = NewFrequency;
                 m_frequencyControllerWindow.Close();
             });
 
