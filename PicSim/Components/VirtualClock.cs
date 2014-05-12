@@ -7,6 +7,12 @@ namespace PicSim.Components
         private int m_frequency;
         private long m_totalCycles;
 
+        public VirtualClock()
+        {
+            m_frequency = 4000000 /* Hz = 4 MHz */;
+            Reset();
+        }
+
         /// <summary>
         /// Reset the instruction cycle counter to zero.
         /// </summary>
@@ -23,7 +29,7 @@ namespace PicSim.Components
         public void AdvanceBy(int machineCycles)
         {
             TotalCycles += machineCycles;
-            SimulatedTime += TimeSpan.FromSeconds(machineCycles * 1d / m_frequency);
+            SimulatedTime += TimeSpan.FromTicks(machineCycles * (TimeSpan.TicksPerSecond / m_frequency));
         }
 
         /// <summary>

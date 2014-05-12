@@ -148,7 +148,7 @@
                     <TextBlock Name="lblRegPC"     Text="{Binding PC.Value,Converter={StaticResource hex16Converter}}"/>
                     <TextBlock Name="lblFreqView"  Text="0 Hz"/>
                     <TextBlock Name="lblFreqModel" Text="{Binding FrequencyController.CurrentFrequency, StringFormat={}{0} Hz}"/>
-                    <TextBlock Name="lblRunTime"   Text="0 s"/>
+                    <TextBlock Name="lblRunTime"   Text="{Binding Simulator.Processor.Clock.SimulatedTime}"/>
                 </StackPanel>
             </DockPanel>
 
