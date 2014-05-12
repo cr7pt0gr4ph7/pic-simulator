@@ -4,11 +4,17 @@
         xmlns:self="clr-namespace:PicSim.UI.Views"
         xmlns:vm="clr-namespace:PicSim.UI.ViewModels"
         xmlns:conv="clr-namespace:PicSim.UI.Converters"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:behaviors="clr-namespace:PicSim.UI.Behaviors"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         mc:Ignorable="d" d:DataContext="{x:Type vm:MainWindowViewModel}"
         Title="Frequency Controller" Height="80" Width="300"> <!-- Closing="{Binding FrequencyController.WindowClosing}">-->
 
+    <i:Interaction.Behaviors>
+        <behaviors:HideWindowOnCloseBehavior/>
+    </i:Interaction.Behaviors>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>

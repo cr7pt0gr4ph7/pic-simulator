@@ -23,14 +23,10 @@ namespace PicSim.UI.ViewModels
 			FrequencyControllerWindow frequencyControllerWindow = new FrequencyControllerWindow();
 
 			OpenSettingCommand = new DelegateCommand(() => { frequencyControllerWindow.Show(); });
-			WindowClosing = new DelegateCommand(() => { });
 			ClickSet = new DelegateCommand(() => { });
-			TBFrequency = new DelegateCommand(() => { });
         }
 
 		public ICommand OpenSettingCommand { get; private set; }
-		public ICommand WindowClosing { get; private set; }
 		public ICommand ClickSet { get; private set; }
-		public ICommand TBFrequency { get; private set; }
 	}
 }

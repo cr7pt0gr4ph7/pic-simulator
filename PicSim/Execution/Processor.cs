@@ -8,6 +8,8 @@ namespace PicSim.Execution
 {
     public partial class Processor
     {
+		public int Frequency { set; get; }
+
         /// <summary>
         /// Run a single execution step.
         /// </summary>
