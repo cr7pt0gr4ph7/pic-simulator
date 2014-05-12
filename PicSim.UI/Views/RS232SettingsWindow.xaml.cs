@@ -23,6 +23,5 @@ namespace PicSim.UI.Views
 		{
 			InitializeComponent();
 		}
-
 	}
 }

@@ -17,7 +17,9 @@ namespace PicSim.Components.Communication
         public RS232(string portName)
         {
             m_serialPort = new SerialPort(portName, 4800, Parity.None, 8, StopBits.One) {
-                Handshake = Handshake.None
+                Handshake = Handshake.None,
+                ReadTimeout = (int)TimeSpan.FromSeconds(10).TotalMilliseconds,
+                WriteTimeout = (int)TimeSpan.FromSeconds(10).TotalMilliseconds,
             };
             Open();
         }
@@ -64,7 +66,7 @@ namespace PicSim.Components.Communication
 
         public bool IsConnected
         {
-            get { return m_serialPort.IsOpen && m_serialPort.CDHolding; }
+            get { return m_serialPort.IsOpen; }
         }
     }
 }

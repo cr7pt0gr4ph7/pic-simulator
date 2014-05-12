@@ -38,12 +38,16 @@ namespace PicSim.UI.ViewModels
             m_selectedPort = NONE;
 
             OpenSettingsCommand = new DelegateCommand(() => {
-                m_availablePorts.Clear();
+                var oldPort = SelectedPort;
 
+                m_availablePorts.Clear();
                 m_availablePorts.Add(NONE);
 
                 foreach (var port in SerialPort.GetPortNames())
                     m_availablePorts.Add(port);
+
+                if (m_availablePorts.Contains(oldPort)) SelectedPort = oldPort;
+                else SelectedPort = NONE;
 
                 m_RS232SettingsWindow.Show();
             });
@@ -52,10 +56,8 @@ namespace PicSim.UI.ViewModels
                 m_commManager.SetUnderlying(() => {
                     try
                     {
-                        if (SelectedPort == NONE)
-                            return NullCommunication.Instance;
-                        else
-                            return new RS232(SelectedPort);
+                        if (SelectedPort == NONE) return NullCommunication.Instance;
+                        else return new RS232(SelectedPort);
                     }
                     catch (Exception ex)
                     {

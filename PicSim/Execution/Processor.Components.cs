@@ -18,9 +18,7 @@ namespace PicSim.Execution
         {
             this.Communication = new CommunicationManager();
             this.Communication.SetUnderlying(() => {
-                var useExtSerial = true;
-                var commConnection = useExtSerial ? (ICommunication)new RS232("COM3") : new MockCommunication();
-                return commConnection;
+                return new MockCommunication();
             });
 
             this.Decoder = new InstructionDecoder() {
