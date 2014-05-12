@@ -22,6 +22,8 @@ namespace PicSim.UI.ViewModels
 
         private readonly LogViewModel m_log;
 
+		private readonly FrequencyViewModel m_frequencyController;
+
         public MainWindowViewModel(IView view, IFileDialogService fileDialogService, SimulatorModel simulatorModel)
             : base(view)
         {
@@ -36,6 +38,8 @@ namespace PicSim.UI.ViewModels
 
             m_workingRegister = new RegisterViewModel(m_simulatorModel.Processor.WorkingRegister);
             m_specialRegisters = new SpecialRegistersViewModel(m_simulatorModel.Processor);
+
+			m_frequencyController = new FrequencyViewModel(m_simulatorModel.Processor);
 
             LoadFileCommand = new DelegateCommand(() => {
                 // Stop the simulator if it is running
@@ -105,6 +109,11 @@ namespace PicSim.UI.ViewModels
         {
             get { return m_log; }
         }
+
+		public FrequencyViewModel FrequencyController
+		{
+			get { return m_frequencyController; }
+		}
 
         private void DoRequeryCommands()
         {

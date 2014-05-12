@@ -8,7 +8,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         mc:Ignorable="d" d:DataContext="{x:Type vm:MainWindowViewModel}"
-        Title="MainWindow" Height="550" Width="900" Closed="Window_Closed">
+        Title="MainWindow" Height="600" Width="900" Closed="Window_Closed">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -115,11 +115,12 @@
         <GridSplitter Grid.Row="2" Grid.Column="1" Grid.RowSpan="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" ShowsPreview="False" Width="3" />
         <GridSplitter Grid.Row="2" Grid.Column="3" Grid.RowSpan="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" ShowsPreview="False" Width="3" />
 
-        <Grid Grid.Row="2" Grid.Column="0" Grid.RowSpan="3" Margin="5">
+        <Grid Grid.Row="2" Grid.Column="0" Grid.RowSpan="3" Margin="5,5,5,0" Height="Auto" VerticalAlignment="Top">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="1*" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
@@ -150,6 +151,9 @@
                     <TextBlock Name="lblRunTime"   Text="0 s"/>
                 </StackPanel>
             </DockPanel>
+
+            <Button Grid.Row="3" Content="Settings" HorizontalAlignment="Stretch" Command="{Binding FrequencyController.OpenSettingCommand}"/>
+
         </Grid>
 
         <ScrollViewer Grid.Row="2" Grid.Column="4" Grid.RowSpan="3" Margin="5">

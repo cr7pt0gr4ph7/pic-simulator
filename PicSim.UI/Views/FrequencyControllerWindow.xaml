@@ -1,7 +1,14 @@
 ﻿<Window x:Class="PicSim.UI.Views.FrequencyControllerWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="FrequencyControllerWindow" Height="80" Width="300">
+        xmlns:self="clr-namespace:PicSim.UI.Views"
+        xmlns:vm="clr-namespace:PicSim.UI.ViewModels"
+        xmlns:conv="clr-namespace:PicSim.UI.Converters"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        mc:Ignorable="d" d:DataContext="{x:Type vm:MainWindowViewModel}"
+        Title="Frequency Controller" Height="80" Width="300"> <!-- Closing="{Binding FrequencyController.WindowClosing}">-->
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -13,7 +20,7 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Text="Frequency Controller" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" />
-        <TextBox Text="0" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right"/>
-        <Button  Grid.Column="1" Grid.Row="1" Content="Set"/>
+        <TextBox Text="{Binding FrequencyController.TBFrequency}" Grid.Column="1" Grid.Row="0" TextAlignment="Right"/>
+        <Button  Grid.Column="1" Grid.Row="1" Content="Set" Command="{Binding FrequencyController.ClickSet}"/>
     </Grid>
 </Window>
