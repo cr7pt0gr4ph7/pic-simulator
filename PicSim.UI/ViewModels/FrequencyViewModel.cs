@@ -8,25 +8,52 @@ using System.Waf.Applications;
 using PicSim.Execution;
 using PicSim.UI.Views;
 using System.Windows.Input;
+using System.Waf.Foundation;
 
 namespace PicSim.UI.ViewModels
 {
-	public class FrequencyViewModel
-	{
-		Processor m_processor;
+    public class FrequencyViewModel : Model
+    {
+        private readonly Processor m_processor;
+        private readonly FrequencyControllerWindow m_frequencyControllerWindow;
 
+        private int m_currentFrequency;
+        private int m_newFrequency;
 
-		public FrequencyViewModel(Processor processor)
+        public FrequencyViewModel(Processor processor)
         {
-			m_processor = processor;
+            Ensure.ArgumentNotNull(processor, "processor");
+            m_processor = processor;
 
-			FrequencyControllerWindow frequencyControllerWindow = new FrequencyControllerWindow();
+            CurrentFrequency = m_processor.Frequency;
 
-			OpenSettingCommand = new DelegateCommand(() => { frequencyControllerWindow.Show(); });
-			ClickSet = new DelegateCommand(() => { });
+            OpenSettingCommand = new DelegateCommand(() => {
+                NewFrequency = m_processor.Frequency;
+                m_frequencyControllerWindow.Show();
+            });
+
+            ClickSet = new DelegateCommand(() => {
+                m_processor.Frequency = CurrentFrequency = NewFrequency;
+                m_frequencyControllerWindow.Close();
+            });
+
+            m_frequencyControllerWindow = new FrequencyControllerWindow();
+            m_frequencyControllerWindow.DataContext = this;
         }
 
-		public ICommand OpenSettingCommand { get; private set; }
-		public ICommand ClickSet { get; private set; }
-	}
+        public int CurrentFrequency
+        {
+            get { return m_currentFrequency; }
+            private set { SetProperty(ref m_currentFrequency, value); }
+        }
+
+        public int NewFrequency
+        {
+            get { return m_newFrequency; }
+            set { SetProperty(ref m_newFrequency, value); }
+        }
+
+        public ICommand OpenSettingCommand { get; private set; }
+        public ICommand ClickSet { get; private set; }
+    }
 }

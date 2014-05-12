@@ -8,8 +8,8 @@
         xmlns:behaviors="clr-namespace:PicSim.UI.Behaviors"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        mc:Ignorable="d" d:DataContext="{x:Type vm:MainWindowViewModel}"
-        Title="Frequency Controller" Height="80" Width="300">
+        mc:Ignorable="d" d:DataContext="{x:Type vm:FrequencyViewModel}"
+        Title="Frequency Controller" SizeToContent="Height" Height="80" Width="300">
 
     <i:Interaction.Behaviors>
         <behaviors:HideWindowOnCloseBehavior/>
@@ -18,16 +18,16 @@
     
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Frequency Controller" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" />
-        <TextBox Text="{Binding FrequencyController.TBFrequency}" Grid.Column="1" Grid.Row="0" TextAlignment="Right"/>
-        <Button  Grid.Column="1" Grid.Row="1" Content="Set" Command="{Binding FrequencyController.ClickSet}"/>
+        <Label Content="Frequency Controller" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" />
+        <TextBox Text="{Binding NewFrequency}" Grid.Column="1" Grid.Row="0" TextAlignment="Right"/>
+        <Button Grid.Column="1" Grid.Row="1" Content="Set" Command="{Binding ClickSet}"/>
     </Grid>
 </Window>
