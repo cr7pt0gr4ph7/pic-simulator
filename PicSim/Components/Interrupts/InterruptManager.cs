@@ -33,7 +33,7 @@ namespace PicSim.Components.Interrupts
         /// Process all events.
         /// NOTE: Must be called AFTER the communication interfaces have been updated etc.
         /// </summary>
-        private void PreStep()
+        public void PreStep()
         {
             m_hasInterrupts = false;
             foreach (IInterruptContributor contributor in m_contributors)
@@ -48,6 +48,10 @@ namespace PicSim.Components.Interrupts
             {
                 // Clear the GIE Bit
                 m_processor.Registers.INTCON.GIE = false;
+
+                // Load the ISR vector
+                m_processor.Stack.Push(m_processor.ProgramCounter.Value);
+                m_processor.ProgramCounter.LoadFrom13Bits(0x04);
             }
 
             // TODO Handle interrupts

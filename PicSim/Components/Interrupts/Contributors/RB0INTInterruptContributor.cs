@@ -41,7 +41,7 @@ namespace PicSim.Components.Interrupts.Contributors
 
         private bool GetRelevantBitOf(byte unmaskedValue)
         {
-            return unmaskedValue.GetMaskedValue(m_processor.Registers.TRISB.Value.GetMaskedValue(0x01)).GetUpperNibble() != 0;
+            return unmaskedValue.GetMaskedValue(m_processor.Registers.TRISB.Value.GetMaskedValue(0x01)) != 0;
         }
     }
 }

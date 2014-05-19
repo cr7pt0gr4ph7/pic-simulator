@@ -36,6 +36,9 @@ namespace PicSim.Execution
 
             // Increment the TMR0 register
             Timer.PreStep();
+
+            // Set all interrupt flags if the corresponding condition is true
+            InterruptManager.PreStep();
         }
 
         private void DoStep()

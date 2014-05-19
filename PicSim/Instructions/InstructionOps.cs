@@ -449,7 +449,7 @@ namespace PicSim.Instructions
             pop_pc();
 
             // Reenable the GIE bit
-            throw new NotImplementedException();
+            Processor.Registers.INTCON.GIE = true;
         }
 
         public void RETLW()
