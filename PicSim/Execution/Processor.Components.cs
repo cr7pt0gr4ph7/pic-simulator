@@ -25,6 +25,7 @@ namespace PicSim.Execution
                 ops = new InstructionOps() { Processor = this }
             };
 
+            this.Timer = new Timer(this);
             this.Watchdog = new Watchdog(this);
             this.Clock = new VirtualClock();
             this.ProgramCounter = new ProgramCounter();
@@ -38,7 +39,7 @@ namespace PicSim.Execution
             // Initialize the registers
             //     See "Section 4.2 Data Memory Organization", p.12..18
 
-            this.Registers = new RegistersView(ProgramCounter, Communication);
+            this.Registers = new RegistersView(ProgramCounter, Communication, Timer);
 
             // Initialize the virtual memory layout
             //     See "Figure 4-2 Register File Map", p.12
@@ -171,6 +172,8 @@ namespace PicSim.Execution
         public CommunicationManager Communication { get; private set; }
 
         public InstructionDecoder Decoder { get; private set; }
+
+        public Timer Timer { get; private set; }
 
         public Watchdog Watchdog { get; private set; }
 

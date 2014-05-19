@@ -52,6 +52,7 @@
     <Compile Include="Components\Communication\Interfaces\ProxyCommunication.cs" />
     <Compile Include="Components\Communication\Interfaces\RS232.cs" />
     <Compile Include="Components\InstructionDecoder.cs" />
+    <Compile Include="Components\Interrupts\Contributors\TMR0InterruptContributor.cs" />
     <Compile Include="Components\Interrupts\Contributors\RB0INTInterruptContributor.cs" />
     <Compile Include="Components\Interrupts\Contributors\PortBInterruptContributor.cs" />
     <Compile Include="Components\Interrupts\InterruptManager.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Components\Storage\IndirectingMemoryView.cs" />
     <Compile Include="Components\Storage\PagedMemoryView.cs" />
     <Compile Include="Components\Storage\VirtualMemoryView.cs" />
+    <Compile Include="Components\Timer.cs" />
     <Compile Include="Components\VirtualClock.cs" />
     <Compile Include="Components\Watchdog.cs" />
     <Compile Include="Ensure.cs" />

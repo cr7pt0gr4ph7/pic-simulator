@@ -15,11 +15,11 @@ namespace PicSim.Components
             return new MemoryCell();
         }
 
-        public RegistersView(ProgramCounter programCounter, CommunicationManager communication)
+        public RegistersView(ProgramCounter programCounter, CommunicationManager communication, Timer timer)
         {
             // TODO Implement the other registers
 
-            this.TMR0 = CreateTemp();
+            this.TMR0 = timer.TMR0Register;
             this.Option = new OptionRegister();
 
             this.PCL = programCounter.PCL_Register;

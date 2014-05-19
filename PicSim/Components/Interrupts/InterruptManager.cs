@@ -26,6 +26,7 @@ namespace PicSim.Components.Interrupts
         {
             yield return new PortBInterruptContributor(m_processor);
             yield return new RB0INTInterruptContributor(m_processor);
+            yield return new TMR0InterruptContributor(m_processor);
         }
 
         /// <summary>
