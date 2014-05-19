@@ -112,7 +112,7 @@
             <self:SimpleToolbarSeparator />
 
             <self:SimpleToolbarButton BText="Pause" BSource="../icons/control-pause.png" BCommand="{Binding PauseCommand}"/>
-            <self:SimpleToolbarButton BText="Continue" BSource="../icons/arrow-curve-000-double.png" BCommand="{Binding StartCommand}"/>
+            <self:SimpleToolbarButton BText="Continue" BSource="../icons/arrow-curve-000-double.png" BCommand="{Binding ContinueCommand}"/>
             <self:SimpleToolbarButton BText="Step" BSource="../icons/arrow-curve-000-left.png" BCommand="{Binding StepCommand}"/>
 
             <self:SimpleToolbarSeparator />
