@@ -50,7 +50,7 @@ namespace PicSim.Components.Interrupts
                 m_processor.Registers.INTCON.GIE = false;
 
                 // Load the ISR vector
-                m_processor.Stack.Push(m_processor.ProgramCounter.Value);
+                m_processor.Stack.Push(m_processor.ProgramCounter.NextValue);
                 m_processor.ProgramCounter.LoadFrom13Bits(0x04);
             }
 

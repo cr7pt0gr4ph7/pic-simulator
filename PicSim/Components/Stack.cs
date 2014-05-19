@@ -1,4 +1,8 @@
-﻿using PCAddress = System.UInt16;
+﻿using PicSim.Utils;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using PCAddress = System.UInt16;
 
 namespace PicSim.Components
 {
@@ -55,6 +59,7 @@ namespace PicSim.Components
         {
             m_currentIndex = RewrapAddress(m_currentIndex + 1);
             m_stackEntries[m_currentIndex] = address;
+            StackChanged.RaiseIfNotNull(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -65,7 +70,22 @@ namespace PicSim.Components
         {
             PCAddress result = m_stackEntries[m_currentIndex];
             m_currentIndex = RewrapAddress(m_currentIndex - 1);
+            StackChanged.RaiseIfNotNull(this, EventArgs.Empty);
             return result;
         }
+
+        // View helpers
+
+        public IEnumerable<ushort> Entries
+        {
+            get { return m_stackEntries.ToArray(); }
+        }
+
+        public int CurrentIndex
+        {
+            get { return m_currentIndex; }
+        }
+
+        public event EventHandler<EventArgs> StackChanged;
     }
 }

@@ -71,6 +71,7 @@
     <Compile Include="Behaviors\CloseOnEscapeBehavior.cs" />
     <Compile Include="Behaviors\HideWindowOnCloseBehavior.cs" />
     <Compile Include="Converters\Bit2BoolConverter.cs" />
+    <Compile Include="Converters\FixedStringConverter.cs" />
     <Compile Include="Converters\HexValueConverter.cs" />
     <Compile Include="Converters\PortDirectionConverter.cs" />
     <Compile Include="Helper\BinaryHelper.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="ViewModels\SpecialRegistersViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\ClockSettingsViewModel.cs" />
+    <Compile Include="ViewModels\StackDisplayViewModel.cs" />
     <Compile Include="Views\AvalonEditHelpers.cs" />
     <Compile Include="Views\Controls\ChangeMarkTextBox.xaml.cs">
       <DependentUpon>ChangeMarkTextBox.xaml</DependentUpon>

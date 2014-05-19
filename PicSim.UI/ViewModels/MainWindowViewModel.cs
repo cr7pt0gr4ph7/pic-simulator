@@ -20,6 +20,7 @@ namespace PicSim.UI.ViewModels
 
         private readonly RegisterViewModel m_workingRegister;
         private readonly SpecialRegistersViewModel m_specialRegisters;
+        private readonly StackDisplayViewModel m_stack;
 
         private readonly EditorViewModel m_editor;
         private readonly HelpViewModel m_help;
@@ -46,6 +47,7 @@ namespace PicSim.UI.ViewModels
 
             m_workingRegister = new RegisterViewModel(m_simulatorModel.Processor.WorkingRegister);
             m_specialRegisters = new SpecialRegistersViewModel(m_simulatorModel.Processor);
+            m_stack = new StackDisplayViewModel(m_simulatorModel.Processor.Stack);
 
             m_frequencyController = new FrequencyViewModel(m_simulatorModel.Processor);
             m_RS232Controller = new RS232ViewModel(m_simulatorModel.Processor, m_simulatorModel.Processor.Communication);
@@ -155,6 +157,11 @@ namespace PicSim.UI.ViewModels
         public SpecialRegistersViewModel SpecialRegisters
         {
             get { return m_specialRegisters; }
+        }
+
+        public StackDisplayViewModel Stack
+        {
+            get { return m_stack; }
         }
 
         public EditorViewModel Editor

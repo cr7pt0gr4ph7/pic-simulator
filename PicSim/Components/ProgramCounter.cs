@@ -229,8 +229,5 @@ namespace PicSim.Components
         }
 
         #endregion
-
-
-
     }
 }
