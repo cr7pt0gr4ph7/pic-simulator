@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Waf.Foundation;
 using System.Windows.Threading;
+using PicSim.Utils;
 
 namespace PicSim.UI.Models
 {
@@ -26,8 +27,7 @@ namespace PicSim.UI.Models
 
         public SimulatorModel()
         {
-            m_timer = new DispatcherTimer()
-            {
+            m_timer = new DispatcherTimer() {
                 Interval = TimeSpan.FromSeconds(0.01d)
             };
 
@@ -60,38 +60,52 @@ namespace PicSim.UI.Models
             set { SetProperty(ref m_fileModel, value); }
         }
 
+        public bool IsRunning
+        {
+            get { return m_timer.IsEnabled; }
+        }
+
         public void Start()
         {
             ms_logger.Info("Simulation started");
             m_timer.Start();
+            IsRunningChanged.RaiseIfNotNull(this, EventArgs.Empty);
         }
 
         public void Stop()
         {
             ms_logger.Info("Simulation stopped");
             m_timer.Stop();
+            IsRunningChanged.RaiseIfNotNull(this, EventArgs.Empty);
+        }
+
+        public void Step()
+        {
+            ms_logger.Info("Single step");
+            m_processor.Step();
+            IsRunningChanged.RaiseIfNotNull(this, EventArgs.Empty);
         }
 
         public void HardReset()
         {
             ms_logger.Info("Simulation HardReset");
-            m_timer.Stop();
+            Stop();
             m_processor.HardReset();
         }
 
         public void SoftReset()
         {
             ms_logger.Info("Simulation SoftReset");
-            m_timer.Stop();
+            Stop();
             m_processor.SoftReset();
         }
 
         public void ToggleRunning()
         {
-            if (m_timer.IsEnabled)
-                Stop();
-            else
-                Start();
+            if (IsRunning) Stop();
+            else Start();
         }
+
+        public event EventHandler<EventArgs> IsRunningChanged;
     }
 }
