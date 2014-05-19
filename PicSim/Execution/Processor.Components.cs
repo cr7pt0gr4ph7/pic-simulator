@@ -121,7 +121,7 @@ namespace PicSim.Execution
             Registers.PCLATH.Value = 0x00;
             Registers.INTCON.Value = 0x00;
 
-            Registers.Status.Value = 0x18;
+            Registers.Status.RawValue = 0x18;
             Registers.Option.Value = 0xFF;
 
             Registers.PORTA.Value = 0x00;
@@ -144,13 +144,13 @@ namespace PicSim.Execution
             switch (condition)
             {
                 case ResetCondition.MCLR_Reset:
-                    Registers.Status.Value = (byte)(Registers.Status.Value & 0x1F);
+                    Registers.Status.RawValue = (byte)(Registers.Status.Value & 0x1F);
                     break;
                 case ResetCondition.MCLR_Sleep:
-                    Registers.Status.Value = (byte)((Registers.Status.Value & 0x7) | (0x2 << 3));
+                    Registers.Status.RawValue = (byte)((Registers.Status.Value & 0x7) | (0x2 << 3));
                     break;
                 case ResetCondition.WDT_Reset:
-                    Registers.Status.Value = (byte)((Registers.Status.Value & 0x7) | (0x1 << 3));
+                    Registers.Status.RawValue = (byte)((Registers.Status.Value & 0x7) | (0x1 << 3));
                     break;
                 default:
                     throw new ArgumentException("Invalid ResetCondition value");
