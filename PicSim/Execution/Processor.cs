@@ -33,6 +33,9 @@ namespace PicSim.Execution
 
             // Read the current values from the serial port
             Communication.PreStep();
+
+            // Increment the TMR0 register
+            Timer.PreStep();
         }
 
         private void DoStep()
@@ -74,6 +77,9 @@ namespace PicSim.Execution
 
             // Write the newest values to the serial port
             Communication.PostStep();
+
+            // Reset the internal "has overflowed in current cycle" flag for TMR0
+            Timer.PostStep();
         }
     }
 }
