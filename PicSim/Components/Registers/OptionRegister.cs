@@ -8,6 +8,11 @@ namespace PicSim.Components.Registers
     /// </summary>
     public class OptionRegister : MemoryCell
     {
+        public OptionRegister()
+        {
+            this.Value = 0xFF;
+        }
+
         public bool HasFlag(byte bitNo)
         {
             byte mask = (byte)(1 << bitNo);
