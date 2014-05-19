@@ -91,6 +91,7 @@ namespace PicSim.UI.Models
             ms_logger.Info("Simulation HardReset");
             Stop();
             m_processor.HardReset();
+            m_processor.ResetMemory();
         }
 
         public void SoftReset()

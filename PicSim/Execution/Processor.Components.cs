@@ -165,6 +165,14 @@ namespace PicSim.Execution
             Registers.EECON1.Value = 0x00;
         }
 
+        public void ResetMemory()
+        {
+            for (int i = 0x0C; i <= 0x2F; i++)
+            {
+                this.DebugMemoryView[(byte)i] = 0;
+            }
+        }
+
         public void WatchdogReset()
         {
             SoftReset(ResetCondition.MCLR_Reset);
