@@ -95,6 +95,7 @@
     <Compile Include="ViewModels\ProgramCounterViewModel.cs" />
     <Compile Include="ViewModels\SpecialRegistersViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
+    <Compile Include="ViewModels\ClockSettingsViewModel.cs" />
     <Compile Include="Views\AvalonEditHelpers.cs" />
     <Compile Include="Views\Controls\ChangeMarkTextBox.xaml.cs">
       <DependentUpon>ChangeMarkTextBox.xaml</DependentUpon>
@@ -134,7 +135,7 @@
       <DependentUpon>SpecialRegister.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CustomCmds.cs" />
-    <Compile Include="Views\FrequencyControllerWindow.xaml.cs">
+    <Compile Include="Views\Windows\FrequencyControllerWindow.xaml.cs">
       <DependentUpon>FrequencyControllerWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\IconBarMargin.cs" />
@@ -142,7 +143,10 @@
       <DependentUpon>MemoryTableView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Views\RS232SettingsWindow.xaml.cs">
+    <Compile Include="Views\Windows\ClockSettingsWindow.xaml.cs">
+      <DependentUpon>ClockSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\RS232SettingsWindow.xaml.cs">
       <DependentUpon>RS232SettingsWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\Controls\ChangeMarkTextBox.xaml">
@@ -185,7 +189,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\FrequencyControllerWindow.xaml">
+    <Page Include="Views\Windows\FrequencyControllerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -205,7 +209,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\RS232SettingsWindow.xaml">
+    <Page Include="Views\Windows\ClockSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Windows\RS232SettingsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

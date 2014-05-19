@@ -27,6 +27,7 @@ namespace PicSim.UI.ViewModels
 
 		private readonly FrequencyViewModel m_frequencyController;
 		private readonly RS232ViewModel m_RS232Controller;
+		private readonly ClockSettingsViewModel m_taktgeneratorController;
 
         public MainWindowViewModel(IView view, IFileDialogService fileDialogService, SimulatorModel simulatorModel)
             : base(view)
@@ -48,6 +49,7 @@ namespace PicSim.UI.ViewModels
 
 			m_frequencyController = new FrequencyViewModel(m_simulatorModel.Processor);
 			m_RS232Controller = new RS232ViewModel(m_simulatorModel.Processor, m_simulatorModel.Processor.Communication);
+			m_taktgeneratorController = new ClockSettingsViewModel();
 
             LoadFileCommand = new DelegateCommand(() => {
                 // Stop the simulator if it is running
@@ -141,6 +143,11 @@ namespace PicSim.UI.ViewModels
 		public RS232ViewModel RS232Controller
 		{
 			get { return m_RS232Controller; }
+		}
+
+		public ClockSettingsViewModel TaktgeneratorController
+		{
+			get { return m_taktgeneratorController; }
 		}
 
         private void DoRequeryCommands()
