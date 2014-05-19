@@ -16,16 +16,20 @@ namespace PicSim.Utils
 
         public static BitVector32.Section ForRange(short startBit, short endBit)
         {
-            if (startBit > endBit) {
+            if (startBit > endBit)
+            {
                 var tmp = startBit;
                 startBit = endBit;
                 endBit = tmp;
             }
 
-            if (startBit == 0) {
-                BitVector32.Section ourSection = BitVector32.CreateSection(MaxValueForBitCount(endBit));
+            if (startBit == 0)
+            {
+                BitVector32.Section ourSection = BitVector32.CreateSection(MaxValueForBitCount((byte)(endBit + 1)));
                 return ourSection;
-            } else {
+            }
+            else
+            {
                 BitVector32.Section previousRange = BitVector32.CreateSection(MaxValueForBitCount(startBit));
                 BitVector32.Section ourSection = BitVector32.CreateSection(MaxValueForBitCount((short)(endBit - startBit + 1)), previousRange);
                 return ourSection;
