@@ -25,6 +25,7 @@ namespace PicSim.Execution
                 ops = new InstructionOps() { Processor = this }
             };
 
+            this.Prescaler = new Prescaler(this);
             this.Timer = new Timer(this);
             this.Watchdog = new Watchdog(this);
             this.Clock = new VirtualClock();
@@ -172,6 +173,8 @@ namespace PicSim.Execution
         public CommunicationManager Communication { get; private set; }
 
         public InstructionDecoder Decoder { get; private set; }
+
+        public Prescaler Prescaler { get; private set; }
 
         public Timer Timer { get; private set; }
 

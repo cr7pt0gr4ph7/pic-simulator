@@ -63,6 +63,7 @@
     <Compile Include="Components\Notifications\INotifyRegisterChanged.cs" />
     <Compile Include="Components\Notifications\MemoryChangedEventArgs.cs" />
     <Compile Include="Components\Notifications\ValueChangedEventArgs.cs" />
+    <Compile Include="Components\Prescaler.cs" />
     <Compile Include="Components\ProgramCounter.cs" />
     <Compile Include="Components\RegistersView.cs" />
     <Compile Include="Components\Registers\Core\ConstantRegister.cs" />
