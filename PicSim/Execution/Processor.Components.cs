@@ -108,36 +108,66 @@ namespace PicSim.Execution
         }
 
         /// <summary>
-        /// This Method will reset the Processor
+        /// Trigger a Power-on reset.
         /// </summary>
-        private void Reset()
+        public void HardReset()
         {
-            Registers.PCL.Value = 0;
-            Registers.PCLATH.Value = 0;
+            // TODO Check events raised by setting the register values
+            // TODO Should we reset the General Purpose Registers or not?
+            Registers.TMR0.Value = 0x00;
+            Registers.FSR.Value = 0x00;
 
+            Registers.PCL.Value = 0x00;
+            Registers.PCLATH.Value = 0x00;
+            Registers.INTCON.Value = 0x00;
+
+            Registers.Status.Value = 0x18;
             Registers.Option.Value = 0xFF;
+
+            Registers.PORTA.Value = 0x00;
+            Registers.PORTB.Value = 0x00;
             Registers.TRISA.Value = 0x1F;
             Registers.TRISB.Value = 0xFF;
 
-        }
-
-        public void HardReset()
-        {
-            Registers.Status.Value = 0x18;
-            Registers.PORTA.Value = 0x00;
-            Registers.PORTB.Value = 0x00;
             Registers.EEDATA.Value = 0x00;
             Registers.EEADR.Value = 0x00;
-            Registers.INTCON.Value = 0x00;
-
             Registers.EECON1.Value = 0x00;
-
-
         }
 
-        public void SoftReset()
+        public void SoftReset(ResetCondition condition)
         {
+            // TODO Check events raised by setting the register values
+            Registers.PCL.Value = 0x00;
+            Registers.PCLATH.Value = 0x00;
+            Registers.INTCON.Value = (byte)(Registers.INTCON.Value & 0x01);
 
+            switch (condition)
+            {
+                case ResetCondition.MCLR_Reset:
+                    Registers.Status.Value = (byte)(Registers.Status.Value & 0x1F);
+                    break;
+                case ResetCondition.MCLR_Sleep:
+                    Registers.Status.Value = (byte)((Registers.Status.Value & 0x7) | (0x2 << 3));
+                    break;
+                case ResetCondition.WDT_Reset:
+                    Registers.Status.Value = (byte)((Registers.Status.Value & 0x7) | (0x1 << 3));
+                    break;
+                default:
+                    throw new ArgumentException("Invalid ResetCondition value");
+            }
+
+            Registers.Option.Value = 0xFF;
+
+            Registers.TRISA.Value = 0x1F;
+            Registers.TRISB.Value = 0xFF;
+
+            // TODO Set EECON1 correctly
+            Registers.EECON1.Value = 0x00;
+        }
+
+        public void WatchdogReset()
+        {
+            SoftReset(ResetCondition.MCLR_Reset);
         }
 
         #region Debug interface
@@ -211,10 +241,5 @@ namespace PicSim.Execution
         }
 
         #endregion
-
-        public void WatchdogReset()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

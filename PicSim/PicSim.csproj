@@ -87,6 +87,7 @@
     <Compile Include="Execution\Processor.Components.cs" />
     <Compile Include="Execution\Processor.cs" />
     <Compile Include="Execution\Processor.Helpers.cs" />
+    <Compile Include="Execution\ResetCondition.cs" />
     <Compile Include="Instructions\ByteValue.cs" />
     <Compile Include="Instructions\InstructionOps.cs" />
     <Compile Include="Instructions\OperationResult.cs" />

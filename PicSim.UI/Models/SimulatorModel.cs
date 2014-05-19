@@ -97,7 +97,8 @@ namespace PicSim.UI.Models
         {
             ms_logger.Info("Simulation SoftReset");
             Stop();
-            m_processor.SoftReset();
+            // TODO Handle sleep
+            m_processor.SoftReset(ResetCondition.MCLR_Reset);
         }
 
         public void ToggleRunning()
